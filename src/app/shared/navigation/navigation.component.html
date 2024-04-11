@@ -1,0 +1,17 @@
+<div class="navigation">
+  <nav id="nav">
+    <div class="logo">
+      <a routerLink="/">licznikprogresu</a>
+    </div>
+    <fa-icon class="menu-icon" [icon]="isNavExpanded ? faTimes : faBars" (click)="toggleNav()"></fa-icon>
+    <div>
+      <ul>
+        <li><a routerLink="/oferty" routerLinkActive="active-link">TRENING</a></li>
+        <li><a href="#contact">PROGRES</a></li>
+        <li><a href="#contact">LOGOWANIE</a></li>
+        <li><a href="#contact">KALORIE</a></li>
+      </ul>
+    </div>
+  </nav>
+  <app-expanded-nav [isNavExpanded]="isNavExpanded" (clickedLinkEvent)="handleClickedLink()"></app-expanded-nav>
+</div>
