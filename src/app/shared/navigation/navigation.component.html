@@ -1,15 +1,16 @@
 <div class="navigation">
-  <nav id="nav">
+  <nav id="nav" [ngStyle]="{'background': navBackground}">
     <div class="logo">
-      <a routerLink="/">licznikprogresu</a>
+      <fa-icon class="icon" [icon]="faDumbbell"></fa-icon>
+      <a routerLink="/">Licznik Progresu</a>
     </div>
     <fa-icon class="menu-icon" [icon]="isNavExpanded ? faTimes : faBars" (click)="toggleNav()"></fa-icon>
     <div>
       <ul>
-        <li><a routerLink="/oferty" routerLinkActive="active-link">TRENING</a></li>
-        <li><a href="#contact">PROGRES</a></li>
-        <li><a href="#contact">LOGOWANIE</a></li>
-        <li><a href="#contact">KALORIE</a></li>
+        <li><a routerLink="/training" routerLinkActive="active-link">TRENING</a></li>
+        <li><a routerLink="/progress" routerLinkActive="active-link">POSTĘP</a></li>
+        <li><a routerLink="/auth" routerLinkActive="active-link">LOGOWANIE</a></li>
+        <li><a routerLink="/calories" routerLinkActive="active-link">KALORIE</a></li>
       </ul>
     </div>
   </nav>

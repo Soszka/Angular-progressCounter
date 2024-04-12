@@ -1,19 +1,29 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { ExpandedNavComponent } from './expanded-nav/expanded-nav.component';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes, faDumbbell } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [ExpandedNavComponent, FontAwesomeModule],
+   imports: [
+    ExpandedNavComponent,
+    FontAwesomeModule,
+    CommonModule,
+    RouterLink,           
+    RouterLinkActive      
+  ],
   templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.scss'
+  styleUrl: './navigation.component.scss',
 })
 export class NavigationComponent {
   faBars = faBars;
   faTimes = faTimes;
+  faDumbbell = faDumbbell;
   isNavExpanded: boolean = false;
+  @Input() navBackground: string = 'linear-gradient(to top, rgb(0, 3, 199), rgb(1, 0, 75))';
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {

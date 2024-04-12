@@ -1,1 +1,7 @@
-<p>title works!</p>
+<div class="container">
+  <h3 class="subtitle" [ngStyle]="{'color' : titleColor}">{{ subtitle }}</h3>
+  <div class="title-container">
+    <h1 class="title">{{ title }}</h1>
+    <div class="title-bar" [ngStyle]="{'background-color' : titleColor}"></div>
+  </div>
+</div>
