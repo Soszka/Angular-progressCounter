@@ -1,9 +1,9 @@
 <div class="expanded-nav" [@expandCollapse]="stateName">
   <ul>
-    <li><a (click)="clickedLink()" routerLink="/" routerLinkActive="active-link"><fa-icon class ="icon" [icon]="faHome"></fa-icon>STRONA GŁÓWNA</a></li>
-    <li><a (click)="clickedLink()" routerLink="/oferty" routerLinkActive="active-link"><fa-icon class ="icon" [icon]="faDumbbell"></fa-icon>TRENING</a></li>
-    <li><a (click)="clickedLink()"><fa-icon class ="icon" [icon]="faChartLine "></fa-icon>PROGRES</a></li>
-    <li><a (click)="clickedLink()" href="#contact"><fa-icon class ="icon" [icon]="faSignInAlt "></fa-icon>LOGOWANIE</a></li>
-    <li><a (click)="clickedLink()"><fa-icon class ="icon" [icon]="faFire"></fa-icon>KALORIE</a></li>
+    <li><a (click)="clickedLink()" routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"><fa-icon class="icon" [icon]="faHome"></fa-icon>STRONA GŁÓWNA</a></li>
+    <li><a (click)="clickedLink()" routerLink="/training" routerLinkActive="active-link"><fa-icon class="icon" [icon]="faDumbbell"></fa-icon>TRENING</a></li>
+    <li><a (click)="clickedLink()" routerLink="/progress" routerLinkActive="active-link"><fa-icon class="icon" [icon]="faChartLine"></fa-icon>PROGRES</a></li>
+    <li><a (click)="clickedLink()" routerLink="/auth" routerLinkActive="active-link"><fa-icon class="icon" [icon]="faSignInAlt"></fa-icon>LOGOWANIE</a></li>
+    <li><a (click)="clickedLink()" routerLink="/calories" routerLinkActive="active-link"><fa-icon class="icon" [icon]="faFire"></fa-icon>KALORIE</a></li>
   </ul>
 </div>

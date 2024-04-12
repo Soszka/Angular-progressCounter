@@ -3,11 +3,12 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { faDumbbell, faSignInAlt, faChartLine, faFire, faHome} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { group } from '@angular/animations';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-expanded-nav',
   standalone: true,
-  imports: [FontAwesomeModule],
+  imports: [FontAwesomeModule, RouterLink, RouterLinkActive],
   templateUrl: './expanded-nav.component.html',
   styleUrl: './expanded-nav.component.scss',
   animations: [

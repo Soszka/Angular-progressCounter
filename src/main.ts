@@ -4,12 +4,18 @@ import { AppComponent } from './app/app.component';
 import { importProvidersFrom } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { routes } from '../src/app/app.routes';
 
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
 
-bootstrapApplication(AppComponent,{
-  providers:[
-    importProvidersFrom([BrowserModule, BrowserAnimationsModule])
-  ]
-}); 
+  bootstrapApplication(AppComponent, {
+    providers: [
+      importProvidersFrom(
+        BrowserModule,
+        BrowserAnimationsModule,
+        RouterModule.forRoot(routes)
+      )
+    ]
+  }).catch(err => console.error(err));
