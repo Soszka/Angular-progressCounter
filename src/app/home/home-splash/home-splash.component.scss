@@ -1,0 +1,75 @@
+.splash {
+  height: 100vh;
+  background: url('../../../assets/crossfit-1126999_1280.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  background-attachment: fixed;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+}
+
+.splash:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 100, 0.75); 
+}
+
+.splash-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  width: 70%;
+
+  h1 {
+    font-size: 42px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+}
+
+button {
+  display: inline-block;
+  margin-top: 25px;
+  background-color: #e7e7e7 !important;
+  background-color: linear-gradient(to right, rgb(5, 7, 146), rgrgb(3, 3, 41));
+  color: black;
+  width: 140px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 50px;
+
+  &:hover {
+    background-color: darken(#e7e7e7, 5%) !important; 
+    animation: pulseAnimation 1.2s infinite; 
+  }
+
+  @keyframes pulseAnimation {
+    0%, 100% {
+      transform: scale(1); 
+    }
+    50% {
+      transform: scale(1.3); 
+    }
+  }
+}
