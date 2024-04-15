@@ -12,6 +12,6 @@ import { FooterComponent } from '../shared/footer/footer.component';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  footerBackground = 'linear-gradient(to right, rgb(141, 0, 197), rgb(18, 0, 29))';
-  footerAuthorColor = 'rgb(171, 19, 231)';
+  footerBackground = 'linear-gradient(to right, rgb(5, 7, 146), rgb(3, 3, 41))';
+  footerAuthorColor = 'rgb(27, 93, 235)';
 }

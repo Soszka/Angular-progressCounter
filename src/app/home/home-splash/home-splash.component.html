@@ -1,3 +1,9 @@
 <div class="splash">
   <app-navigation [navBackground]="navBackground"></app-navigation>
+  <div class="splash-content">
+    <h1>{{ title }}</h1>
+    <h2>{{ subtitle }}</h2>
+    <p>{{ description }}</p>
+    <button mat-raised-button (click)="navigateToAuth()">ZALOGUJ</button>
+  </div>
 </div>

@@ -1,0 +1,35 @@
+.auth {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+
+mat-card {
+  width: 600px;
+  padding: 40px 60px;
+  margin: 50px auto 60px;
+}
+
+mat-form-field {
+  margin: 10px 0;
+}
+
+.submit-button {
+  width: 150px;
+  height: 50px;
+  font-size: 22px;
+  margin: 0 auto;
+  background-color: #00b806 !important; 
+  color: white !important; 
+  border-radius: 50px;
+
+  &:hover {
+    background-color: darken(#00b806, 5%) !important; 
+  }
+}
+
+app-footer {
+  flex-shrink: 0 !important;
+}
+
