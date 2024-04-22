@@ -1,1 +1,13 @@
-<p>home-features works!</p>
+<app-title
+  class="features-title"
+  [title]="title"
+  [subtitle]="subtitle"
+  [titleColor]="titleColor">
+</app-title>
+<div class="features">
+  <div class="feature" *ngFor="let feature of features">
+    <mat-icon [fontIcon]="feature.icon"></mat-icon>
+    <h3>{{ feature.title }}</h3>
+    <p>{{ feature.description }}</p>
+  </div>
+</div>

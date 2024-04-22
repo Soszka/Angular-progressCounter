@@ -26,6 +26,16 @@ mat-form-field {
 
   &:hover {
     background-color: darken(#00b806, 5%) !important; 
+    animation: pulseAnimation 1s infinite; 
+  }
+
+  @keyframes pulseAnimation {
+    0%, 100% {
+      transform: scale(1); 
+    }
+    50% {
+      transform: scale(1.2); 
+    }
   }
 }
 

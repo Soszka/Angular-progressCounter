@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { NavigationComponent } from '../shared/navigation/navigation.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { TitleComponent } from '../shared/title/title.component';
+import { CaloriesCarouselComponent } from './calories-carousel/calories-carousel.component';
 
 @Component({
   selector: 'app-calories',
   standalone: true,
-  imports: [NavigationComponent, FooterComponent, TitleComponent],
+  imports: [NavigationComponent, FooterComponent, TitleComponent, CaloriesCarouselComponent],
   templateUrl: './calories.component.html',
   styleUrl: './calories.component.scss'
 })

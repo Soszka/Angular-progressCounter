@@ -9,7 +9,7 @@ import { merge } from 'rxjs';
 import { NavigationComponent } from '../shared/navigation/navigation.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { TitleComponent } from '../shared/title/title.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-auth',
