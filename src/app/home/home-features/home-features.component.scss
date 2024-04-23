@@ -1,14 +1,10 @@
 @import '../../../styles.scss';
 
-
 .features {
-  flex: 1;
-  display: flex;
+  @include flex(row, space-around, stretch);
+  @include container(30px, 30px);
   flex-wrap: wrap;
-  justify-content: space-around;
-  max-width: 1200px;
   text-align: center;
-  margin: 30px auto;
   @include extra-large-screens {
     padding: 15px 50px;
   }
@@ -37,7 +33,7 @@
   .mat-icon {
     width: 60px;
     height: 60px;
-    color: rgb(0, 0, 102);
+    color: $home-icon-color;
     font-size: 60px;
     @include small-screens {
       font-size: 50px;
@@ -48,8 +44,8 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
-    color: rgb(0, 0, 102);
-    font-size: 24px;
+    color: $home-icon-color;
+    font-size: $content-font-size * 1.2;
     margin: 10px 0;
     @include small-screens {
       margin: 10px 0 5px;
@@ -58,7 +54,7 @@
 
   p {
     margin: 0;
-    font-size: 18px;
+    font-size: $content-font-size * 0.9;
     color: rgb(0, 0, 102);
     @include small-screens {
       font-size: 18px;

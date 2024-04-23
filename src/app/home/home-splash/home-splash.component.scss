@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 .splash {
   height: 100vh;
   background: url('../../../assets/splash_foto.jpg') no-repeat center center;
@@ -14,36 +16,34 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 87, 0.75); 
+  background-color: $home-background-layer-color; 
 }
 
 .splash-content {
+  @include flex(column, center, center);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
-  color: white;
+  color: $text-secondary-color;
   z-index: 1;
   width: 70%;
 
   h1 {
-    font-size: 42px;
+    font-size: $title-font-size * 1.1;
+    margin-bottom: 20px;
     font-weight: bold;
     letter-spacing: 1px;
   }
 
   h2 {
-    font-size: 26px;
+    font-size: $content-font-size * 1.3;
     margin-bottom: 20px;
   }
 
   p {
-    font-size: 18px;
+    font-size: $content-font-size * 0.9;
     line-height: 1.4;
   }
 }

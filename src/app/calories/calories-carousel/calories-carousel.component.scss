@@ -2,17 +2,9 @@
 
 [class^="number-slide"],
 [class*=" number-slide"] {
-  background: grey;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 50px;
-  color: #fff;
-  font-weight: 500;
   height: 370px;
   max-height: 100vh;
   border-radius: 20px;
-  background-color: linear-gradient(to top, rgb(19, 0, 0), rgb(128, 0, 0));
 }
 
 .number-slide1 {
@@ -65,5 +57,5 @@
   cursor: pointer;
 }
 .thumbnail .keen-slider__slide.active {
-  border: 2px dashed black;
+  border: 2px solid black;
 }

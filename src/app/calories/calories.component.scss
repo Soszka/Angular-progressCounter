@@ -1,28 +1,23 @@
 @import '../../styles.scss';
 
 .calories {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include flex(column, space-between, stretch);
   min-height: 100vh;
 }
 
 .calories-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 20px auto 40px;
+  @include flex(row, space-between, center);
+  @include container(20px, 40px);
 }
 
 app-calories-carousel {
-  width: 54%;
+  width: 55%;
 }
 
 .calories-description {
   text-align: center;
-  font-size: 20px;
-  width: 44%;
+  font-size: $content-font-size;
+  width: 43%;
   line-height: 1.5;
 
   button {
@@ -30,7 +25,7 @@ app-calories-carousel {
     margin-top: 15px;
     background-color: #8f0000 !important;
     color: white;
-    width: 150px;
+    width: 175px;
     height: 60px;
     font-size: 22px;
     border-radius: 50px;

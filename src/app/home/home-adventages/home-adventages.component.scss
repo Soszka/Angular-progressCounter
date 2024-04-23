@@ -14,14 +14,11 @@
   }
 
   .content {
-    display: flex;
-    align-items: center;  
-    justify-content: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    @include flex(row, center, center);
+    @include container(0, 0);
     text-align: center;
     position: relative;
-    color: white;
+    color: $text-secondary-color;
     z-index: 1;
     @include large-screens {
       display: block;
@@ -32,7 +29,7 @@
   h1 {
     flex: 1;
     padding-right: 50px;
-    font-size: 36px;
+    font-size: $title-font-size * 0.9;
     margin-bottom: 15px;
     line-height: 1.3;
     font-weight: 500;
@@ -48,7 +45,7 @@
   .description {
     flex: 2;
     padding-left: 50px;
-    font-size: 18px;
+    font-size: $content-font-size * 0.9;
     text-align: center;
     border-left: 3px solid white;
     @include large-screens {

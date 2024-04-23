@@ -1,4 +1,4 @@
-@import '../../../styles/mixins.scss';
+@import '../../../styles.scss';
 
 .navigation {
   @include large-screens {
@@ -7,11 +7,9 @@
 }
 
 nav {
-  display: flex;
-  justify-content: space-between;
+  @include flex(row, space-between, stretch);
   @include large-screens {
-    flex-direction: column;
-    align-items: center;
+    @include flex(column, space-between, center);
   }
   
   .logo {
@@ -28,7 +26,7 @@ nav {
     }
 
     a {
-      font-size: 24px;
+      font-size: $content-font-size * 1.2;
       cursor: pointer;
       font-family: cursive;
     }
@@ -70,7 +68,7 @@ nav {
     text-decoration: none;
     color: white;
     font-weight: 500;
-    font-size: 19px;
+    font-size: $content-font-size * 0.95;
 
     &.active-link {
       color: white; 
