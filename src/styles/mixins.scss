@@ -1,3 +1,15 @@
+@mixin container ($margin-top, $margin-bottom) {
+  max-width: 1200px;
+  margin: $margin-top auto $margin-bottom;
+}
+
+@mixin flex($direction, $content, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: $align;
+}
+
 @mixin tiny-screens () {
   @media only screen and (max-width: 320px) {
     @content;

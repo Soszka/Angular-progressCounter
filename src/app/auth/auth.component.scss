@@ -1,8 +1,8 @@
+@import '../../styles.scss';
+
 .auth {
-  display: flex;
-  flex-direction: column;
+  @include flex(column, space-between, stretch);
   min-height: 100vh;
-  justify-content: space-between;
 }
 
 mat-card {

@@ -1,16 +1,15 @@
 @import '../../../styles.scss';
 
 .accordion-container {
-  max-width: 1200px;
-  margin: 20px auto 50px;
+  @include container(20px, 50px);
 }
 
 .mat-expansion-panel-header.mat-focus-indicator.mat-expansion-toggle-indicator-after {
-  font-size: 18px;
+  font-size: $content-font-size * 0.9;
   height: 65px;
 }
 
 .mat-expansion-panel p {
-  font-size: 16.5px;
+  font-size: $content-font-size * 0.85;
   line-height: 1.6;
 }
