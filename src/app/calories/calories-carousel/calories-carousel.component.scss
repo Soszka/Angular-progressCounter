@@ -1,0 +1,69 @@
+@import '../../../../node_modules/keen-slider/keen-slider.min.css';
+
+[class^="number-slide"],
+[class*=" number-slide"] {
+  background: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  color: #fff;
+  font-weight: 500;
+  height: 370px;
+  max-height: 100vh;
+  border-radius: 20px;
+  background-color: linear-gradient(to top, rgb(19, 0, 0), rgb(128, 0, 0));
+}
+
+.number-slide1 {
+  background: url('../../../assets/caloriesPhoto1.PNG');
+  background-size: cover;
+}
+
+.number-slide2 {
+  background: url('../../../assets/caloriesPhoto2.PNG');
+  background-size: cover;
+}
+
+.number-slide3 {
+  background: url('../../../assets/caloriesPhoto3.PNG');
+  background-size: cover;
+}
+
+.number-slide4 {
+  background: url('../../../assets/caloriesPhoto4.PNG');
+  background-size: cover;
+}
+
+.number-slide5 {
+  background: url('../../../assets/caloriesPhoto5.PNG');
+  background-size: cover;
+}
+
+.number-slide6 {
+  background: url('../../../assets/caloriesPhoto6.PNG');
+  background-size: cover;
+}
+
+.number-slide7 {
+  background: url('../../../assets/caloriesPhoto7.PNG');
+  background-size: cover;
+  background-position: center;
+}
+
+.number-slide8 {
+  background: url('../../../assets/caloriesPhoto8.PNG');
+  background-size: cover;
+}
+
+.thumbnail .keen-slider__slide {
+  font-size: 30px;
+  margin-top: 10px;
+  height: 100px;
+}
+.thumbnail .keen-slider__slide {
+  cursor: pointer;
+}
+.thumbnail .keen-slider__slide.active {
+  border: 2px dashed black;
+}
