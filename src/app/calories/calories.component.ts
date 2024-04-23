@@ -3,20 +3,29 @@ import { NavigationComponent } from '../shared/navigation/navigation.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { TitleComponent } from '../shared/title/title.component';
 import { CaloriesCarouselComponent } from './calories-carousel/calories-carousel.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-calories',
   standalone: true,
-  imports: [NavigationComponent, FooterComponent, TitleComponent, CaloriesCarouselComponent],
+  imports: [
+    NavigationComponent, 
+    FooterComponent, 
+    TitleComponent, 
+    CaloriesCarouselComponent,
+    MatButtonModule,
+    MatIconModule
+  ],
   templateUrl: './calories.component.html',
   styleUrl: './calories.component.scss'
 })
 export class CaloriesComponent {
-  navBackground = 'linear-gradient(to top, rgb(224, 0, 0), rgb(46, 0, 0))';
-  footerBackground = 'linear-gradient(to right, rgb(201, 8, 8), rgb(78, 0, 0))';
-  footerAuthorColor = 'rgb(230, 9, 9)';
+  navBackground = 'linear-gradient(to top, rgb(19, 0, 0), rgb(128, 0, 0))';
+  footerBackground = 'linear-gradient(to right, rgb(130, 0, 0), rgb(40, 0, 0))';
+  footerAuthorColor = 'rgb(210, 9, 9)';
   subtitle = "Pomyśl o ...";
   title = "KALORIACH";
-  titleColor = "rgb(218, 17, 17)"
+  titleColor = "rgb(100, 0, 0)"
 }
 

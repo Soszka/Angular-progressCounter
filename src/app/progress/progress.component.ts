@@ -11,10 +11,10 @@ import { TitleComponent } from '../shared/title/title.component';
   styleUrl: './progress.component.scss'
 })
 export class ProgressComponent {
-  navBackground: string = 'linear-gradient(to top, rgb(153, 153, 153),rgb(27, 27, 27))';
-  footerBackground = 'linear-gradient(to right, rgb(153, 153, 153),rgb(27, 27, 27))';
-  footerAuthorColor = 'rgb(218, 218, 218)';
+  navBackground = 'linear-gradient(to top, rgb(224, 0, 0), rgb(46, 0, 0))';
+  footerBackground = 'linear-gradient(to right, rgb(201, 8, 8), rgb(78, 0, 0))';
+  footerAuthorColor = 'rgb(230, 9, 9)';
   subtitle = "Przeanalizuj swój ...";
   title = "POSTĘP";
-  titleColor = "rgb(120, 120, 120)"
+  titleColor = "rgb(218, 17, 17)"
 }

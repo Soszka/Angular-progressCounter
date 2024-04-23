@@ -1,0 +1,53 @@
+@import '../../styles.scss';
+
+.calories {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.calories-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 20px auto 40px;
+}
+
+app-calories-carousel {
+  width: 54%;
+}
+
+.calories-description {
+  text-align: center;
+  font-size: 20px;
+  width: 44%;
+  line-height: 1.5;
+
+  button {
+    display: inline-block;
+    margin-top: 15px;
+    background-color: #8f0000 !important;
+    color: white;
+    width: 150px;
+    height: 60px;
+    font-size: 22px;
+    border-radius: 50px;
+  
+    &:hover {
+      background-color: darken(#8f0000 , 5%) !important; 
+      animation: pulseAnimation 1s infinite; 
+    }
+  
+    @keyframes pulseAnimation {
+      0%, 100% {
+        transform: scale(1); 
+      }
+      50% {
+        transform: scale(1.2); 
+      }
+    }
+  }
+}
+

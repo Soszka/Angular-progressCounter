@@ -1,12 +1,30 @@
-<app-navigation [navBackground]="navBackground"></app-navigation>
-<app-title
-  [title]="title"
-  [subtitle]="subtitle"
-  [titleColor]="titleColor">
-</app-title>
-<p>calories works!</p>
-<app-calories-carousel></app-calories-carousel>
-<app-footer
- [footerBackground]="footerBackground"
- [authorColor]="footerAuthorColor">
-</app-footer>
+<div class="calories">
+  <div class="container">
+    <app-navigation [navBackground]="navBackground"></app-navigation>
+    <app-title
+      [title]="title"
+      [subtitle]="subtitle"
+      [titleColor]="titleColor">
+    </app-title>
+    <div class="calories-content">
+      <app-calories-carousel></app-calories-carousel>
+      <div class="calories-description">
+        <p>Liczenie kalorii jest to zbyt obszerna dziedzina, żeby zmieścić informacje na 
+          jej temat na jednej podstronie. Dlatego też kaloriom została poświęcona 
+          całkowicie odrębna aplikacja. Jeżli intersuje cie tematyka zapotrzebowania kalorycznego 
+          czy też monitorowania dziennego spożycia kalorycznego
+          kliknij w przycisk poniżej a na pewno się nie zawiedziesz !
+        </p>
+        <a 
+          href="https://licznikkalorii.vercel.app/" 
+          target="_blank">
+          <button mat-raised-button>SPRAWDŹ</button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <app-footer
+    [footerBackground]="footerBackground"
+    [authorColor]="footerAuthorColor">
+  </app-footer>
+</div>
