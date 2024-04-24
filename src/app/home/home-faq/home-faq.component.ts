@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { TitleComponent } from '../../shared/title/title.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-faq',
   standalone: true,
-  imports: [TitleComponent, MatExpansionModule, CommonModule],
+  imports: [TitleComponent, MatExpansionModule],
   templateUrl: './home-faq.component.html',
   styleUrl: './home-faq.component.scss'
 })

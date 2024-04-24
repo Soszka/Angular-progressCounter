@@ -1,0 +1,18 @@
+button {
+  transition: all 0.3s ease;
+  border-radius: 50px;
+
+  &:hover {
+    filter: brightness(0.9);
+    animation: pulseAnimation 1s infinite; 
+  }
+}
+
+@keyframes pulseAnimation {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}

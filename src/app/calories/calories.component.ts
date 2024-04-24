@@ -3,8 +3,7 @@ import { NavigationComponent } from '../shared/navigation/navigation.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { TitleComponent } from '../shared/title/title.component';
 import { CaloriesCarouselComponent } from './calories-carousel/calories-carousel.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { ButtonComponent } from '../shared/button/button.component';
 
 @Component({
   selector: 'app-calories',
@@ -14,8 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
     FooterComponent, 
     TitleComponent, 
     CaloriesCarouselComponent,
-    MatButtonModule,
-    MatIconModule
+    ButtonComponent
   ],
   templateUrl: './calories.component.html',
   styleUrl: './calories.component.scss'
@@ -27,5 +25,11 @@ export class CaloriesComponent {
   subtitle = "Pomyśl o ...";
   title = "KALORIACH";
   titleColor = "rgb(100, 0, 0)"
+
+  description = `Liczenie kalorii jest to zbyt obszerna dziedzina, żeby zmieścić informacje na 
+    jej temat na jednej podstronie. Dlatego też kaloriom została poświęcona 
+    całkowicie odrębna aplikacja. Jeżli intersuje cie tematyka zapotrzebowania kalorycznego 
+    czy też monitorowania dziennego spożycia kalorycznego
+    kliknij w przycisk poniżej a na pewno się nie zawiedziesz !`
 }
 

@@ -23,7 +23,14 @@ export class NavigationComponent {
   faTimes = faTimes;
   faDumbbell = faDumbbell;
   isNavExpanded: boolean = false;
-  @Input() navBackground: string = 'linear-gradient(to top, rgb(0, 3, 199), rgb(1, 0, 75))';
+  @Input() navBackground!: string;
+
+  links = [
+    { name: 'TRENING', path: '/training' },
+    { name: 'POSTĘP', path: '/progress' },
+    { name: 'LOGOWANIE', path: '/auth' },
+    { name: 'KALORIE', path: '/calories' }
+  ];
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {

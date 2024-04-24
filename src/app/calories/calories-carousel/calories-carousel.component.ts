@@ -47,6 +47,7 @@ export class CaloriesCarouselComponent{
 
   slider!: KeenSliderInstance
   thumbnailSlider!: KeenSliderInstance
+  slideNumbers = [1, 2, 3, 4, 5, 6, 7, 8];
 
   ngAfterViewInit() {
     this.slider = new KeenSlider(this.sliderRef.nativeElement)

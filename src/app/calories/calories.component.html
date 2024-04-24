@@ -9,16 +9,18 @@
     <div class="calories-content">
       <app-calories-carousel></app-calories-carousel>
       <div class="calories-description">
-        <p>Liczenie kalorii jest to zbyt obszerna dziedzina, żeby zmieścić informacje na 
-          jej temat na jednej podstronie. Dlatego też kaloriom została poświęcona 
-          całkowicie odrębna aplikacja. Jeżli intersuje cie tematyka zapotrzebowania kalorycznego 
-          czy też monitorowania dziennego spożycia kalorycznego
-          kliknij w przycisk poniżej a na pewno się nie zawiedziesz !
-        </p>
+        <p>{{ description }}</p>
         <a 
           href="https://licznikkalorii.vercel.app/" 
           target="_blank">
-          <button mat-raised-button>SPRAWDŹ</button>
+          <app-button
+            [fontSize]="'23px'"
+            [backgroundColor]="'#8f0000 '"
+            [width]="'175px'"
+            [height]="'60px'"
+            [color]="'white'"
+            [margin]="'15px 0 0 0'">SPRAWDŹ
+        </app-button>
         </a>
       </div>
     </div>
