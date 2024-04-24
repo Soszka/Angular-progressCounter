@@ -1,11 +1,16 @@
-<app-navigation [navBackground]="navBackground"></app-navigation>
-<app-title
-  [title]="title"
-  [subtitle]="subtitle"
-  [titleColor]="titleColor">
-</app-title>
-<p>training works!</p>
-<app-footer
- [footerBackground]="footerBackground"
- [authorColor]="footerAuthorColor">
-</app-footer>
+<div class="training">
+  <div class="container">
+    <app-navigation [navBackground]="navBackground"></app-navigation>
+    <app-title
+      [title]="title"
+      [subtitle]="subtitle"
+      [titleColor]="titleColor">
+    </app-title>
+    <app-training-description></app-training-description>
+    <app-training-exercises></app-training-exercises>
+  </div>
+  <app-footer
+   [footerBackground]="footerBackground"
+   [authorColor]="footerAuthorColor">
+  </app-footer>
+</div>

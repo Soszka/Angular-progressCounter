@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   selector: 'app-button',
   standalone: true,

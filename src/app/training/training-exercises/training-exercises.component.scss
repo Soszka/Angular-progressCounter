@@ -1,0 +1,38 @@
+@import '../../../styles.scss';
+
+.training-exercises {
+  @include container(40px, 20px);
+}
+
+.section-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 80px auto 100px;
+
+  p {
+    width: 50%;
+    margin-right: 110px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}
+
+mat-tab-group {
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  .exercises {
+    max-width: 1000px;
+    margin: 60px auto;
+    text-align: center;
+
+    h1 {
+      font-size: 40px;
+      font-weight: 500;
+    }
+  }
+}
