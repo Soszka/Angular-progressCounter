@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ButtonComponent } from '../shared/button/button.component';
 import { merge } from 'rxjs';
 import { NavigationComponent } from '../shared/navigation/navigation.component';
 import { FooterComponent } from '../shared/footer/footer.component';
@@ -24,7 +25,8 @@ import { MatCardModule } from '@angular/material/card';
     ReactiveFormsModule, 
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    ButtonComponent
   ],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss'

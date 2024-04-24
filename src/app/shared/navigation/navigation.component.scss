@@ -39,7 +39,7 @@ nav {
     display: none;
     font-size: 40px;
     margin: 10px auto;
-    color: white;
+    color: $text-secondary-color;
     cursor: pointer;
     @include large-screens {
       display: block;
@@ -81,7 +81,7 @@ nav {
         left: 0;
         width: 100%;
         height: 2px;
-        background-color: white; 
+        background-color: $text-secondary-color; 
         transform: scaleX(1); 
         transform-origin: bottom left;
       }
@@ -95,7 +95,7 @@ nav {
       left: 0;
       width: 100%;
       height: 2px;
-      background-color: white;
+      background-color: $text-secondary-color;
       transform: scaleX(0); 
       transform-origin: bottom left;
       transition: transform 0.5s ease; 

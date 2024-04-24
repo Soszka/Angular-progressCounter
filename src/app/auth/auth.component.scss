@@ -9,34 +9,11 @@ mat-card {
   width: 600px;
   padding: 40px 60px;
   margin: 50px auto 60px;
+  text-align: center;
 }
 
 mat-form-field {
   margin: 10px 0;
-}
-
-.submit-button {
-  width: 150px;
-  height: 50px;
-  font-size: 22px;
-  margin: 0 auto;
-  background-color: #00b806 !important; 
-  color: white !important; 
-  border-radius: 50px;
-
-  &:hover {
-    background-color: darken(#00b806, 5%) !important; 
-    animation: pulseAnimation 1s infinite; 
-  }
-
-  @keyframes pulseAnimation {
-    0%, 100% {
-      transform: scale(1); 
-    }
-    50% {
-      transform: scale(1.2); 
-    }
-  }
 }
 
 app-footer {

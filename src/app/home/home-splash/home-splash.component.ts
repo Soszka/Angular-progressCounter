@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { NavigationComponent } from '../../shared/navigation/navigation.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatButtonModule } from '@angular/material/button';
+import { ButtonComponent } from '../../shared/button/button.component';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-splash',
   standalone: true,
-  imports: [NavigationComponent, MatButtonModule, MatDividerModule, MatIconModule],
+  imports: [NavigationComponent, ButtonComponent],
   templateUrl: './home-splash.component.html',
   styleUrl: './home-splash.component.scss'
 })

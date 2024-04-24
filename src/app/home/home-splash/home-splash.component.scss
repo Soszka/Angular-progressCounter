@@ -47,29 +47,3 @@
     line-height: 1.4;
   }
 }
-
-button {
-  display: inline-block;
-  margin-top: 25px;
-  background-color: #e7e7e7 !important;
-  background-color: linear-gradient(to right, rgb(5, 7, 146), rgrgb(3, 3, 41));
-  color: black;
-  width: 140px;
-  height: 50px;
-  font-size: 20px;
-  border-radius: 50px;
-
-  &:hover {
-    background-color: darken(#e7e7e7, 5%) !important; 
-    animation: pulseAnimation 1s infinite; 
-  }
-
-  @keyframes pulseAnimation {
-    0%, 100% {
-      transform: scale(1); 
-    }
-    50% {
-      transform: scale(1.2); 
-    }
-  }
-}

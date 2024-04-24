@@ -5,9 +5,11 @@
   [titleColor]="titleColor">
 </app-title>
 <div class="features">
-  <div class="feature" *ngFor="let feature of features">
-    <mat-icon [fontIcon]="feature.icon"></mat-icon>
-    <h3>{{ feature.title }}</h3>
-    <p>{{ feature.description }}</p>
-  </div>
+  @for (feature of features; track feature.title) {
+    <div class="feature">
+      <mat-icon [fontIcon]="feature.icon"></mat-icon>
+      <h3>{{ feature.title }}</h3>
+      <p>{{ feature.description }}</p>
+    </div>
+  }
 </div>

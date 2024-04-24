@@ -22,10 +22,17 @@
         <mat-label>Wprowadź hasło</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
       </mat-form-field>
-      <button mat-raised-button class="submit-button">ZALOGUJ</button>
+      <app-button
+        [fontSize]="'22px'"
+        [backgroundColor]="'#00b806'"
+        [width]="'160px'"
+        [height]="'50px'"
+        [color]="'white'"
+        [margin]="'10px auto'">ZALOGUJ
+      </app-button>
     </mat-card>
   </div>
   <app-footer
