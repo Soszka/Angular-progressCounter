@@ -1,6 +1,7 @@
 button {
   transition: all 0.3s ease;
   border-radius: 50px;
+  font-weight: 600 !important;
 
   &:hover {
     filter: brightness(0.9);

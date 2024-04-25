@@ -4,35 +4,153 @@
   @include container(40px, 20px);
 }
 
-.section-description {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 80px auto 100px;
-
-  p {
-    width: 50%;
-    margin-right: 110px;
-    text-align: center;
-    font-size: 18px;
-    line-height: 1.5;
-  }
-}
-
 mat-tab-group {
-
   h2 {
     margin-bottom: 0;
   }
+}
 
-  .exercises {
-    max-width: 1000px;
-    margin: 60px auto;
-    text-align: center;
+.exercises {
+  margin: 60px auto;
+  @include flex(row, flex-start, center);
+  flex-wrap: wrap;
+}
 
-    h1 {
-      font-size: 40px;
+.exercise {
+  width: 30%;
+  margin: 0 19px 30px;
+  text-align: center;
+  height: 400px;
+  perspective: 800px;
+  -webkit-perspective: 800px;
+
+  .exercise-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: all 1s;
+    -webkit-transition:1s;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    border: 2px solid rgb(1, 1, 78);
+    box-shadow: 0px 3px 7px rgba(0, 0, 168, 0.4);
+  }
+
+  &:hover > .exercise-card {
+    transform:rotateY(180deg);
+    -webkit-transform:rotateY(180deg);
+  }
+
+  .exercise-front-card {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    h2 {
+      @include flex(row, center, center);
+      padding: 15px;
+      background: linear-gradient(to bottom left, rgba(0, 0, 0, 0.8), rgba(0, 0, 206, 0.8));  
+      font-size: 24px;
       font-weight: 500;
+      line-height: 1.6;
+      height: 80px;
+      color: white;
+    }
+  
+    mat-icon {
+      width: 130px;
+      height: 130px;
+      font-size: 130px;
+      margin: 35px auto;
+    }
+  
+    h4 {
+      font-size: 22px;
+      font-weight: 450;
+    }
+  
+    p {
+      font-size: 20px;
     }
   }
+
+  .exercise-back-card {
+    @include flex(column, center, center);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform:rotateY(180deg);
+    -webkit-transform:rotateY(180deg);
+    backface-visibility:hidden;
+    -webkit-backface-visibility: hidden;
+    background: url('../../../assets/weights-642573_640.jpg');
+    background-size: cover;
+    color: rgb(226, 226, 226);
+    
+    h4 {
+      font-size: 28px;
+      color: $text-secondary-color;
+      font-weight: 400;
+      margin-bottom: 30px;
+      z-index: 2;
+    }
+
+    h3 {
+      font-size: 42px;
+      color: $text-secondary-color;
+      font-weight: 600;
+      margin-bottom: 50px;
+      z-index: 2;
+    }
+
+    app-button {
+      z-index: 2;
+    }
+
+  }
 }
+
+.exercise-back-card:before, .add-card:before  {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 46, 0.8), rgba(0, 0, 187, 0.8));
+  z-index: 1;  
+}
+
+.add-card {
+  @include flex(column, center, center);
+  background: url('../../../assets/weights-642573_640.jpg');
+  background-size: cover;
+  position: relative;
+  perspective: none;
+  cursor: pointer;
+
+  h3 {
+    font-size: 42px;
+    color: $text-secondary-color;
+    font-weight: 600;
+    margin-bottom: 15px;
+    z-index: 2;
+    line-height: 1.5;
+  }
+
+  mat-icon {
+    width: 130px;
+    height: 130px;
+    font-size: 130px;
+    color: $text-secondary-color;
+    z-index: 2;
+  }
+}
+
+
+
+
+
