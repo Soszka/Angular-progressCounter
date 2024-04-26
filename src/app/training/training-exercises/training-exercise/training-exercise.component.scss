@@ -1,0 +1,53 @@
+@import '../../../../styles.scss';
+
+.training-exercise {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.title-container {
+  @include flex(row, center, center);
+  max-width: 1000px;
+  margin: 20px auto 30px;
+
+  h2 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 500;
+  }
+
+  mat-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 70px;
+    margin: 0 30px;
+    cursor: pointer;
+  }
+}
+
+table {
+  text-align: center;
+  margin: 25px 0 20px;
+
+  th {
+    font-size: 22px;
+    text-align: center;
+    font-weight: 550;
+  }
+
+  .mat-mdc-row.mdc-data-table__row.cdk-row {
+    font-size: 20px;
+  }
+
+
+  .mat-mdc-cell.mdc-data-table__cell.cdk-cell{
+    text-align: center;
+    padding: 15px 0;
+  }
+
+}
+
+.paginator-container {
+  max-width: 525px;
+  margin: 0 auto 50px;
+}

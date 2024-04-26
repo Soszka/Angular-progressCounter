@@ -24,6 +24,7 @@ mat-tab-group {
   perspective: 800px;
   -webkit-perspective: 800px;
 
+
   .exercise-card {
     position: relative;
     width: 100%;
@@ -63,15 +64,18 @@ mat-tab-group {
       height: 130px;
       font-size: 130px;
       margin: 35px auto;
+      color: rgb(0, 0, 122);
     }
   
     h4 {
       font-size: 22px;
       font-weight: 450;
+      color: rgb(0, 0, 122);
     }
   
     p {
       font-size: 20px;
+      color: rgb(0, 0, 122);
     }
   }
 
@@ -149,8 +153,3 @@ mat-tab-group {
     z-index: 2;
   }
 }
-
-
-
-
-
