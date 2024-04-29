@@ -1,7 +1,12 @@
+<app-navigation [navBackground]="navBackground"></app-navigation>
 <div class="title-container">
-  <mat-icon>chevron_left</mat-icon> 
-  <h2>WYCISKANIE NA ŁAWCE PŁASKIEJ</h2>
-  <mat-icon>chevron_right</mat-icon>
+  <button mat-fab color="white" (click)="previousExercise()">
+    <mat-icon>chevron_left</mat-icon> 
+  </button>
+  <h2>{{ exerciseName | uppercase }}</h2>
+  <button mat-fab color="white" (click)="nextExercise()">
+    <mat-icon>chevron_right</mat-icon> 
+  </button>
 </div>
 <div class="training-exercise">
   <app-button
@@ -46,9 +51,13 @@
   </table>
   <div class="paginator-container">
     <mat-paginator 
-      [pageSizeOptions]="[3, 5, 10]"
+      [pageSizeOptions]="[5, 8, 10]"
       showFirstLastButtons
       aria-label="Select page of periodic elements">
     </mat-paginator>
   </div>
 </div>
+<app-footer
+  [footerBackground]="footerBackground"
+  [authorColor]="footerAuthorColor">
+</app-footer>

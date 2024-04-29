@@ -16,7 +16,7 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(
       BrowserModule,
       BrowserAnimationsModule,
-      RouterModule.forRoot(routes),
+      RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
     )
   ]
 }).catch(err => console.error(err));

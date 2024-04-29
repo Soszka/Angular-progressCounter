@@ -3,293 +3,98 @@
     <mat-tab>
       <ng-template mat-tab-label><h2>PUSH</h2></ng-template>
       <div class="exercises">
-        <div class="exercise">
+        <div class="exercise" *ngFor="let exercise of pushExercises">
           <div class="exercise-card">
             <div class="exercise-front-card">
-              <h2>WYCISKANIE NA ŁAWCE PŁASKIEJ</h2>
-              <mat-icon>fitness_center</mat-icon> 
+              <h2>{{ exercise.name }}</h2>
+              <mat-icon>{{ exercise.icon }}</mat-icon>
               <h4>Ostatnio Edytowano</h4>
-              <p>10.03.2024</p>
+              <p>{{ exercise.lastEdited }}</p>
             </div>
             <div class="exercise-back-card">
               <h4>MAKSYMALNY CIĘŻAR</h4>
-              <h3>120kg</h3>
+              <h3>{{ exercise.maxWeight }}kg</h3>
               <app-button
                 [fontSize]="'24px'"
                 [backgroundColor]="'rgb(226, 226, 226)'"
                 [width]="'230px'"
                 [height]="'60px'"
                 [color]="'rgb(240, 240, 240);'"
-                [margin]="'0'">EDYTUJ
-              </app-button>
-            </div>
-          </div>
-        </div>
-        <div class="exercise">
-          <div class="exercise-card">
-            <div class="exercise-front-card">
-              <h2>WYCISKANIE NA ŁAWCE SKOŚNEJ</h2>
-              <mat-icon>swap_vert</mat-icon>
-              <h4>Ostatnio Edytowano</h4>
-              <p>10.03.2024</p>
-            </div>
-            <div class="exercise-back-card">
-              <h4>MAKSYMALNY CIĘŻAR</h4>
-              <h3>90kg</h3>
-              <app-button
-                [fontSize]="'24px'"
-                [backgroundColor]="'rgb(226, 226, 226)'"
-                [width]="'230px'"
-                [height]="'60px'"
-                [color]="'rgb(240, 240, 240);'"
-                [margin]="'0'">EDYTUJ
-              </app-button>
-            </div>
-          </div>
-        </div>
-        <div class="exercise">
-          <div class="exercise-card">
-            <div class="exercise-front-card">
-              <h2>ROZPIĘTKI</h2>
-              <mat-icon>fitness_center</mat-icon>
-              <h4>Ostatnio Edytowano</h4>
-              <p>10.03.2024</p>
-            </div>
-            <div class="exercise-back-card">
-              <h4>MAKSYMALNY CIĘŻAR</h4>
-              <h3>12kg</h3>
-              <app-button
-                [fontSize]="'24px'"
-                [backgroundColor]="'rgb(226, 226, 226)'"
-                [width]="'230px'"
-                [height]="'60px'"
-                [color]="'rgb(240, 240, 240);'"
-                [margin]="'0'">EDYTUJ
-              </app-button>
-            </div>
-          </div>
-        </div>
-        <div class="exercise">
-          <div class="exercise-card">
-            <div class="exercise-front-card">
-              <h2>WYCISKANIE NA PORĘCZACH</h2>
-              <mat-icon>accessibility_new</mat-icon> 
-              <h4>Ostatnio Edytowano</h4>
-              <p>10.03.2024</p>
-            </div>
-            <div class="exercise-back-card">
-              <h4>MAKSYMALNY CIĘŻAR</h4>
-              <h3>70kg</h3>
-              <app-button
-                [fontSize]="'24px'"
-                [backgroundColor]="'rgb(226, 226, 226)'"
-                [width]="'230px'"
-                [height]="'60px'"
-                [color]="'rgb(240, 240, 240);'"
-                [margin]="'0'">EDYTUJ
-              </app-button>
-            </div>
-          </div>
-        </div>
-        <div class="exercise">
-          <div class="exercise-card">
-            <div class="exercise-front-card">
-              <h2>WYCISKANIE NA ŁAWCE WĄSKO</h2>
-              <mat-icon>swap_vert</mat-icon>
-              <h4>Ostatnio Edytowano</h4>
-              <p>10.03.2024</p>
-            </div>
-            <div class="exercise-back-card">
-              <h4>MAKSYMALNY CIĘŻAR</h4>
-              <h3>100kg</h3>
-              <app-button
-                [fontSize]="'24px'"
-                [backgroundColor]="'rgb(226, 226, 226)'"
-                [width]="'230px'"
-                [height]="'60px'"
-                [color]="'rgb(240, 240, 240);'"
-                [margin]="'0'">EDYTUJ
-              </app-button>
-            </div>
-          </div>
-        </div>
-        <div class="exercise">
-          <div class="exercise-card">
-            <div class="exercise-front-card">
-              <h2>TRICEPS NA SZNURKU</h2>
-              <mat-icon>fitness_center</mat-icon> 
-              <h4>Ostatnio Edytowano</h4>
-              <p>10.03.2024</p>
-            </div>
-            <div class="exercise-back-card">
-              <h4>MAKSYMALNY CIĘŻAR</h4>
-              <h3>32kg</h3>
-              <app-button
-                [fontSize]="'24px'"
-                [backgroundColor]="'rgb(226, 226, 226)'"
-                [width]="'230px'"
-                [height]="'60px'"
-                [color]="'rgb(240, 240, 240);'"
-                [margin]="'0'">EDYTUJ
+                [margin]="'0'"
+                (click)="onEditClick(exercise.name)">EDYTUJ
               </app-button>
             </div>
           </div>
         </div>
         <div class="exercise add-card">
-          <h3>DODAJ ĆWICZENIE</h3>
-          <mat-icon>add_circle</mat-icon> 
+          <h3>DODAJ NOWE ĆWICZENIE</h3>
+          <mat-icon>add_circle</mat-icon>
         </div>
       </div>
     </mat-tab>
-  
+
     <mat-tab>
       <ng-template mat-tab-label><h2>PULL</h2></ng-template>
       <div class="exercises">
-        <div class="exercise">
+        <div class="exercise" *ngFor="let exercise of pullExercises">
           <div class="exercise-card">
             <div class="exercise-front-card">
-              <h2>PODCIĄGANIE</h2>
-              <mat-icon>swap_vert</mat-icon>
+              <h2>{{ exercise.name }}</h2>
+              <mat-icon>{{ exercise.icon }}</mat-icon>
               <h4>Ostatnio Edytowano</h4>
-              <p>10.03.2024</p>
+              <p>{{ exercise.lastEdited }}</p>
             </div>
             <div class="exercise-back-card">
               <h4>MAKSYMALNY CIĘŻAR</h4>
-              <h3>20kg</h3>
+              <h3>{{ exercise.maxWeight }}kg</h3>
               <app-button
                 [fontSize]="'24px'"
                 [backgroundColor]="'rgb(226, 226, 226)'"
                 [width]="'230px'"
                 [height]="'60px'"
                 [color]="'rgb(240, 240, 240);'"
-                [margin]="'0'">EDYTUJ
-              </app-button>
-            </div>
-          </div>
-        </div>
-        <div class="exercise">
-          <div class="exercise-card">
-            <div class="exercise-front-card">
-              <h2>WIOSŁOWANIE SZTANGĄ</h2>
-              <mat-icon>accessibility_new</mat-icon>
-              <h4>Ostatnio Edytowano</h4>
-              <p>10.03.2024</p>
-            </div>
-            <div class="exercise-back-card">
-              <h4>MAKSYMALNY CIĘŻAR</h4>
-              <h3>90kg</h3>
-              <app-button
-                [fontSize]="'24px'"
-                [backgroundColor]="'rgb(226, 226, 226)'"
-                [width]="'230px'"
-                [height]="'60px'"
-                [color]="'rgb(240, 240, 240);'"
-                [margin]="'0'">EDYTUJ
-              </app-button>
-            </div>
-          </div>
-        </div>
-        <div class="exercise">
-          <div class="exercise-card">
-            <div class="exercise-front-card">
-              <h2>TYŁ BARKÓW HANTLAMI</h2>
-              <mat-icon>fitness_center</mat-icon> 
-              <h4>Ostatnio Edytowano</h4>
-              <p>10.03.2024</p>
-            </div>
-            <div class="exercise-back-card">
-              <h4>MAKSYMALNY CIĘŻAR</h4>
-              <h3>10kg</h3>
-              <app-button
-                [fontSize]="'24px'"
-                [backgroundColor]="'rgb(226, 226, 226)'"
-                [width]="'230px'"
-                [height]="'60px'"
-                [color]="'rgb(240, 240, 240);'"
-                [margin]="'0'">EDYTUJ
-              </app-button>
-            </div>
-          </div>
-        </div>
-        <div class="exercise">
-          <div class="exercise-card">
-            <div class="exercise-front-card">
-              <h2>BICEPS SZTANGĄ</h2>
-              <mat-icon>accessibility_new</mat-icon>
-              <h4>Ostatnio Edytowano</h4>
-              <p>10.03.2024</p>
-            </div>
-            <div class="exercise-back-card">
-              <h4>MAKSYMALNY CIĘŻAR</h4>
-              <h3>120kg</h3>
-              <app-button
-                [fontSize]="'24px'"
-                [backgroundColor]="'rgb(226, 226, 226)'"
-                [width]="'230px'"
-                [height]="'60px'"
-                [color]="'rgb(240, 240, 240);'"
-                [margin]="'0'">EDYTUJ
+                [margin]="'0'"
+                (click)="onEditClick(exercise.name)">EDYTUJ
               </app-button>
             </div>
           </div>
         </div>
         <div class="exercise add-card">
           <h3>DODAJ NOWE ĆWICZENIE</h3>
-          <mat-icon>add_circle</mat-icon> 
+          <mat-icon>add_circle</mat-icon>
         </div>
       </div>
     </mat-tab>
-  
+
     <mat-tab>
       <ng-template mat-tab-label><h2>LEGS</h2></ng-template>
       <div class="exercises">
-        <div class="exercise">
+        <div class="exercise" *ngFor="let exercise of legsExercises">
           <div class="exercise-card">
             <div class="exercise-front-card">
-              <h2>PRZYSIADY</h2>
-              <mat-icon>fitness_center</mat-icon> 
+              <h2>{{ exercise.name }}</h2>
+              <mat-icon>{{ exercise.icon }}</mat-icon>
               <h4>Ostatnio Edytowano</h4>
-              <p>10.03.2024</p>
+              <p>{{ exercise.lastEdited }}</p>
             </div>
             <div class="exercise-back-card">
               <h4>MAKSYMALNY CIĘŻAR</h4>
-              <h3>120kg</h3>
+              <h3>{{ exercise.maxWeight }}kg</h3>
               <app-button
                 [fontSize]="'24px'"
                 [backgroundColor]="'rgb(226, 226, 226)'"
                 [width]="'230px'"
                 [height]="'60px'"
                 [color]="'rgb(240, 240, 240);'"
-                [margin]="'0'">EDYTUJ
-              </app-button>
-            </div>
-          </div>
-        </div>
-        <div class="exercise">
-          <div class="exercise-card">
-            <div class="exercise-front-card">
-              <h2>WYCISKANIE NOGAMI NA SUWNICY</h2>
-              <mat-icon>accessibility_new</mat-icon>
-              <h4>Ostatnio Edytowano</h4>
-              <p>10.03.2024</p>
-            </div>
-            <div class="exercise-back-card">
-              <h4>MAKSYMALNY CIĘŻAR</h4>
-              <h3>120kg</h3>
-              <app-button
-                [fontSize]="'24px'"
-                [backgroundColor]="'rgb(226, 226, 226)'"
-                [width]="'230px'"
-                [height]="'60px'"
-                [color]="'rgb(240, 240, 240);'"
-                [margin]="'0'">EDYTUJ
+                [margin]="'0'"
+                (click)="onEditClick(exercise.name)">EDYTUJ
               </app-button>
             </div>
           </div>
         </div>
         <div class="exercise add-card">
           <h3>DODAJ NOWE ĆWICZENIE</h3>
-          <mat-icon>add_circle</mat-icon> 
+          <mat-icon>add_circle</mat-icon>
         </div>
       </div>
     </mat-tab>
