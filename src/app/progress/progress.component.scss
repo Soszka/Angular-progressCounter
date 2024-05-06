@@ -1,0 +1,6 @@
+@import '../../styles.scss';
+
+.progress {
+  @include flex(column, space-between, stretch);
+  min-height: 100vh;
+}

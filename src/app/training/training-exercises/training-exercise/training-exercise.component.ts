@@ -13,18 +13,6 @@ import { ExerciseUiData } from '../../training.service';
 import { TrainingService } from '../../training.service';
 import { Router } from '@angular/router';
 
-const ExerciseElements: ExerciseDailyData[] = [
-  { date: "2024-03-25", repetitions: 6, "weight": 85 },
-  { date: "2024-03-11", repetitions: 6, "weight": 80 },
-  { date: "2024-02-25", repetitions: 6, "weight": 75 },
-  { date: "2024-02-11", repetitions: 6, "weight": 70 },
-  { date: "2024-01-28", repetitions: 6, "weight": 65 },
-  { date: "2024-01-14", repetitions: 8, "weight": 60 },
-  { date: "2023-12-31", repetitions: 8, "weight": 55 },
-  { date: "2023-12-17", repetitions: 8, "weight": 52 },
-  { date: "2023-12-03", repetitions: 8, "weight": 50 },
-  { date: "2023-11-19", repetitions: 8, "weight": 48 }
-]
 
 @Component({
   selector: 'app-training-exercise',
@@ -37,14 +25,14 @@ const ExerciseElements: ExerciseDailyData[] = [
     NavigationComponent, 
     FooterComponent,
     CommonModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './training-exercise.component.html',
   styleUrl: './training-exercise.component.scss'
 })
 export class TrainingExerciseComponent {
   displayedColumns: string[] = ['date', 'repetitions', 'weight', 'remove'];
-  dataSource = new MatTableDataSource<ExerciseDailyData>(ExerciseElements);
+  dataSource!: MatTableDataSource<ExerciseDailyData>;
   navBackground = 'linear-gradient(to top, rgb(13, 53, 228), rgb(1, 0, 53))';
   footerBackground = 'linear-gradient(to right, rgb(16, 37, 230), rgb(1, 0, 52))';
   footerAuthorColor = 'rgb(27, 93, 235)';
@@ -52,30 +40,27 @@ export class TrainingExerciseComponent {
   title = "TRENING";
   titleColor = "rgb(4, 1, 172)"
   exerciseName!: string;
-  exerciseData!: ExerciseUiData; 
-  exerciseElements = ExerciseElements;
+  exerciseData!: ExerciseUiData;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private route: ActivatedRoute, 
     private trainingService: TrainingService,
     private router: Router) {} 
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.route.paramMap.subscribe(params => {
       const exerciseName = params.get('exercise');
       this.loadExerciseData(exerciseName);
     });
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
-
   loadExerciseData(exerciseName: string | null) {
     const exercise = exerciseName ? this.trainingService.findExerciseByName(exerciseName.replace(/-/g, ' ')) : null;
     this.exerciseName = exercise ? exercise.name : 'Nieznane Ćwiczenie';
     this.exerciseData = exercise || this.getDefaultExerciseData();
-    this.dataSource.data = this.exerciseElements;
+    this.dataSource = new MatTableDataSource<ExerciseDailyData>(this.exerciseData.dailyData);
+    this.dataSource.paginator = this.paginator;
   }
 
   getDefaultExerciseData(): ExerciseUiData {
@@ -83,7 +68,8 @@ export class TrainingExerciseComponent {
       name: 'Nieznane Ćwiczenie',
       icon: '',
       lastEdited: '',
-      maxWeight: 0, 
+      maxWeight: 0,
+      dailyData: [] 
     };
   }
 

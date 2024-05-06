@@ -90,7 +90,7 @@ mat-tab-group {
     -webkit-transform:rotateY(180deg);
     backface-visibility:hidden;
     -webkit-backface-visibility: hidden;
-    background: url('../../../assets/weights-642573_640.jpg');
+    background: url('../../../assets/trainingPhoto1.jpg');
     background-size: cover;
     color: rgb(226, 226, 226);
     
@@ -130,7 +130,7 @@ mat-tab-group {
 
 .add-card {
   @include flex(column, center, center);
-  background: url('../../../assets/weights-642573_640.jpg');
+  background: url('../../../assets/trainingPhoto1.jpg');
   background-size: cover;
   position: relative;
   perspective: none;
