@@ -2,11 +2,19 @@ import { Component } from '@angular/core';
 import { NavigationComponent } from '../shared/navigation/navigation.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { TitleComponent } from '../shared/title/title.component';
+import { ProgressFormComponent } from './progress-form/progress-form.component';
+import { ProgressChartsComponent } from './progress-charts/progress-charts.component';
 
 @Component({
   selector: 'app-progress',
   standalone: true,
-  imports: [NavigationComponent, FooterComponent, TitleComponent],
+  imports: [ 
+    NavigationComponent, 
+    FooterComponent, 
+    TitleComponent, 
+    ProgressFormComponent,
+    ProgressChartsComponent
+  ],
   templateUrl: './progress.component.html',
   styleUrl: './progress.component.scss'
 })

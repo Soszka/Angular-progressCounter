@@ -1,6 +1,12 @@
 @import '../../../../styles.scss';
 
+
 .training-exercise {
+  @include flex(column, space-between, stretch);
+  min-height: 100vh;
+}
+
+.exercise {
   max-width: 900px;
   margin: 0 auto;
 }
