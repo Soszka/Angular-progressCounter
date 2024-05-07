@@ -4,7 +4,7 @@ button {
   font-weight: 600 !important;
 
   &:hover {
-    animation: pulseAnimation 1s infinite; 
+    animation: pulseAnimation 1s infinite !important; 
   }
 }
 
