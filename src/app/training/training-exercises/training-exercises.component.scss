@@ -47,35 +47,33 @@ mat-tab-group {
     height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    @include flex(column, center, center);
+    background: url('../../../assets/trainingPhoto1.jpg');
+    background-size: cover;
+    position: relative;
+    z-index: 0;
 
     h2 {
-      @include flex(row, center, center);
-      padding: 15px;
-      background: linear-gradient(to bottom left, rgba(0, 0, 0, 0.8), rgba(0, 0, 206, 0.8));  
-      font-size: 24px;
-      font-weight: 500;
+      padding: 10px;
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 30px;
       line-height: 1.6;
-      height: 80px;
       color: white;
-    }
-  
-    mat-icon {
-      width: 130px;
-      height: 130px;
-      font-size: 130px;
-      margin: 35px auto;
-      color: rgb(0, 0, 122);
+      z-index: 1;
     }
   
     h4 {
-      font-size: 22px;
-      font-weight: 450;
-      color: rgb(0, 0, 122);
+      font-size: 24px;
+      font-weight: 500;
+      color: white;
+      z-index: 1;
     }
   
     p {
       font-size: 20px;
-      color: rgb(0, 0, 122);
+      color: white;
+      z-index: 1;
     }
   }
 
@@ -90,34 +88,25 @@ mat-tab-group {
     -webkit-transform:rotateY(180deg);
     backface-visibility:hidden;
     -webkit-backface-visibility: hidden;
-    background: url('../../../assets/trainingPhoto1.jpg');
-    background-size: cover;
-    color: rgb(226, 226, 226);
-    
+    background: linear-gradient(to top, rgba(0, 0, 143) 0%, rgba(0, 0, 58) 30%, rgba(0, 0, 58) 60%, rgba(0, 0, 143) 100%);
+
     h4 {
-      font-size: 28px;
-      color: $text-secondary-color;
-      font-weight: 400;
+      font-size: 30px;
+      color: white;
+      font-weight: 500;
       margin-bottom: 30px;
-      z-index: 2;
     }
 
     h3 {
-      font-size: 42px;
+      font-size: 46px;
       color: $text-secondary-color;
       font-weight: 600;
       margin-bottom: 50px;
-      z-index: 2;
     }
-
-    app-button {
-      z-index: 2;
-    }
-
   }
 }
 
-.exercise-back-card:before, .add-card:before  {
+.exercise-front-card:before {
   content: "";
   position: absolute;
   top: 0;
@@ -130,11 +119,9 @@ mat-tab-group {
 
 .add-card {
   @include flex(column, center, center);
-  background: url('../../../assets/trainingPhoto1.jpg');
-  background-size: cover;
-  position: relative;
   perspective: none;
   cursor: pointer;
+  background: linear-gradient(to top, rgba(0, 0, 143) 0%, rgba(0, 0, 58) 30%, rgba(0, 0, 58) 60%, rgba(0, 0, 143) 100%);
 
   h3 {
     font-size: 42px;

@@ -7,7 +7,6 @@
           <div class="exercise-card">
             <div class="exercise-front-card">
               <h2>{{ exercise.name }}</h2>
-              <mat-icon>{{ exercise.icon }}</mat-icon>
               <h4>Ostatnio Edytowano</h4>
               <p>{{ exercise.lastEdited }}</p>
             </div>
@@ -40,22 +39,23 @@
           <div class="exercise-card">
             <div class="exercise-front-card">
               <h2>{{ exercise.name }}</h2>
-              <mat-icon>{{ exercise.icon }}</mat-icon>
               <h4>Ostatnio Edytowano</h4>
               <p>{{ exercise.lastEdited }}</p>
             </div>
             <div class="exercise-back-card">
-              <h4>MAKSYMALNY CIĘŻAR</h4>
-              <h3>{{ exercise.maxWeight }}kg</h3>
-              <app-button
-                [fontSize]="'24px'"
-                [backgroundColor]="'rgb(226, 226, 226)'"
-                [width]="'230px'"
-                [height]="'60px'"
-                [color]="'rgb(240, 240, 240);'"
-                [margin]="'0'"
-                (click)="onEditClick(exercise.name)">EDYTUJ
-              </app-button>
+              <div class="container">
+                <h4>MAKSYMALNY CIĘŻAR</h4>
+                <h3>{{ exercise.maxWeight }}kg</h3>
+                <app-button
+                  [fontSize]="'24px'"
+                  [backgroundColor]="'rgb(226, 226, 226)'"
+                  [width]="'230px'"
+                  [height]="'60px'"
+                  [color]="'rgb(240, 240, 240);'"
+                  [margin]="'0'"
+                  (click)="onEditClick(exercise.name)">EDYTUJ
+                </app-button>
+              </div>
             </div>
           </div>
         </div>
@@ -73,7 +73,6 @@
           <div class="exercise-card">
             <div class="exercise-front-card">
               <h2>{{ exercise.name }}</h2>
-              <mat-icon>{{ exercise.icon }}</mat-icon>
               <h4>Ostatnio Edytowano</h4>
               <p>{{ exercise.lastEdited }}</p>
             </div>

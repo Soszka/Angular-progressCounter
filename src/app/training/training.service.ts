@@ -35,7 +35,7 @@ const EXERCISES_DATA = {
       ]
     },
     {
-      name: "WYCISKANIE NA ŁAWCE SKOŚNEJ", 
+      name: "POMPKI", 
       icon: "swap_vert", 
       lastEdited: "10.03.2024", 
       maxWeight: 90,
@@ -71,7 +71,7 @@ const EXERCISES_DATA = {
       ]
     },
     {
-      name: "WYCISKANIE NA PORĘCZACH", 
+      name: "PODNOSZENIE ŻOŁNIERSKIE", 
       icon: "accessibility_new", 
       lastEdited: "10.03.2024", 
       maxWeight: 70,
