@@ -1,0 +1,49 @@
+@import '../../../../styles.scss';
+
+.dialog-container {
+  padding: 50px 30px;
+
+  h2 {
+    font-size: 36px;
+    font-weight: 650;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  mat-step {
+    text-align: center;
+  }
+
+  mat-form-field {
+    width: 40%;
+  }
+
+  button {
+    margin: 0 0 17.5px 50px;
+    color: white;
+    border-radius: 20px;
+    width: 120px;
+    height: 45px;
+    background: rgb(0, 0, 190);
+    font-size: 22px;
+    font-weight: 600;
+
+    &:hover {
+      animation: pulseAnimation 1s infinite !important; 
+    }
+  }
+}
+
+::ng-deep .mat-horizontal-content-container {
+  margin-top: 40px;
+  text-align: center;
+}
+
+@keyframes pulseAnimation {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}

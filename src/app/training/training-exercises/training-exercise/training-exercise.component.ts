@@ -12,6 +12,9 @@ import { ExerciseDailyData } from '../../training.service';
 import { ExerciseUiData } from '../../training.service';
 import { TrainingService } from '../../training.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AddExercisePositionDialogComponent } from '../../training-dialogs/add-exercise-position-dialog/add-exercise-position-dialog.component';
+import { RemovingConfirmDialogComponent } from '../../training-dialogs/removing-confirm-dialog/removing-confirm-dialog.component';
 
 
 @Component({
@@ -44,9 +47,11 @@ export class TrainingExerciseComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private route: ActivatedRoute, 
+  constructor( private route: ActivatedRoute, 
     private trainingService: TrainingService,
-    private router: Router) {} 
+    private router: Router,
+    public dialog: MatDialog
+  ) {} 
 
   ngAfterViewInit() {
     this.route.paramMap.subscribe(params => {
@@ -86,5 +91,39 @@ export class TrainingExerciseComponent {
     const newIndex = (currentIndex + offset + this.trainingService.allExercises.length) % this.trainingService.allExercises.length;
     const newExercise = this.trainingService.allExercises[newIndex];
     this.router.navigate(['/training', newExercise.name.toLowerCase().replace(/ /g, '-')]);
+  }
+
+  onAddExercisePosition(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(AddExercisePositionDialogComponent, {
+      width: '1000px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+
+  onRemoveExercise(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const messages = { 
+      confirmMessage: "Czy na pewno chcesz usunąć wybrane ćwiczenie z twojego planu treningowego? Gdy to zrobisz, cała historia związana z tym ćwiczeniem zostanie trwale usunięta.",
+      successMessage: "Pomyślnie usunięto wybrane ćwiczenie z twojego planu treningowego." 
+    }
+    this.dialog.open(RemovingConfirmDialogComponent, {
+      width: '600px',
+      data: { messages },
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+
+  onRemovePosition(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const messages = { 
+      confirmMessage: "Czy na pewno chcesz usunąć wybraną pozycję ?",
+      successMessage: "Pomyślnie usunięto wybraną pozycję z historii twojego ćwiczenia" 
+    }
+    this.dialog.open(RemovingConfirmDialogComponent, {
+      width: '600px',
+      data: { messages },
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
 }

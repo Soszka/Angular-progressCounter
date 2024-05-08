@@ -1,14 +1,8 @@
 @import '../../../../styles.scss';
 
-
 .training-exercise {
   @include flex(column, space-between, stretch);
   min-height: 100vh;
-}
-
-.exercise {
-  max-width: 900px;
-  margin: 0 auto;
 }
 
 .title-container {
@@ -34,6 +28,16 @@
     width: 650px;
   }
 }
+
+.exercise {
+  max-width: 900px;
+  margin: 0 auto;
+
+  .exercise-buttons {
+    @include flex(row, space-between, stretch);
+  }
+}
+
 
 table {
   text-align: center;

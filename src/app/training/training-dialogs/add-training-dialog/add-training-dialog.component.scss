@@ -1,7 +1,7 @@
 @import '../../../../styles.scss';
 
 .dialog-container {
-  padding: 30px 40px;
+  padding: 50px 30px;
   @include flex(column, center, center);
 
   h2 {
