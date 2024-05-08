@@ -1,1 +1,12 @@
-<p>info-dialog works!</p>
+<div class="info-dialog">
+  <p>{{ data.information }}</p>
+  <app-button
+    [fontSize]="'24px'"
+    [backgroundColor]="'rgb(0, 0, 190)'"
+    [width]="'100px'"
+    [height]="'45px'"
+    [color]="'white'"
+    [margin]="'15px 0 0 0'"
+    (click)="closeDialog()">OK
+  </app-button>
+</div>

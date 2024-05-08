@@ -1,0 +1,21 @@
+@import '../../../../styles.scss';
+
+.remove-dialog {
+  padding: 50px 30px;
+
+  .message {
+    text-align: center;
+    margin-bottom: 25px;
+
+    p {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+  }
+
+  .actions {
+    text-align: center;
+  }
+}

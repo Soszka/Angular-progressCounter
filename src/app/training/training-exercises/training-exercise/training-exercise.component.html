@@ -11,14 +11,26 @@
       </button>
     </div>
     <div class="exercise">
-      <app-button
-        [fontSize]="'21px'"
-        [backgroundColor]="'rgb(0, 0, 190)'"
-        [width]="'250px'"
-        [height]="'50px'"
-        [color]="'white'"
-        [margin]="'15px 0 0 0'">DODAJ POZYCJĘ
-      </app-button>
+      <div class="exercise-buttons">
+        <app-button
+          [fontSize]="'21px'"
+          [backgroundColor]="'rgb(0, 0, 190)'"
+          [width]="'250px'"
+          [height]="'50px'"
+          [color]="'white'"
+          [margin]="'15px 0 0 0'"
+          (click)="onAddExercisePosition('300ms', '300ms')">DODAJ POZYCJĘ
+        </app-button>
+        <app-button
+          [fontSize]="'21px'"
+          [backgroundColor]="'rgb(158, 13, 13)'"
+          [width]="'250px'"
+          [height]="'50px'"
+          [color]="'white'"
+          [margin]="'15px 0 0 0'"
+          (click)="onRemoveExercise('300ms', '300ms')">USUŃ ĆWICZENIE
+        </app-button>
+      </div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef> DATA </th>
@@ -44,7 +56,8 @@
               [width]="'100px'"
               [height]="'35px'"
               [color]="'white'"
-              [margin]="'0'">USUŃ
+              [margin]="'0'"
+              (click)="onRemovePosition('300ms', '300ms')">USUŃ
             </app-button>
         </ng-container>
       

@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { TrainingService } from '../training.service';
 import { ExerciseUiData } from '../training.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddExerciseDialogComponent } from '../training-dialogs/add-exercise-dialog/add-exercise-dialog.component';
 
 @Component({
   selector: 'app-training-exercises',
@@ -31,7 +33,8 @@ export class TrainingExercisesComponent {
 
   constructor(
     private router: Router,
-    private trainingService: TrainingService) {} 
+    private trainingService: TrainingService,
+    public dialog: MatDialog) {} 
 
   ngOnInit() {
     this.pushExercises = this.trainingService.exercises.pushExercises;
@@ -42,5 +45,13 @@ export class TrainingExercisesComponent {
   onEditClick(exerciseName: string) {
     const formattedName = exerciseName.toLowerCase().replace(' ', '-');
     this.router.navigate(['/training', formattedName]);
+  }
+
+  onAddExercise(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(AddExerciseDialogComponent, {
+      width: '600px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
 }
