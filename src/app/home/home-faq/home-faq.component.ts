@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { TitleComponent } from '../../shared/title/title.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 
@@ -10,9 +10,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
   styleUrl: './home-faq.component.scss'
 })
 export class HomeFaqComponent {
-  subtitle = "Najczęściej zadawane ...";
-  title = "pytania";
-  titleColor = "rgba(0, 0, 150)";
+  subtitle = input("Najczęściej zadawane ...");
+  title = input("pytania");
+  titleColor = input("rgba(0, 0, 150)");
+  
   faqs = [
     { 
       question: 'Jak zacząć korzystać z aplikacji ?', 

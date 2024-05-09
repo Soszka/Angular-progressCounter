@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +9,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
-  @Input() footerBackground: string = 'linear-gradient(to top, rgb(0, 3, 199), rgb(1, 0, 75))';
-  @Input() authorColor: string = 'rgb(2, 0, 116)'
+  footerBackground = input<string>();
+  authorColor = input<string>();
 }

@@ -23,6 +23,8 @@
     "@fortawesome/angular-fontawesome": "^0.14.1",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@ngrx/signals": "^17.2.0",
+    "@ngrx/store": "^17.2.0",
     "@swimlane/ngx-charts": "^20.5.0",
     "keen-slider": "^6.8.6",
     "ng-gallery": "^5.1.1",
