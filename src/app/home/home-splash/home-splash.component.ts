@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { NavigationComponent } from '../../shared/navigation/navigation.component';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrl: './home-splash.component.scss'
 })
 export class HomeSplashComponent {
-  navBackground: string = 'inherit';
+  navBackground = input('inherit');
   title: string = 'Licznik Progresu';
   subtitle: string = 'Regularnie monitoruj i osiągaj swoje cele treningowe';
   description = `Licznik Progresu to Twoje centrum zarządzania treningiem, które pomaga śledzić postępy,

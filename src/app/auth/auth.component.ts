@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import { FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -32,12 +32,12 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './auth.component.scss'
 })
 export class AuthComponent {
-  navBackground = 'linear-gradient(to top, rgb(47, 202, 0),rgb(11, 46, 0))';
-  footerBackground = 'linear-gradient(to right, rgb(23, 207, 6), rgb(15, 58, 2))';
-  footerAuthorColor = 'rgb(24, 230, 5)';
-  subtitle = "Zacznij od ...";
-  title = "Zalogowania";
-  titleColor = "rgb(19, 168, 14)"
+  navBackground = input('linear-gradient(to top, rgb(47, 202, 0), rgb(11, 46, 0))');
+  footerBackground = input('linear-gradient(to right, rgb(23, 207, 6), rgb(15, 58, 2))');
+  footerAuthorColor = input('rgb(24, 230, 5)');
+  subtitle = input('Zacznij od ...');
+  title = input('Zalogowania');
+  titleColor = input('rgb(19, 168, 14)');
 
   email = new FormControl('', [Validators.required, Validators.email]);
   errorMessage = '';

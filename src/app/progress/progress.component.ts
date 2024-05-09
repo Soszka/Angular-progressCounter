@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { NavigationComponent } from '../shared/navigation/navigation.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { TitleComponent } from '../shared/title/title.component';
@@ -19,10 +19,10 @@ import { ProgressChartsComponent } from './progress-charts/progress-charts.compo
   styleUrl: './progress.component.scss'
 })
 export class ProgressComponent {
-  navBackground = 'linear-gradient(to top, rgb(224, 0, 0), rgb(46, 0, 0))';
-  footerBackground = 'linear-gradient(to right, rgb(201, 8, 8), rgb(78, 0, 0))';
-  footerAuthorColor = 'rgb(230, 9, 9)';
-  subtitle = "Przeanalizuj swój ...";
-  title = "POSTĘP";
-  titleColor = "rgb(218, 17, 17)"
+  navBackground = input('linear-gradient(to top, rgb(224, 0, 0), rgb(46, 0, 0))');
+  footerBackground = input('linear-gradient(to right, rgb(201, 8, 8), rgb(78, 0, 0))');
+  footerAuthorColor = input('rgb(230, 9, 9)');
+  subtitle = input("Przeanalizuj swój ...");
+  title = input("POSTĘP");
+  titleColor = input("rgb(218, 17, 17)")
 }
