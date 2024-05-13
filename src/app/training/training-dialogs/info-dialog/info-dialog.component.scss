@@ -5,9 +5,7 @@
   text-align: center;
 
   p {
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 1.6;
+    @include text-style(22px, $header-font-weight);
     margin-bottom: 0;
   }
 }

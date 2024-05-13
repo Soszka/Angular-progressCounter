@@ -8,9 +8,7 @@
     margin-bottom: 25px;
 
     p {
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 1.6;
+      @include text-style($content-font-size, $header-font-weight * 0.9);
       margin-bottom: 0;
     }
   }

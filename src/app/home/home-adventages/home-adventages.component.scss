@@ -28,12 +28,10 @@
   }
 
   h1 {
+    @include text-style($title-font-size * 0.9, 500);
     flex: 1;
     padding-right: 50px;
-    font-size: $title-font-size * 0.9;
     margin-bottom: 15px;
-    line-height: 1.3;
-    font-weight: 500;
     @include large-screens {
       margin-top: 20px;
       padding: 0;
@@ -44,9 +42,9 @@
   }
 
   .description {
+    @include text-style($content-font-size * 0.95, normal);
     flex: 2;
     padding-left: 50px;
-    font-size: $content-font-size * 0.9;
     text-align: center;
     border-left: 3px solid white;
     @include large-screens {

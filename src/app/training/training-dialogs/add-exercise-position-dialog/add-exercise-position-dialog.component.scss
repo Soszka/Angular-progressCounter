@@ -4,8 +4,7 @@
   padding: 50px 30px;
 
   h2 {
-    font-size: 36px;
-    font-weight: 650;
+    @include heading-style(36px, $header-font-weight, $text-color);
     margin-bottom: 40px;
     text-align: center;
   }
@@ -19,31 +18,22 @@
   }
 
   button {
+    @include text-style($button-font-size, $header-font-weight);
     margin: 0 0 17.5px 50px;
     color: white;
     border-radius: 20px;
     width: 120px;
     height: 45px;
     background: rgb(0, 0, 190);
-    font-size: 22px;
-    font-weight: 600;
 
     &:hover {
-      animation: pulseAnimation 1s infinite !important; 
+      @include pulseAnimation;
+      animation: pulse 1s infinite !important; 
     }
   }
 }
 
-::ng-deep .mat-horizontal-content-container {
+::ng-deep .#{$mat-stepper-container} {
   margin-top: 40px;
   text-align: center;
-}
-
-@keyframes pulseAnimation {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
 }

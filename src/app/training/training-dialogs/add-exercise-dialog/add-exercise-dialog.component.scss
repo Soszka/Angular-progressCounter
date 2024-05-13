@@ -5,8 +5,7 @@
   @include flex(column, center, center);
 
   h2 {
-    font-size: 26px;
-    font-weight: 550;
+    @include heading-style(26px, $header-font-weight, $text-color);
     margin-bottom: 30px;
   }
 

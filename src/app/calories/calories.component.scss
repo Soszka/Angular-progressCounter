@@ -15,10 +15,8 @@ app-calories-carousel {
 }
 
 .calories-description {
+  @include text-style($content-font-size, 500);
   text-align: center;
-  font-size: $content-font-size;
   width: 43%;
-  line-height: 1.6;
-  font-weight: 500;
 }
 

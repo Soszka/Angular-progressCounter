@@ -10,6 +10,23 @@
   align-items: $align;
 }
 
+@mixin background-gradient($color-start, $color-end) {
+  background: linear-gradient(to top, $color-start, $color-end);
+}
+
+@mixin heading-style($size, $weight, $color) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  line-height: 1.6;
+}
+
+@mixin text-style($size, $weight) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: 1.6;
+}
+
 @mixin tiny-screens () {
   @media only screen and (max-width: 320px) {
     @content;

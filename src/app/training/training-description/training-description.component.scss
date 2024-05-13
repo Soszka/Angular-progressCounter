@@ -7,7 +7,6 @@
   padding: 60px 30px;
   position: relative;
   background-attachment: fixed;
-  line-height: 1.6;
   @include large-screens {
     padding: 30px 30px 40px;
     height: auto;
@@ -21,20 +20,13 @@
     position: relative;
     color: $text-secondary-color;
     z-index: 1;
-    @include large-screens {
-      display: block;
-      text-align: center;
-      color: rgb(5, 5, 168)
-    }
   }
 
   p {
+    @include text-style($content-font-size, 450);
     flex: 1.75;
     padding-right: 50px;
-    font-size: $content-font-size;
     margin-bottom: 15px;
-    line-height: 1.6;
-    font-weight: 400;
     border-right: 3px solid white;
     @include large-screens {
       margin-top: 20px;
@@ -50,16 +42,13 @@
     padding-left: 50px;
     text-align: center;
     margin-bottom: 15px;
-    font-weight: 400;
     @include large-screens {
       padding: 0;
       border-left: none;
     }
 
     h4 {
-      font-weight: 550;
-      font-size: $content-font-size * 1.25;
-      line-height: 1.6;
+      @include heading-style($content-font-size * 1.25, 550, $text-secondary-color);
       margin-bottom: 5px;
     }
   }
