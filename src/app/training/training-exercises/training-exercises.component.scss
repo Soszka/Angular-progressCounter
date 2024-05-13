@@ -54,25 +54,19 @@ mat-tab-group {
     z-index: 0;
 
     h2 {
+      @include heading-style($title-font-size * 0.9,  $header-font-weight * 1.1, white);
       padding: 10px;
-      font-size: 36px;
-      font-weight: 700;
       margin-bottom: 30px;
-      line-height: 1.6;
-      color: white;
       z-index: 1;
     }
   
     h4 {
-      font-size: 24px;
-      font-weight: 500;
-      color: white;
+      @include heading-style(24px,  $header-font-weight * 0.9, white);
       z-index: 1;
     }
   
     p {
-      font-size: 20px;
-      color: white;
+      @include heading-style($content-font-size,  normal, white);
       z-index: 1;
     }
   }
@@ -91,17 +85,13 @@ mat-tab-group {
     background: linear-gradient(to top, rgba(0, 0, 143) 0%, rgba(0, 0, 58) 30%, rgba(0, 0, 58) 60%, rgba(0, 0, 143) 100%);
 
     h4 {
-      font-size: 30px;
-      color: white;
-      font-weight: 500;
-      margin-bottom: 30px;
+      @include heading-style(30px,  $header-font-weight * 0.9, white);
+      margin-bottom: 0;
     }
 
     h3 {
-      font-size: 46px;
-      color: $text-secondary-color;
-      font-weight: 600;
-      margin-bottom: 50px;
+      @include heading-style(46px,  $header-font-weight * 1.1, white);
+      margin-bottom: 20px;
     }
   }
 }
@@ -124,12 +114,9 @@ mat-tab-group {
   background: linear-gradient(to top, rgba(0, 0, 143) 0%, rgba(0, 0, 58) 30%, rgba(0, 0, 58) 60%, rgba(0, 0, 143) 100%);
 
   h3 {
-    font-size: 42px;
-    color: $text-secondary-color;
-    font-weight: 600;
+    @include heading-style(42px,  $header-font-weight, white);
     margin-bottom: 15px;
     z-index: 2;
-    line-height: 1.5;
   }
 
   mat-icon {

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NavigationComponent } from '../../../shared/navigation/navigation.component';
 import { FooterComponent } from '../../../shared/footer/footer.component';
 import { CommonModule } from '@angular/common';
+import { TitleComponent } from '../../../shared/title/title.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ExerciseDailyData } from '../../training.service';
 import { ExerciseUiData } from '../../training.service';
@@ -29,6 +30,7 @@ import { RemovingConfirmDialogComponent } from '../../training-dialogs/removing-
     FooterComponent,
     CommonModule,
     MatButtonModule,
+    TitleComponent
   ],
   templateUrl: './training-exercise.component.html',
   styleUrl: './training-exercise.component.scss'
@@ -36,12 +38,12 @@ import { RemovingConfirmDialogComponent } from '../../training-dialogs/removing-
 export class TrainingExerciseComponent {
   displayedColumns: string[] = ['date', 'repetitions', 'weight', 'remove'];
   dataSource!: MatTableDataSource<ExerciseDailyData>;
-  navBackground = 'linear-gradient(to top, rgb(13, 53, 228), rgb(1, 0, 53))';
-  footerBackground = 'linear-gradient(to right, rgb(16, 37, 230), rgb(1, 0, 52))';
-  footerAuthorColor = 'rgb(27, 93, 235)';
-  subtitle = "Sprawdź swój ...";
-  title = "TRENING";
-  titleColor = "rgb(4, 1, 172)"
+  navBackground = input('linear-gradient(to top, rgb(13, 53, 228), rgb(1, 0, 53))');
+  footerBackground = input('linear-gradient(to right, rgb(16, 37, 230), rgb(1, 0, 52))');
+  footerAuthorColor = input('rgb(27, 93, 235)');
+  subtitle = input("Sprawdź swój ...");
+  title = input("TRENING");
+  titleColor = input("rgb(4, 1, 172)");
   exerciseName!: string;
   exerciseData!: ExerciseUiData;
 

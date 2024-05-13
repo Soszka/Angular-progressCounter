@@ -4,9 +4,8 @@
   padding: 25px 50px;
 
   h2 {
-    font-size: 32px;
+    @include heading-style(32px, 700, $text-color);
     text-align: center;
-    font-weight: 700;
     padding-bottom: 0;
   }
 
@@ -15,16 +14,15 @@
     margin: 25px 0 20px;
   
     th {
-      font-size: 22px;
+      @include heading-style(22px, 550, $text-color);
       text-align: center;
-      font-weight: 550;
     }
   
-    .mat-mdc-row.mdc-data-table__row.cdk-row {
-      font-size: 20px;
+    .#{$mat-table-row}{
+      font-size: 22px;
     }
   
-    .mat-mdc-cell.mdc-data-table__cell.cdk-cell{
+    .#{$mat-table-cell} {
       text-align: center;
       padding: 15px 0;
     }
