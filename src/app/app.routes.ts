@@ -9,7 +9,7 @@ import { TrainingExerciseComponent } from './training/training-exercises/trainin
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'training', component: TrainingComponent },
-  { path: 'training/:exercise', component: TrainingExerciseComponent },
+  { path: 'training/edit', component: TrainingExerciseComponent },
   { path: 'progress', component: ProgressComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'calories', component: CaloriesComponent },

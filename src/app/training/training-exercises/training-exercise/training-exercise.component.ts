@@ -1,4 +1,4 @@
-import { Component, ViewChild, input } from '@angular/core';
+import { Component, ViewChild, input, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -9,14 +9,12 @@ import { FooterComponent } from '../../../shared/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../../../shared/title/title.component';
 import { MatButtonModule } from '@angular/material/button';
-import { ExerciseDailyData } from '../../training.service';
-import { ExerciseUiData } from '../../training.service';
-import { TrainingService } from '../../training.service';
-import { Router } from '@angular/router';
+import { TrainingService} from '../../training.service';
+import { Exercise, ExerciseDailyData } from '../../training.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AddExercisePositionDialogComponent } from '../../training-dialogs/add-exercise-position-dialog/add-exercise-position-dialog.component';
 import { RemovingConfirmDialogComponent } from '../../training-dialogs/removing-confirm-dialog/removing-confirm-dialog.component';
-
+import { TrainingsStore } from '../../../store/trainings.store';
 
 @Component({
   selector: 'app-training-exercise',
@@ -45,37 +43,29 @@ export class TrainingExerciseComponent {
   title = input("TRENING");
   titleColor = input("rgb(4, 1, 172)");
   exerciseName!: string;
-  exerciseData!: ExerciseUiData;
+  exerciseData!: Exercise;
+  store = inject(TrainingsStore);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor( private route: ActivatedRoute, 
-    private trainingService: TrainingService,
-    private router: Router,
-    public dialog: MatDialog
-  ) {} 
+  constructor(private trainingService: TrainingService, public dialog: MatDialog) {} 
 
   ngAfterViewInit() {
-    this.route.paramMap.subscribe(params => {
-      const exerciseName = params.get('exercise');
-      this.loadExerciseData(exerciseName);
-    });
+    this.loadExerciseData();
   }
 
-  loadExerciseData(exerciseName: string | null) {
-    const exercise = exerciseName ? this.trainingService.findExerciseByName(exerciseName.replace(/-/g, ' ')) : null;
+  loadExerciseData() {
+    const exercise = this.trainingService.getCurrentExercise();
     this.exerciseName = exercise ? exercise.name : 'Nieznane Ćwiczenie';
     this.exerciseData = exercise || this.getDefaultExerciseData();
     this.dataSource = new MatTableDataSource<ExerciseDailyData>(this.exerciseData.dailyData);
     this.dataSource.paginator = this.paginator;
   }
 
-  getDefaultExerciseData(): ExerciseUiData {
+  getDefaultExerciseData(): Exercise {
+    this.trainingService.store.loadTrainings();
     return {
       name: 'Nieznane Ćwiczenie',
-      icon: '',
-      lastEdited: '',
-      maxWeight: 0,
       dailyData: [] 
     };
   }
@@ -89,10 +79,8 @@ export class TrainingExerciseComponent {
   }
 
   private navigateExercise(offset: number) {
-    const currentIndex = this.trainingService.allExercises.findIndex(ex => ex.name === this.exerciseData.name);
-    const newIndex = (currentIndex + offset + this.trainingService.allExercises.length) % this.trainingService.allExercises.length;
-    const newExercise = this.trainingService.allExercises[newIndex];
-    this.router.navigate(['/training', newExercise.name.toLowerCase().replace(/ /g, '-')]);
+    this.trainingService.setCurrentIndex(this.trainingService.currentIndex() + offset);
+    this.loadExerciseData();
   }
 
   onAddExercisePosition(enterAnimationDuration: string, exitAnimationDuration: string): void {

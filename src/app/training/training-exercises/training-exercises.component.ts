@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { MatCardModule } from '@angular/material/card';
@@ -7,9 +7,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { TrainingService } from '../training.service';
-import { ExerciseUiData } from '../training.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddExerciseDialogComponent } from '../training-dialogs/add-exercise-dialog/add-exercise-dialog.component';
+
 
 @Component({
   selector: 'app-training-exercises',
@@ -26,25 +26,23 @@ import { AddExerciseDialogComponent } from '../training-dialogs/add-exercise-dia
   styleUrl: './training-exercises.component.scss'
 })
 export class TrainingExercisesComponent {
-  pushExercises!: ExerciseUiData[];
-  pullExercises!: ExerciseUiData[];
-  legsExercises!: ExerciseUiData[];
-  exerciseName!: string; 
+
+  trainingService = inject(TrainingService);
+  trainings = this.trainingService.processedTrainings;
+  loading = this.trainingService.loading;
+  error = computed(() => this.trainingService.store.error?.());
 
   constructor(
     private router: Router,
-    private trainingService: TrainingService,
-    public dialog: MatDialog) {} 
+    public dialog: MatDialog) {}
 
   ngOnInit() {
-    this.pushExercises = this.trainingService.exercises.pushExercises;
-    this.pullExercises = this.trainingService.exercises.pullExercises;
-    this.legsExercises = this.trainingService.exercises.legsExercises;
+    this.trainingService.store.loadTrainings();
   }
 
   onEditClick(exerciseName: string) {
-    const formattedName = exerciseName.toLowerCase().replace(' ', '-');
-    this.router.navigate(['/training', formattedName]);
+    this.trainingService.setCurrentExerciseByName(exerciseName);
+    this.router.navigate(['/training/edit']);
   }
 
   onAddExercise(enterAnimationDuration: string, exitAnimationDuration: string): void {
