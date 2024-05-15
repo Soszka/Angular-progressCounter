@@ -7,10 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { routes } from '../src/app/app.routes';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-
-
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+import { HttpClientModule } from '@angular/common/http';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -18,6 +15,7 @@ bootstrapApplication(AppComponent, {
       BrowserModule,
       BrowserAnimationsModule,
       NgxChartsModule,
+      HttpClientModule,
       RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
     )
   ]

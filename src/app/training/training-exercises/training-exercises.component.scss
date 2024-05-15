@@ -61,12 +61,12 @@ mat-tab-group {
     }
   
     h4 {
-      @include heading-style(24px,  $header-font-weight * 0.9, white);
+      @include heading-style(25px,  $header-font-weight * 0.9, white);
       z-index: 1;
     }
   
     p {
-      @include heading-style($content-font-size,  normal, white);
+      @include heading-style($content-font-size * 1.1,  500, white);
       z-index: 1;
     }
   }
@@ -126,4 +126,8 @@ mat-tab-group {
     color: $text-secondary-color;
     z-index: 2;
   }
+}
+
+::ng-deep .mdc-tab.mat-mdc-tab.mat-mdc-focus-indicator {
+  font-size: 22px;
 }

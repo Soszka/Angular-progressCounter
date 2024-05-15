@@ -1,7 +1,6 @@
 {
-  "name": "exercise-data",
   "database": {
-    "pushExercises": [
+    "PUSH": [
       {
         "name": "WYCISKANIE NA ŁAWCE PŁASKIEJ",
         "dailyData": [
@@ -98,7 +97,7 @@
         ]
       }
     ],
-    "pullExercises": [
+    "PULL": [
       {
         "name": "PODCIĄGANIE",
         "dailyData": [
@@ -160,7 +159,7 @@
         ]
       }
     ],
-    "legsExercises": [
+    "LEGS": [
       {
         "name": "PRZYSIADY",
         "dailyData": [

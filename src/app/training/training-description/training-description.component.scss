@@ -23,7 +23,7 @@
   }
 
   p {
-    @include text-style($content-font-size, 450);
+    @include text-style($content-font-size, 400);
     flex: 1.75;
     padding-right: 50px;
     margin-bottom: 15px;
