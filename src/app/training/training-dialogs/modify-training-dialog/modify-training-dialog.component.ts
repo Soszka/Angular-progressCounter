@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject, OnInit, computed } from '@angular/core';
 import {
   MatDialogRef,
   MatDialogActions,
@@ -12,17 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { AddTrainingDialogComponent } from '../add-training-dialog/add-training-dialog.component';
 import { RemovingConfirmDialogComponent } from '../removing-confirm-dialog/removing-confirm-dialog.component';
-
-export interface Training {
-  name: string;
-  exercisesCount: number;
-}
-
-const trainingData: Training[] = [
-  { name: "PUSH", exercisesCount: 6 },
-  { name: "PULL", exercisesCount: 4 },
-  { name: "LEGS", exercisesCount: 2 }
-];
+import { TrainingsStore } from '../../../store/trainings.store';
 
 @Component({
   selector: 'app-modify-training-dialog',
@@ -42,11 +32,20 @@ const trainingData: Training[] = [
 export class ModifyTrainingDialogComponent {
 
   displayedColumns: string[] = ['name', 'exercisesCount', 'remove'];
-  dataSource = trainingData;
+  trainingStore = inject(TrainingsStore);
+
+  dataSource = computed(() => this.trainingStore.trainings().map(training => ({
+    name: training.category,
+    exercisesCount: training.exercises.length
+  })));
 
   constructor(
     public dialogRef: MatDialogRef<ModifyTrainingDialogComponent>, 
     public dialog: MatDialog) {}
+
+  ngOnInit() {
+    this.trainingStore.loadTrainings();
+  }
 
   onAddTraining(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(AddTrainingDialogComponent, {
@@ -56,14 +55,14 @@ export class ModifyTrainingDialogComponent {
     });
   }
 
-  onRemoveTraining(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  onRemoveTraining(trainingName: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
     const messages = { 
       confirmMessage: "Czy na pewno chcesz usunąć wybrany trening z twojego planu treningowego? Gdy to zrobisz, cała historia związana z tym treningiem w planie treningowym zostanie trwale usunięta.",
       successMessage: "Pomyślnie usunięto wybrany trening z twojego planu treningowego." 
     }
     this.dialog.open(RemovingConfirmDialogComponent, {
       width: '700px',
-      data: { messages },
+      data: { messages, trainingName },
       enterAnimationDuration,
       exitAnimationDuration,
     });

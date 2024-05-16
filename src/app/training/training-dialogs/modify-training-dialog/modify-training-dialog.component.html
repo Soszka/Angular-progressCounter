@@ -9,7 +9,7 @@
     [margin]="'15px 0 0 0'"
     (click)="onAddTraining('300ms', '300ms')">DODAJ TRENING
   </app-button>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource()" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> NAZWA </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
@@ -30,7 +30,7 @@
           [height]="'35px'"
           [color]="'white'"
           [margin]="'0'"
-          (click)="onRemoveTraining('300ms', '300ms')">USUŃ
+          (click)="onRemoveTraining(element.name, '300ms', '300ms')">USUŃ
         </app-button>
     </ng-container>
   
