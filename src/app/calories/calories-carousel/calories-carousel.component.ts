@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from "@angular/core"
-import KeenSlider, { KeenSliderInstance, KeenSliderPlugin } from "keen-slider"
+import KeenSlider, { KeenSliderInstance, KeenSliderPlugin } from "keen-slider";
 
 function ThumbnailPlugin(main: KeenSliderInstance): KeenSliderPlugin {
   return (slider) => {
