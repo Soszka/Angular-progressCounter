@@ -21,7 +21,7 @@
     color: black; 
     font-size: $title-font-size; 
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: $header-font-weight;
     font-family: 'Montserrat', sans-serif;
     font-style: italic;
   }

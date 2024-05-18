@@ -1,0 +1,45 @@
+<div class="progress-form">
+  <mat-form-field>
+    <mat-label>Wybierz Trening</mat-label>
+    <mat-select disableRipple>
+      @for (training of trainingList; track $index) {
+        <mat-option [value]="training">{{ training }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Wybierz ćwiczenie</mat-label>
+    <mat-select disableRipple>
+      @for (exercise of exercisesList; track $index) {
+        <mat-option [value]="exercise">{{ exercise }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Wprowadź zakres</mat-label>
+    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+      <input matStartDate formControlName="start" placeholder="Data początkowa">
+      <input matEndDate formControlName="end" placeholder="Data końcowa">
+    </mat-date-range-input>
+    <mat-hint>MM/DD/RRRR – MM/DD/RRRR</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  
+    @if (range.controls.start.hasError('matStartDateInvalid')) {
+      <mat-error>Błędna data początkowa</mat-error>
+    }
+    @if (range.controls.end.hasError('matEndDateInvalid')) {
+      <mat-error>Błędna data końcowa</mat-error>
+    }
+  </mat-form-field>
+</div>
+<div class="button-container">
+  <app-button
+    [fontSize]="'24px'"
+    [backgroundColor]="'rgb(187, 0, 0)'"
+    [width]="'180px'"
+    [height]="'60px'"
+    [color]="'white'"
+    [margin]="'15px auto'">SPRAWDŹ
+  </app-button>
+</div>

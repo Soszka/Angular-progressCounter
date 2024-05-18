@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { NavigationComponent } from '../shared/navigation/navigation.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { TitleComponent } from '../shared/title/title.component';
@@ -19,12 +19,12 @@ import { ButtonComponent } from '../shared/button/button.component';
   styleUrl: './calories.component.scss'
 })
 export class CaloriesComponent {
-  navBackground = 'linear-gradient(to top, rgb(19, 0, 0), rgb(128, 0, 0))';
-  footerBackground = 'linear-gradient(to right, rgb(130, 0, 0), rgb(40, 0, 0))';
-  footerAuthorColor = 'rgb(210, 9, 9)';
-  subtitle = "Pomyśl o ...";
-  title = "KALORIACH";
-  titleColor = "rgb(100, 0, 0)"
+  navBackground = input('linear-gradient(to top, rgb(19, 0, 0), rgb(128, 0, 0))');
+  footerBackground = input('linear-gradient(to right, rgb(130, 0, 0), rgb(40, 0, 0))');
+  footerAuthorColor = input('rgb(210, 9, 9)');
+  subtitle = input("Pomyśl o ...");
+  title = input("KALORIACH");
+  titleColor = input("rgb(100, 0, 0)")
 
   description = `Liczenie kalorii jest to zbyt obszerna dziedzina, żeby zmieścić informacje na 
     jej temat na jednej podstronie. Dlatego też kaloriom została poświęcona 

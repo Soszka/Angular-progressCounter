@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-title',
@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './title.component.scss'
 })
 export class TitleComponent {
-  @Input() title!: string
-  @Input() subtitle!: string
-  @Input() titleColor!: string
+  title = input<string>();
+  subtitle = input<string>();
+  titleColor = input<string>();
 }

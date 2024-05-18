@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { TitleComponent } from '../../shared/title/title.component';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -10,9 +10,9 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './home-features.component.scss'
 })
 export class HomeFeaturesComponent {
-  subtitle = "Co znajdziesz na ...";
-  title = "Stronie";
-  titleColor = "rgba(0, 0, 150)"
+  subtitle = input("Co znajdziesz na ...");
+  title = input("Stronie");
+  titleColor = input("rgba(0, 0, 150)");
   features = [
     { 
       icon: 'fitness_center', 

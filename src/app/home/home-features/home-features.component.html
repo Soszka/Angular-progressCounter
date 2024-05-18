@@ -1,8 +1,8 @@
 <app-title
   class="features-title"
-  [title]="title"
-  [subtitle]="subtitle"
-  [titleColor]="titleColor">
+  [title]="title()"
+  [subtitle]="subtitle()"
+  [titleColor]="titleColor()">
 </app-title>
 <div class="features">
   @for (feature of features; track feature.title) {

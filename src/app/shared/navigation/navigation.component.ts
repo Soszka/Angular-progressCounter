@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, HostListener, input } from '@angular/core';
 import { ExpandedNavComponent } from './expanded-nav/expanded-nav.component';
 import { faBars, faTimes, faDumbbell } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -23,7 +23,7 @@ export class NavigationComponent {
   faTimes = faTimes;
   faDumbbell = faDumbbell;
   isNavExpanded: boolean = false;
-  @Input() navBackground!: string;
+  navBackground = input<string>();
 
   links = [
     { name: 'TRENING', path: '/training' },

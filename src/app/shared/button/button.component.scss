@@ -1,19 +1,13 @@
+@import '../../../styles.scss';
+
 button {
   transition: all 0.3s ease;
   border-radius: 50px;
   font-weight: 600 !important;
 
   &:hover {
-    filter: brightness(0.9);
-    animation: pulseAnimation 1s infinite; 
+    @include pulseAnimation;
+    animation: pulse 1s infinite !important; 
   }
 }
 
-@keyframes pulseAnimation {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-}

@@ -1,29 +1,43 @@
 @import '../../../../styles.scss';
 
 .training-exercise {
-  max-width: 900px;
-  margin: 0 auto;
+  @include flex(column, space-between, stretch);
+  min-height: 100vh;
 }
 
 .title-container {
   @include flex(row, center, center);
   max-width: 1000px;
-  margin: 20px auto 30px;
+  margin: 50px auto 30px;
+
+  button {
+    margin: 0 35px;
+
+    mat-icon {
+      width: 50px;
+      height: 50px;
+      font-size: 50px;
+    }
+  }
 
   h2 {
     margin: 0;
     font-size: 36px;
     font-weight: 500;
-  }
-
-  mat-icon {
-    width: 70px;
-    height: 70px;
-    font-size: 70px;
-    margin: 0 30px;
-    cursor: pointer;
+    text-align: center;
+    width: 650px;
   }
 }
+
+.exercise {
+  max-width: 900px;
+  margin: 0 auto;
+
+  .exercise-buttons {
+    @include flex(row, space-between, stretch);
+  }
+}
+
 
 table {
   text-align: center;
@@ -39,15 +53,13 @@ table {
     font-size: 20px;
   }
 
-
   .mat-mdc-cell.mdc-data-table__cell.cdk-cell{
     text-align: center;
     padding: 15px 0;
   }
-
 }
 
 .paginator-container {
-  max-width: 525px;
+  max-width: 550px;
   margin: 0 auto 50px;
 }

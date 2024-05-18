@@ -1,0 +1,195 @@
+{
+  "database": {
+    "PUSH": [
+      {
+        "name": "WYCISKANIE NA ŁAWCE PŁASKIEJ",
+        "dailyData": [
+          { "date": "2024-05-05", "repetitions": 5, "weight": 90 },
+          { "date": "2024-04-27", "repetitions": 6, "weight": 88 },
+          { "date": "2024-04-20", "repetitions": 6, "weight": 90 },
+          { "date": "2024-04-13", "repetitions": 5, "weight": 92 },
+          { "date": "2024-04-06", "repetitions": 4, "weight": 94 },
+          { "date": "2024-03-30", "repetitions": 6, "weight": 90 },
+          { "date": "2024-03-23", "repetitions": 6, "weight": 88 },
+          { "date": "2024-03-16", "repetitions": 7, "weight": 85 },
+          { "date": "2024-03-09", "repetitions": 6, "weight": 87 },
+          { "date": "2024-03-02", "repetitions": 6, "weight": 85 },
+          { "date": "2024-02-23", "repetitions": 6, "weight": 83 },
+          { "date": "2024-02-16", "repetitions": 7, "weight": 81 },
+          { "date": "2024-02-09", "repetitions": 6, "weight": 83 },
+          { "date": "2024-02-02", "repetitions": 7, "weight": 80 },
+          { "date": "2024-01-26", "repetitions": 6, "weight": 82 },
+          { "date": "2024-01-19", "repetitions": 8, "weight": 78 },
+          { "date": "2024-01-12", "repetitions": 8, "weight": 76 },
+          { "date": "2024-01-05", "repetitions": 6, "weight": 80 },
+          { "date": "2023-12-29", "repetitions": 7, "weight": 75 },
+          { "date": "2023-12-22", "repetitions": 6, "weight": 78 }
+        ]
+      },
+      {
+        "name": "PODNOSZENIE HANTELEK SKOŚNO",
+        "dailyData": [
+          { "date": "2024-05-05", "repetitions": 5, "weight": 82 },
+          { "date": "2024-04-27", "repetitions": 5, "weight": 80 },
+          { "date": "2024-04-20", "repetitions": 4, "weight": 82 },
+          { "date": "2024-04-13", "repetitions": 5, "weight": 80 },
+          { "date": "2024-04-06", "repetitions": 5, "weight": 78 },
+          { "date": "2024-03-30", "repetitions": 6, "weight": 75 },
+          { "date": "2024-03-23", "repetitions": 6, "weight": 73 },
+          { "date": "2024-03-16", "repetitions": 5, "weight": 75 },
+          { "date": "2024-03-09", "repetitions": 6, "weight": 70 },
+          { "date": "2024-03-02", "repetitions": 7, "weight": 68 },
+          { "date": "2024-02-23", "repetitions": 5, "weight": 70 },
+          { "date": "2024-02-16", "repetitions": 5, "weight": 68 },
+          { "date": "2024-02-09", "repetitions": 6, "weight": 65 },
+          { "date": "2024-02-02", "repetitions": 6, "weight": 63 },
+          { "date": "2024-01-26", "repetitions": 7, "weight": 60 },
+          { "date": "2024-01-19", "repetitions": 7, "weight": 58 },
+          { "date": "2024-01-12", "repetitions": 5, "weight": 60 },
+          { "date": "2024-01-05", "repetitions": 7, "weight": 55 },
+          { "date": "2023-12-29", "repetitions": 7, "weight": 53 },
+          { "date": "2023-12-22", "repetitions": 7, "weight": 50 }
+        ]
+      },
+      {
+        "name": "ROZPIĘTKI",
+        "dailyData": [
+          { "date": "2024-03-25", "repetitions": 12, "weight": 12 },
+          { "date": "2024-03-11", "repetitions": 12, "weight": 12 },
+          { "date": "2024-02-25", "repetitions": 12, "weight": 12 },
+          { "date": "2024-02-11", "repetitions": 12, "weight": 12 },
+          { "date": "2024-01-28", "repetitions": 12, "weight": 12 },
+          { "date": "2024-01-14", "repetitions": 14, "weight": 12 },
+          { "date": "2023-12-31", "repetitions": 14, "weight": 12 },
+          { "date": "2023-12-17", "repetitions": 14, "weight": 12 },
+          { "date": "2023-12-03", "repetitions": 14, "weight": 12 },
+          { "date": "2023-11-19", "repetitions": 14, "weight": 12 }
+        ]
+      },
+      {
+        "name": "PODNOSZENIE ŻOŁNIERSKIE",
+        "dailyData": [
+          { "date": "2024-03-25", "repetitions": 8, "weight": 70 },
+          { "date": "2024-03-11", "repetitions": 8, "weight": 68 },
+          { "date": "2024-02-25", "repetitions": 8, "weight": 66 },
+          { "date": "2024-02-11", "repetitions": 8, "weight": 64 },
+          { "date": "2024-01-28", "repetitions": 8, "weight": 62 },
+          { "date": "2024-01-14", "repetitions": 10, "weight": 60 },
+          { "date": "2023-12-31", "repetitions": 10, "weight": 58 },
+          { "date": "2023-12-17", "repetitions": 10, "weight": 56 },
+          { "date": "2023-12-03", "repetitions": 10, "weight": 54 },
+          { "date": "2023-11-19", "repetitions": 10, "weight": 52 }
+        ]
+      },
+      {
+        "name": "WYCISKANIE NA ŁAWCE WĄSKO",
+        "dailyData": [
+          { "date": "2024-03-25", "repetitions": 6, "weight": 100 },
+          { "date": "2024-03-11", "repetitions": 6, "weight": 95 },
+          { "date": "2024-02-25", "repetitions": 6, "weight": 90 },
+          { "date": "2024-02-11", "repetitions": 6, "weight": 85 },
+          { "date": "2024-01-28", "repetitions": 6, "weight": 80 },
+          { "date": "2024-01-14", "repetitions": 8, "weight": 75 },
+          { "date": "2023-12-31", "repetitions": 8, "weight": 70 },
+          { "date": "2023-12-17", "repetitions": 8, "weight": 65 },
+          { "date": "2023-12-03", "repetitions": 8, "weight": 60 },
+          { "date": "2023-11-19", "repetitions": 8, "weight": 55 }
+        ]
+      }
+    ],
+    "PULL": [
+      {
+        "name": "PODCIĄGANIE",
+        "dailyData": [
+          { "date": "2024-03-25", "repetitions": 12, "weight": 20 },
+          { "date": "2024-03-11", "repetitions": 12, "weight": 19 },
+          { "date": "2024-02-25", "repetitions": 12, "weight": 18 },
+          { "date": "2024-02-11", "repetitions": 12, "weight": 17 },
+          { "date": "2024-01-28", "repetitions": 12, "weight": 16 },
+          { "date": "2024-01-14", "repetitions": 14, "weight": 15 },
+          { "date": "2023-12-31", "repetitions": 14, "weight": 14 },
+          { "date": "2023-12-17", "repetitions": 14, "weight": 13 },
+          { "date": "2023-12-03", "repetitions": 14, "weight": 12 },
+          { "date": "2023-11-19", "repetitions": 14, "weight": 11 }
+        ]
+      },
+      {
+        "name": "WIOSŁOWANIE SZTANGĄ",
+        "dailyData": [
+          { "date": "2024-03-25", "repetitions": 10, "weight": 90 },
+          { "date": "2024-03-11", "repetitions": 10, "weight": 85 },
+          { "date": "2024-02-25", "repetitions": 10, "weight": 80 },
+          { "date": "2024-02-11", "repetitions": 10, "weight": 75 },
+          { "date": "2024-01-28", "repetitions": 10, "weight": 70 },
+          { "date": "2024-01-14", "repetitions": 12, "weight": 65 },
+          { "date": "2023-12-31", "repetitions": 12, "weight": 60 },
+          { "date": "2023-12-17", "repetitions": 12, "weight": 55 },
+          { "date": "2023-12-03", "repetitions": 12, "weight": 50 },
+          { "date": "2023-11-19", "repetitions": 12, "weight": 45 }
+        ]
+      },
+      {
+        "name": "TYŁ BARKÓW HANTLAMI",
+        "dailyData": [
+          { "date": "2024-03-25", "repetitions": 15, "weight": 10 },
+          { "date": "2024-03-11", "repetitions": 15, "weight": 9 },
+          { "date": "2024-02-25", "repetitions": 15, "weight": 8 },
+          { "date": "2024-02-11", "repetitions": 15, "weight": 7 },
+          { "date": "2024-01-28", "repetitions": 15, "weight": 6 },
+          { "date": "2024-01-14", "repetitions": 17, "weight": 5 },
+          { "date": "2023-12-31", "repetitions": 17, "weight": 4 },
+          { "date": "2023-12-17", "repetitions": 17, "weight": 3 },
+          { "date": "2023-12-03", "repetitions": 17, "weight": 2 },
+          { "date": "2023-11-19", "repetitions": 17, "weight": 1 }
+        ]
+      },
+      {
+        "name": "BICEPS SZTANGĄ",
+        "dailyData": [
+          { "date": "2024-03-25", "repetitions": 8, "weight": 45},
+          { "date": "2024-03-11", "repetitions": 8, "weight": 45 },
+          { "date": "2024-02-25", "repetitions": 8, "weight": 45 },
+          { "date": "2024-02-11", "repetitions": 8, "weight": 45 },
+          { "date": "2024-01-28", "repetitions": 8, "weight": 45},
+          { "date": "2024-01-14", "repetitions": 10, "weight": 95 },
+          { "date": "2023-12-31", "repetitions": 12, "weight": 35 },
+          { "date": "2023-12-17", "repetitions": 10, "weight": 35 },
+          { "date": "2023-12-03", "repetitions": 10, "weight": 35 },
+          { "date": "2023-11-19", "repetitions": 10, "weight": 35 }
+        ]
+      }
+    ],
+    "LEGS": [
+      {
+        "name": "PRZYSIADY",
+        "dailyData": [
+          { "date": "2024-03-25", "repetitions": 10, "weight": 120 },
+          { "date": "2024-03-11", "repetitions": 10, "weight": 115 },
+          { "date": "2024-02-25", "repetitions": 10, "weight": 110 },
+          { "date": "2024-02-11", "repetitions": 10, "weight": 105 },
+          { "date": "2024-01-28", "repetitions": 10, "weight": 100 },
+          { "date": "2024-01-14", "repetitions": 12, "weight": 95 },
+          { "date": "2023-12-31", "repetitions": 12, "weight": 90 },
+          { "date": "2023-12-17", "repetitions": 12, "weight": 85 },
+          { "date": "2023-12-03", "repetitions": 12, "weight": 80 },
+          { "date": "2023-11-19", "repetitions": 12, "weight": 75 }
+        ]
+      },
+      {
+        "name": "WYCISKANIE NOGAMI NA SUWNICY",
+        "dailyData": [
+          { "date": "2024-03-25", "repetitions": 8, "weight": 120 },
+          { "date": "2024-03-11", "repetitions": 8, "weight": 118 },
+          { "date": "2024-02-25", "repetitions": 8, "weight": 116 },
+          { "date": "2024-02-11", "repetitions": 8, "weight": 114 },
+          { "date": "2024-01-28", "repetitions": 8, "weight": 112 },
+          { "date": "2024-01-14", "repetitions": 10, "weight": 110 },
+          { "date": "2023-12-31", "repetitions": 10, "weight": 108 },
+          { "date": "2023-12-17", "repetitions": 10, "weight": 106 },
+          { "date": "2023-12-03", "repetitions": 10, "weight": 104 },
+          { "date": "2023-11-19", "repetitions": 10, "weight": 102 }
+        ]
+      }
+    ]
+  }
+}

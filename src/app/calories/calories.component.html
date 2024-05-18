@@ -1,10 +1,10 @@
 <div class="calories">
   <div class="container">
-    <app-navigation [navBackground]="navBackground"></app-navigation>
+    <app-navigation [navBackground]="navBackground()"></app-navigation>
     <app-title
-      [title]="title"
-      [subtitle]="subtitle"
-      [titleColor]="titleColor">
+      [title]="title()"
+      [subtitle]="subtitle()"
+      [titleColor]="titleColor()">
     </app-title>
     <div class="calories-content">
       <app-calories-carousel></app-calories-carousel>
@@ -26,7 +26,7 @@
     </div>
   </div>
   <app-footer
-    [footerBackground]="footerBackground"
-    [authorColor]="footerAuthorColor">
+    [footerBackground]="footerBackground()"
+    [authorColor]="footerAuthorColor()">
   </app-footer>
 </div>

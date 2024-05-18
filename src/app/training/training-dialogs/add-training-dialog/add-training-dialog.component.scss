@@ -1,0 +1,15 @@
+@import '../../../../styles.scss';
+
+.dialog-container {
+  padding: 50px 30px;
+  @include flex(column, center, center);
+
+  h2 {
+    @include heading-style($content-font-size * 1.3, $header-font-weight * 0.9, $text-color);
+    margin-bottom: 30px;
+  }
+
+  mat-form-field  {
+    width: 80%;
+  }
+}

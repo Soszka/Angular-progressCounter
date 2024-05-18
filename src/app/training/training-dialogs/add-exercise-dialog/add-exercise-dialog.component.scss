@@ -1,0 +1,20 @@
+@import '../../../../styles.scss';
+
+.exercise-dialog {
+  padding: 50px 30px;
+  @include flex(column, center, center);
+
+  h2 {
+    @include heading-style(26px, $header-font-weight, $text-color);
+    margin-bottom: 30px;
+  }
+
+  mat-form-field  {
+    width: 80%;
+  }
+
+  .actions {
+    margin-top: 15px;
+    text-align: center;
+  }
+}

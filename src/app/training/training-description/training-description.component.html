@@ -1,9 +1,6 @@
 <div class="training-description">
   <div class="content">
-    <p>W sekcji z treningami masz możliwość stworzenia swojego indywidualnego planu treningowego.
-      Do każdego z treningów będziesz mógł dodawać ćwiczenia, a następnie zapisywać swoje wyniki.
-      Pamiętaj, że gdy zdecydujesz się usunąć któryś z treningów, cała historia związana z osiągnięciami
-      również zostanie usunięta !</p>
+    <p>{{ treiningDescription }}</p>
     <div class="description">
       <h4>Kliknij przycisk poniżej aby zmodyfikować trening !</h4>
       <app-button
@@ -12,7 +9,8 @@
         [width]="'220px'"
         [height]="'50px'"
         [color]="'black'"
-        [margin]="'15px 0 0 0'">MODYFIKUJ
+        [margin]="'15px 0 0 0'"
+        (click)="openModifyDialog('300ms', '300ms')">MODYFIKUJ
       </app-button>
     </div>
   </div>
