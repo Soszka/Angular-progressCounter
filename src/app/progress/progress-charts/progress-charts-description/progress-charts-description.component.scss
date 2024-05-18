@@ -1,0 +1,15 @@
+@import '../../../../styles.scss';
+
+.container {
+  @include container(0, 0);
+  padding: 40px 60px;
+
+  p {
+    @include text-style($content-font-size * 0.9, normal)
+  }
+
+  h2 {
+    @include heading-style($content-font-size * 1.2, 700, $text-color);
+    margin-top: 50px;
+  }
+}

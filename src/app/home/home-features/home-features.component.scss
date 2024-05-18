@@ -41,11 +41,9 @@
   }
 
   h3 {
+    @include heading-style($content-font-size * 1.2, 600, $home-icon-color);
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-weight: 600;
-    color: $home-icon-color;
-    font-size: $content-font-size * 1.2;
     margin: 10px 0;
     @include small-screens {
       margin: 10px 0 5px;
@@ -53,15 +51,14 @@
   }
 
   p {
+    @include heading-style($content-font-size * 0.9, normal, rgb(0, 0, 102));
     margin: 0;
-    font-size: $content-font-size * 0.9;
-    color: rgb(0, 0, 102);
+    line-height: 1.5;
     @include small-screens {
       font-size: 18px;
     }
   }
 }
-
 
 ::ng-deep app-title.features-title .container {
   margin: 0 auto !important;

@@ -1,43 +1,119 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import { Component, ViewChild, input, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-
-
-export interface ExerciseElement {
-  date: string;
-  repetitions: number;
-  weight: number;
-}
-
-const ExerciseElements: ExerciseElement[] = [
-  { date: "2024-03-25", repetitions: 6, "weight": 85 },
-  { date: "2024-03-11", repetitions: 6, "weight": 80 },
-  { date: "2024-02-25", repetitions: 6, "weight": 75 },
-  { date: "2024-02-11", repetitions: 6, "weight": 70 },
-  { date: "2024-01-28", repetitions: 6, "weight": 65 },
-  { date: "2024-01-14", repetitions: 8, "weight": 60 },
-  { date: "2023-12-31", repetitions: 8, "weight": 55 },
-  { date: "2023-12-17", repetitions: 8, "weight": 52 },
-  { date: "2023-12-03", repetitions: 8, "weight": 50 },
-  { date: "2023-11-19", repetitions: 8, "weight": 48 }
-]
+import { ActivatedRoute } from '@angular/router';
+import { NavigationComponent } from '../../../shared/navigation/navigation.component';
+import { FooterComponent } from '../../../shared/footer/footer.component';
+import { CommonModule } from '@angular/common';
+import { TitleComponent } from '../../../shared/title/title.component';
+import { MatButtonModule } from '@angular/material/button';
+import { TrainingService} from '../../training.service';
+import { Exercise, ExerciseDailyData } from '../../training.model';
+import { MatDialog } from '@angular/material/dialog';
+import { AddExercisePositionDialogComponent } from '../../training-dialogs/add-exercise-position-dialog/add-exercise-position-dialog.component';
+import { RemovingConfirmDialogComponent } from '../../training-dialogs/removing-confirm-dialog/removing-confirm-dialog.component';
+import { TrainingsStore } from '../../../store/trainings.store';
 
 @Component({
   selector: 'app-training-exercise',
   standalone: true,
-  imports: [MatIconModule, ButtonComponent, MatTableModule, MatPaginatorModule],
+  imports: [ 
+    MatIconModule, 
+    ButtonComponent, 
+    MatTableModule, 
+    MatPaginatorModule,
+    NavigationComponent, 
+    FooterComponent,
+    CommonModule,
+    MatButtonModule,
+    TitleComponent
+  ],
   templateUrl: './training-exercise.component.html',
   styleUrl: './training-exercise.component.scss'
 })
 export class TrainingExerciseComponent {
   displayedColumns: string[] = ['date', 'repetitions', 'weight', 'remove'];
-  dataSource = new MatTableDataSource<ExerciseElement>(ExerciseElements);
+  dataSource!: MatTableDataSource<ExerciseDailyData>;
+  navBackground = input('linear-gradient(to top, rgb(13, 53, 228), rgb(1, 0, 53))');
+  footerBackground = input('linear-gradient(to right, rgb(16, 37, 230), rgb(1, 0, 52))');
+  footerAuthorColor = input('rgb(27, 93, 235)');
+  subtitle = input("Sprawdź swój ...");
+  title = input("TRENING");
+  titleColor = input("rgb(4, 1, 172)");
+  exerciseName!: string;
+  exerciseData!: Exercise;
+  store = inject(TrainingsStore);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  constructor(private trainingService: TrainingService, public dialog: MatDialog) {} 
+
   ngAfterViewInit() {
+    this.loadExerciseData();
+  }
+
+  loadExerciseData() {
+    const exercise = this.trainingService.getCurrentExercise();
+    this.exerciseName = exercise ? exercise.name : 'Nieznane Ćwiczenie';
+    this.exerciseData = exercise || this.getDefaultExerciseData();
+    this.dataSource = new MatTableDataSource<ExerciseDailyData>(this.exerciseData.dailyData);
     this.dataSource.paginator = this.paginator;
+  }
+
+  getDefaultExerciseData(): Exercise {
+    this.trainingService.store.loadTrainings();
+    return {
+      name: 'Nieznane Ćwiczenie',
+      dailyData: [] 
+    };
+  }
+
+  nextExercise() {
+    this.navigateExercise(1);
+  }
+  
+  previousExercise() {
+    this.navigateExercise(-1);
+  }
+
+  private navigateExercise(offset: number) {
+    this.trainingService.setCurrentIndex(this.trainingService.currentIndex() + offset);
+    this.loadExerciseData();
+  }
+
+  onAddExercisePosition(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(AddExercisePositionDialogComponent, {
+      width: '1000px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+
+  onRemoveExercise(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const messages = { 
+      confirmMessage: "Czy na pewno chcesz usunąć wybrane ćwiczenie z twojego planu treningowego? Gdy to zrobisz, cała historia związana z tym ćwiczeniem zostanie trwale usunięta.",
+      successMessage: "Pomyślnie usunięto wybrane ćwiczenie z twojego planu treningowego." 
+    }
+    this.dialog.open(RemovingConfirmDialogComponent, {
+      width: '600px',
+      data: { messages },
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+
+  onRemovePosition(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const messages = { 
+      confirmMessage: "Czy na pewno chcesz usunąć wybraną pozycję ?",
+      successMessage: "Pomyślnie usunięto wybraną pozycję z historii twojego ćwiczenia" 
+    }
+    this.dialog.open(RemovingConfirmDialogComponent, {
+      width: '600px',
+      data: { messages },
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
 }

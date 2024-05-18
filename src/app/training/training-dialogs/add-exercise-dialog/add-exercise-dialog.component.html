@@ -1,0 +1,27 @@
+<div class="exercise-dialog">
+  <h2>WPROWADŹ NAZWĘ ĆWICZENIA !</h2>
+  <mat-form-field>
+    <mat-label>Nazwa Ćwiczenia</mat-label>
+    <input matInput>
+  </mat-form-field>
+  <div class="actions">
+    <app-button
+      [fontSize]="'20px'"
+      [backgroundColor]="'rgb(158, 13, 13)'"
+      [width]="'130px'"
+      [height]="'45px'"
+      [color]="'white'"
+      [margin]="'0px 10px 0 0'"
+      (click)="onCancel()">ANULUJ
+    </app-button>
+    <app-button
+      [fontSize]="'20px'"
+      [backgroundColor]="'rgb(0, 0, 190)'"
+      [width]="'130px'"
+      [height]="'45px'"
+      [color]="'white'"
+      [margin]="'0 0 0 10px'"
+      (click)="onSave('300ms', '300ms')">ZAPISZ
+    </app-button>
+  </div>
+</div>

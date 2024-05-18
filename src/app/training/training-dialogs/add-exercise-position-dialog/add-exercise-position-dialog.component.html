@@ -1,0 +1,50 @@
+<div class="dialog-container">
+  <h2>DODAJ NOWĄ POZYCJĘ !</h2>
+  <mat-stepper labelPosition="bottom" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>DATA</ng-template>
+        <mat-form-field>
+          <mat-label>Wybierz Datę</mat-label>
+          <input matInput formControlName="firstCtrl" [matDatepicker]="picker">
+          <mat-hint>MM/DD/RRRR</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <button mat-button matStepperNext>DALEJ</button>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>CIĘŻAR</ng-template>
+        <mat-form-field>
+          <mat-label>Ciężar ( KG )</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="50" required>
+        </mat-form-field>
+        <button mat-button matStepperNext>DALEJ</button>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>POWTÓRZENIA</ng-template>
+        <mat-form-field>
+          <mat-label>Liczba powtórzeń</mat-label>
+          <input matInput formControlName="thirdCtrl" placeholder="8" required>
+        </mat-form-field>
+        <button mat-button matStepperNext>DALEJ</button>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>ZAPISZ</ng-template>
+      <app-button
+          [fontSize]="'21px'"
+          [backgroundColor]="'rgb(0, 0, 190)'"
+          [width]="'250px'"
+          [height]="'50px'"
+          [color]="'white'"
+          [margin]="'15px 0 0 0'"
+          (click)="onSave('300ms', '300ms')">ZAPISZ POZYCJĘ
+        </app-button>
+    </mat-step>
+  </mat-stepper>
+</div>

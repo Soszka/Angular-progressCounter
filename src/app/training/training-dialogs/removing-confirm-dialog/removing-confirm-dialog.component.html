@@ -1,0 +1,25 @@
+<div class="remove-dialog">
+  <div class="message">
+    <p>{{ data.messages.confirmMessage }}</p>
+  </div>
+  <div class="actions">
+    <app-button
+      [fontSize]="'20px'"
+      [backgroundColor]="'rgb(0, 0, 190)'"
+      [width]="'130px'"
+      [height]="'45px'"
+      [color]="'white'"
+      [margin]="'0 10px 0 0'"
+      (click)="onCancel()">ANULUJ
+    </app-button>
+    <app-button
+      [fontSize]="'20px'"
+      [backgroundColor]="'rgb(158, 13, 13)'"
+      [width]="'130px'"
+      [height]="'45px'"
+      [color]="'white'"
+      [margin]="'0px 0 0 10px'"
+      (click)="onRemove('300ms', '300ms')">USUŃ
+    </app-button>
+  </div>
+</div>

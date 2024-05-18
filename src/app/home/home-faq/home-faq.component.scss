@@ -4,12 +4,11 @@
   @include container(20px, 50px);
 }
 
-.mat-expansion-panel-header.mat-focus-indicator.mat-expansion-toggle-indicator-after {
-  font-size: $content-font-size * 0.9;
+.#{$mat-expansion-panel-collapsed}  {
+  @include text-style($content-font-size * 0.9, 500);
   height: 65px;
 }
 
-.mat-expansion-panel p {
-  font-size: $content-font-size * 0.85;
-  line-height: 1.6;
+.#{$mat-expansion-panel-expanded}  p {
+  @include text-style($content-font-size * 0.85, normal);
 }

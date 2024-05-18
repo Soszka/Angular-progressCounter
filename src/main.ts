@@ -6,17 +6,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { routes } from '../src/app/app.routes';
-
-
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { HttpClientModule } from '@angular/common/http';
 
 bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(
       BrowserModule,
       BrowserAnimationsModule,
-      RouterModule.forRoot(routes),
+      NgxChartsModule,
+      HttpClientModule,
+      RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
     )
   ]
 }).catch(err => console.error(err));

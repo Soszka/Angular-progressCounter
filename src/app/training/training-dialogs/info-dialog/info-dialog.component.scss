@@ -1,0 +1,11 @@
+@import '../../../../styles.scss';
+
+.info-dialog {
+  padding: 50px 30px;
+  text-align: center;
+
+  p {
+    @include text-style(22px, $header-font-weight);
+    margin-bottom: 0;
+  }
+}

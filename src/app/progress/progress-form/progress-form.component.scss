@@ -1,0 +1,14 @@
+@import '../../../styles.scss';
+
+.progress-form {
+  @include container(40px, 20px);
+  @include flex(row, space-around, center);
+
+  mat-form-field {
+    width: 325px;
+  }
+}
+
+.button-container {
+  text-align: center;
+}

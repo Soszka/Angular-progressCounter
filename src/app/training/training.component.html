@@ -1,17 +1,16 @@
 <div class="training">
   <div class="container">
-    <app-navigation [navBackground]="navBackground"></app-navigation>
+    <app-navigation [navBackground]="navBackground()"></app-navigation>
     <app-title
-      [title]="title"
-      [subtitle]="subtitle"
-      [titleColor]="titleColor">
+      [title]="title()"
+      [subtitle]="subtitle()"
+      [titleColor]="titleColor()">
     </app-title>
     <app-training-description></app-training-description>
     <app-training-exercises></app-training-exercises>
-    <app-training-exercise></app-training-exercise>
   </div>
   <app-footer
-   [footerBackground]="footerBackground"
-   [authorColor]="footerAuthorColor">
+   [footerBackground]="footerBackground()"
+   [authorColor]="footerAuthorColor()">
   </app-footer>
 </div>
