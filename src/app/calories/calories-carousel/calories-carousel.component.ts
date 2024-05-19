@@ -69,3 +69,7 @@ export class CaloriesCarouselComponent{
     if (this.thumbnailSlider) this.thumbnailSlider.destroy()
   }
 }
+
+
+
+
