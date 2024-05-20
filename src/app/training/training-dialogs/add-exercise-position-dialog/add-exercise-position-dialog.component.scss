@@ -18,7 +18,7 @@
   }
 
   button {
-    @include text-style($button-font-size, $header-font-weight);
+    @include text-style(20px, $header-font-weight);
     margin: 0 0 17.5px 50px;
     color: white;
     border-radius: 20px;

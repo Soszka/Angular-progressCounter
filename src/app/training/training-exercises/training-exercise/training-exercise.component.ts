@@ -95,23 +95,34 @@ export class TrainingExerciseComponent {
     const messages = { 
       confirmMessage: "Czy na pewno chcesz usunąć wybrane ćwiczenie z twojego planu treningowego? Gdy to zrobisz, cała historia związana z tym ćwiczeniem zostanie trwale usunięta.",
       successMessage: "Pomyślnie usunięto wybrane ćwiczenie z twojego planu treningowego." 
-    }
+    };
     this.dialog.open(RemovingConfirmDialogComponent, {
       width: '600px',
-      data: { messages },
+      data: { 
+        type: 'exercise', 
+        trainingName: this.trainingService.getCurrentTrainingName(), 
+        exerciseName: this.exerciseName, 
+        messages 
+      },
       enterAnimationDuration,
       exitAnimationDuration,
     });
   }
-
-  onRemovePosition(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  
+  onRemovePosition(enterAnimationDuration: string, exitAnimationDuration: string, date: string): void {
     const messages = { 
-      confirmMessage: "Czy na pewno chcesz usunąć wybraną pozycję ?",
+      confirmMessage: "Czy na pewno chcesz usunąć wybraną pozycję?",
       successMessage: "Pomyślnie usunięto wybraną pozycję z historii twojego ćwiczenia" 
-    }
+    };
     this.dialog.open(RemovingConfirmDialogComponent, {
       width: '600px',
-      data: { messages },
+      data: { 
+        type: 'position', 
+        trainingName: this.trainingService.getCurrentTrainingName(), 
+        exerciseName: this.exerciseName, 
+        date, 
+        messages 
+      },
       enterAnimationDuration,
       exitAnimationDuration,
     });
