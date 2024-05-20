@@ -61,4 +61,12 @@ export class TrainingService {
       this.setCurrentIndex(index);
     }
   }
+
+  getCurrentTrainingName(): string {
+    const currentExercise = this.getCurrentExercise();
+    const training = this.store.trainings().find(training => 
+      training.exercises.some(exercise => exercise.name === currentExercise.name)
+    );
+    return training ? training.category : 'Nieznany Trening';
+  }
 }

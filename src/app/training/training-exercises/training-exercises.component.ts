@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { TrainingService } from '../training.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddExerciseDialogComponent } from '../training-dialogs/add-exercise-dialog/add-exercise-dialog.component';
+import { Training } from '../training.model';
+import { signal } from '@angular/core';
 
 
 @Component({
@@ -28,9 +30,7 @@ import { AddExerciseDialogComponent } from '../training-dialogs/add-exercise-dia
 export class TrainingExercisesComponent {
 
   trainingService = inject(TrainingService);
-  trainings = this.trainingService.processedTrainings;
-  loading = this.trainingService.loading;
-  error = computed(() => this.trainingService.store.error?.());
+  trainings = computed(() => this.trainingService.processedTrainings());
 
   constructor(
     private router: Router,
@@ -45,9 +45,10 @@ export class TrainingExercisesComponent {
     this.router.navigate(['/training/edit']);
   }
 
-  onAddExercise(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  onAddExercise(trainingName: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(AddExerciseDialogComponent, {
       width: '600px',
+      data: { trainingName },
       enterAnimationDuration,
       exitAnimationDuration,
     });

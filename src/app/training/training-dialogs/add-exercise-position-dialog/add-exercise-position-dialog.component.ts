@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialogRef, MatDialog} from '@angular/material/dialog';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,6 +9,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { TrainingService } from '../../training.service';
+import { TrainingsStore } from '../../../store/trainings.store';
+import { ExerciseDailyData } from '../../training.model';
 
 @Component({
   selector: 'app-add-exercise-position-dialog',
@@ -38,6 +41,8 @@ export class AddExercisePositionDialogComponent {
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],
   });
+  trainingService = inject(TrainingService);
+  store = inject(TrainingsStore);
 
   constructor(
     public dialogRef: MatDialogRef<AddExercisePositionDialogComponent>, 
@@ -46,13 +51,29 @@ export class AddExercisePositionDialogComponent {
   ) {}
 
   onSave(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    const information = "Pomyślnie dodano nową pozycje do historii twojego ćwiczenia";
-    this.dialogRef.close();
-    this.dialog.open(InfoDialogComponent, {
-      width: '600px',
-      data: { information },
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
+    const date = this.firstFormGroup.value.firstCtrl;
+    const weight = this.secondFormGroup.value.secondCtrl;
+    const repetitions = this.thirdFormGroup.value.thirdCtrl;
+
+    if (date && weight && repetitions) {
+      const newPosition: ExerciseDailyData = {
+        date,
+        weight: parseInt(weight, 10),
+        repetitions: parseInt(repetitions, 10)
+      };
+
+      const currentTrainingName = this.trainingService.getCurrentTrainingName();
+      const currentExerciseName = this.trainingService.getCurrentExercise().name;
+      this.store.addExercisePosition(currentTrainingName, currentExerciseName, newPosition);
+
+      const information = "Pomyślnie dodano nową pozycję do historii twojego ćwiczenia";
+      this.dialogRef.close();
+      this.dialog.open(InfoDialogComponent, {
+        width: '600px',
+        data: { information },
+        enterAnimationDuration,
+        exitAnimationDuration,
+      });
+    }
   }
 }

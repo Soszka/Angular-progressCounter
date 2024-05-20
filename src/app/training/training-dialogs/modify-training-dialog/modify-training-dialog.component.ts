@@ -29,7 +29,7 @@ import { TrainingsStore } from '../../../store/trainings.store';
   templateUrl: './modify-training-dialog.component.html',
   styleUrl: './modify-training-dialog.component.scss'
 })
-export class ModifyTrainingDialogComponent {
+export class ModifyTrainingDialogComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'exercisesCount', 'remove'];
   trainingStore = inject(TrainingsStore);
@@ -59,10 +59,10 @@ export class ModifyTrainingDialogComponent {
     const messages = { 
       confirmMessage: "Czy na pewno chcesz usunąć wybrany trening z twojego planu treningowego? Gdy to zrobisz, cała historia związana z tym treningiem w planie treningowym zostanie trwale usunięta.",
       successMessage: "Pomyślnie usunięto wybrany trening z twojego planu treningowego." 
-    }
+    };
     this.dialog.open(RemovingConfirmDialogComponent, {
       width: '700px',
-      data: { messages, trainingName },
+      data: { type: 'training', messages, trainingName },
       enterAnimationDuration,
       exitAnimationDuration,
     });
