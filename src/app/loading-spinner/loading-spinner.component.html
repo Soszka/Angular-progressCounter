@@ -1,1 +1,5 @@
-<p>loading-spinner works!</p>
+@if (isLoading()) {
+  <div class="overlay">
+    <mat-spinner></mat-spinner>
+  </div>
+}
