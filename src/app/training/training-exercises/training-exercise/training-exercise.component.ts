@@ -3,7 +3,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
 import { NavigationComponent } from '../../../shared/navigation/navigation.component';
 import { FooterComponent } from '../../../shared/footer/footer.component';
 import { CommonModule } from '@angular/common';
@@ -58,6 +57,11 @@ export class TrainingExerciseComponent {
     const exercise = this.trainingService.getCurrentExercise();
     this.exerciseName = exercise ? exercise.name : 'Nieznane Ćwiczenie';
     this.exerciseData = exercise || this.getDefaultExerciseData();
+    this.exerciseData.dailyData.sort((a, b) => {
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      return dateB - dateA;
+    });
     this.dataSource = new MatTableDataSource<ExerciseDailyData>(this.exerciseData.dailyData);
     this.dataSource.paginator = this.paginator;
   }
@@ -84,10 +88,14 @@ export class TrainingExerciseComponent {
   }
 
   onAddExercisePosition(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(AddExercisePositionDialogComponent, {
+    const dialogRef = this.dialog.open(AddExercisePositionDialogComponent, {
       width: '1000px',
       enterAnimationDuration,
       exitAnimationDuration,
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadExerciseData(); 
     });
   }
 
@@ -114,7 +122,7 @@ export class TrainingExerciseComponent {
       confirmMessage: "Czy na pewno chcesz usunąć wybraną pozycję?",
       successMessage: "Pomyślnie usunięto wybraną pozycję z historii twojego ćwiczenia" 
     };
-    this.dialog.open(RemovingConfirmDialogComponent, {
+    const dialogRef = this.dialog.open(RemovingConfirmDialogComponent, {
       width: '600px',
       data: { 
         type: 'position', 
@@ -125,6 +133,10 @@ export class TrainingExerciseComponent {
       },
       enterAnimationDuration,
       exitAnimationDuration,
+    });
+  
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadExerciseData(); 
     });
   }
 }

@@ -19,7 +19,7 @@
         <ng-template matStepLabel>CIĘŻAR</ng-template>
         <mat-form-field>
           <mat-label>Ciężar ( KG )</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="50" required>
+          <input matInput formControlName="secondCtrl" type="number" placeholder="50" required>
         </mat-form-field>
         <button mat-button matStepperNext>DALEJ</button>
       </form>
@@ -29,7 +29,7 @@
         <ng-template matStepLabel>POWTÓRZENIA</ng-template>
         <mat-form-field>
           <mat-label>Liczba powtórzeń</mat-label>
-          <input matInput formControlName="thirdCtrl" placeholder="8" required>
+          <input matInput formControlName="thirdCtrl" type="number" placeholder="8" required>
         </mat-form-field>
         <button mat-button matStepperNext>DALEJ</button>
       </form>
