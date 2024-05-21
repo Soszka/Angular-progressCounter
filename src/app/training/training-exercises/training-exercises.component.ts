@@ -9,9 +9,6 @@ import { Router } from '@angular/router';
 import { TrainingService } from '../training.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddExerciseDialogComponent } from '../training-dialogs/add-exercise-dialog/add-exercise-dialog.component';
-import { Training } from '../training.model';
-import { signal } from '@angular/core';
-
 
 @Component({
   selector: 'app-training-exercises',

@@ -5,7 +5,7 @@
   text-align: center;
 
   p {
-    @include text-style(22px, $header-font-weight);
+    @include text-style(22px, 550);
     margin-bottom: 0;
   }
 }
