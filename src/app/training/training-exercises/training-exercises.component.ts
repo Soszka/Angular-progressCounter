@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { TrainingService } from '../training.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddExerciseDialogComponent } from '../training-dialogs/add-exercise-dialog/add-exercise-dialog.component';
+import { TrainingsStore } from '../../store/trainings.store';
 
 @Component({
   selector: 'app-training-exercises',
@@ -26,6 +27,7 @@ import { AddExerciseDialogComponent } from '../training-dialogs/add-exercise-dia
 })
 export class TrainingExercisesComponent {
 
+  store = inject(TrainingsStore);
   trainingService = inject(TrainingService);
   trainings = computed(() => this.trainingService.processedTrainings());
 
@@ -34,7 +36,7 @@ export class TrainingExercisesComponent {
     public dialog: MatDialog) {}
 
   ngOnInit() {
-    this.trainingService.store.loadTrainings();
+    this.store.loadTrainings();
   }
 
   onEditClick(exerciseName: string) {

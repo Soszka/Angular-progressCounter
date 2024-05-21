@@ -106,15 +106,17 @@ export class AddExercisePositionDialogComponent {
 
       const currentTrainingName = this.trainingService.getCurrentTrainingName();
       const currentExerciseName = this.trainingService.getCurrentExercise().name;
-      this.store.addExercisePosition(currentTrainingName, currentExerciseName, newPosition);
-
-      const information = "Pomyślnie dodano nową pozycję do historii twojego ćwiczenia";
-      this.dialogRef.close();
-      this.dialog.open(InfoDialogComponent, {
-        width: '600px',
-        data: { information },
-        enterAnimationDuration,
-        exitAnimationDuration,
+      this.store.addExercisePosition(currentTrainingName, currentExerciseName, newPosition).subscribe({
+        next: () => {
+          this.dialogRef.close(true);  
+          const information = "Pomyślnie dodano nową pozycję do historii twojego ćwiczenia";
+          this.dialog.open(InfoDialogComponent, {
+            width: '600px',
+            data: { information },
+            enterAnimationDuration,
+            exitAnimationDuration,
+          });
+        },
       });
     }
   }

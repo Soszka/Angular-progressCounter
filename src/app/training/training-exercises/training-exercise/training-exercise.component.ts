@@ -1,4 +1,4 @@
-import { Component, ViewChild, input, inject } from '@angular/core';
+import { Component, ViewChild, input, inject, effect} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -33,6 +33,7 @@ import { TrainingsStore } from '../../../store/trainings.store';
   styleUrl: './training-exercise.component.scss'
 })
 export class TrainingExerciseComponent {
+
   displayedColumns: string[] = ['date', 'repetitions', 'weight', 'remove'];
   dataSource!: MatTableDataSource<ExerciseDailyData>;
   navBackground = input('linear-gradient(to top, rgb(13, 53, 228), rgb(1, 0, 53))');
@@ -93,7 +94,6 @@ export class TrainingExerciseComponent {
       enterAnimationDuration,
       exitAnimationDuration,
     });
-
     dialogRef.afterClosed().subscribe(() => {
       this.loadExerciseData(); 
     });
@@ -134,7 +134,6 @@ export class TrainingExerciseComponent {
       enterAnimationDuration,
       exitAnimationDuration,
     });
-  
     dialogRef.afterClosed().subscribe(() => {
       this.loadExerciseData(); 
     });
