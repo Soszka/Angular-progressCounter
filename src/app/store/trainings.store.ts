@@ -70,17 +70,12 @@ export const TrainingsStore = signalStore(
         finalize(() => patchState(store, { loading: false }))
       );
     },
-    addExercisePosition(trainingName: string, exerciseName: string, newPosition: ExerciseDailyData) {
+    addExercisePosition(trainingName: string, exerciseName: string, newPosition: ExerciseDailyData): Observable<void> {
       patchState(store, { loading: true });
-      trainingDataService.addExercisePosition(trainingName, exerciseName, newPosition).subscribe({
-        next: () => {
-          this.loadTrainings();
-          patchState(store, { loading: false });
-        },
-        error: (err: any) => {
-          patchState(store, { error: err.message, loading: false });
-        }
-      });
+      return trainingDataService.addExercisePosition(trainingName, exerciseName, newPosition).pipe(
+        tap(() => this.loadTrainings()),
+        finalize(() => patchState(store, { loading: false }))
+      );
     }
   }))
 );

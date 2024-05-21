@@ -5,9 +5,9 @@ import { Exercise, Training, ExerciseDailyData } from '../training/training.mode
 
 @Injectable({ providedIn: 'root' })
 export class TrainingService {
+  
   currentIndex = signal(0);
   store = inject(TrainingsStore);
-  loading = computed(() => this.store.loading());
   processedTrainings = computed(() => this.calculateProcessedTrainings());
   allExercises = computed(() => {
     return this.processedTrainings().reduce((exercises: Exercise[], training: Training) => {
