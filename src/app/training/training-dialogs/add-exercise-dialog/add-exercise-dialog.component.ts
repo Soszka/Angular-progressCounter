@@ -29,11 +29,12 @@ export class AddExerciseDialogComponent {
   onSave(enterAnimationDuration: string, exitAnimationDuration: string): void {
     if (this.exerciseName.trim()) {
       const formattedExerciseName = this.exerciseName.toUpperCase();
-      const currentTraining = this.trainingService.store.trainings().find(
-        training => training.category === this.data.trainingName
+      const allTrainings = this.trainingService.store.trainings();
+      const exerciseExists = allTrainings.some(training =>
+        training.exercises.some(ex => ex.name === formattedExerciseName)
       );
-      if (currentTraining && currentTraining.exercises.some(ex => ex.name === formattedExerciseName)) {
-        const information = "Ćwiczenie o takiej nazwie już istnieje w tym treningu!";
+      if (exerciseExists) {
+        const information = "Ćwiczenie o takiej nazwie już istnieje w jednym z treningów!";
         this.dialog.open(InfoDialogComponent, {
           width: '600px',
           data: { information },

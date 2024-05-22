@@ -52,6 +52,7 @@ mat-tab-group {
     background-size: cover;
     position: relative;
     z-index: 0;
+    overflow: hidden;
 
     h2 {
       @include heading-style($title-font-size * 0.9,  $header-font-weight * 1.1, white);

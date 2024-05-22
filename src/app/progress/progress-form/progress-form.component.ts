@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, signal, inject, OnInit, computed } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
-import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { JsonPipe} from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { Training, Exercise } from '../../training/training.model';
+import { TrainingsStore } from '../../store/trainings.store';
+import { MatDialog } from '@angular/material/dialog';
+import { InfoDialogComponent } from '../../training/training-dialogs/info-dialog/info-dialog.component';
 
 @Component({
   selector: 'app-progress-form',
@@ -16,19 +19,68 @@ import { ButtonComponent } from '../../shared/button/button.component';
     MatDatepickerModule, 
     FormsModule, 
     ReactiveFormsModule, 
-    JsonPipe, 
     MatSelectModule,
     ButtonComponent
   ],
   templateUrl: './progress-form.component.html',
   styleUrl: './progress-form.component.scss'
 })
-export class ProgressFormComponent {
-  trainingList: string[] = ['Push', 'Pull', 'Legs'];
-  exercisesList: string[] = ['Wyciskanie na sztandzie', 'Wyciskanie na porączach', 'Wyciskanie Wąsko', 'Rozpiętki', 'Triceps na sznurku'];
+export class ProgressFormComponent implements OnInit {
 
-  range = new FormGroup({
-    start: new FormControl<Date | null>(null),
-    end: new FormControl<Date | null>(null),
-  });
+  trainingList = computed(() => this.store.trainings());
+  exercisesList = computed(() => this.selectedTraining()?.exercises || []);
+  
+  selectedTraining = signal<Training | undefined>(undefined);
+  selectedExercise = signal<Exercise | undefined>(undefined);
+  selectedRange = signal<string | undefined>(undefined);
+
+  dateRanges = [
+    { label: 'OSTATNI MIESIĄC', value: '1m' },
+    { label: 'OSTATNIE 3 MIESIĄCE', value: '3m' },
+    { label: 'OSTATNIE 6 MIESIĘCY', value: '6m' },
+    { label: 'OSTATNI ROK', value: '1y' },
+    { label: 'OSTATNIE 5 LAT', value: '5y' }
+  ];
+
+  store = inject(TrainingsStore);
+  dialog = inject(MatDialog);
+
+  constructor() {}
+
+  ngOnInit() {
+    this.store.loadTrainings();
+  }
+
+  updateSelectedTraining(training: Training) {
+    this.selectedTraining.set(training);
+  }
+
+  updateSelectedExercise(exercise: Exercise) {
+    this.selectedExercise.set(exercise);
+  }
+
+  updateSelectedRange(range: string) {
+    this.selectedRange.set(range);
+  }
+
+  checkProgress() {
+    const training = this.selectedTraining();
+    const exercise = this.selectedExercise();
+    const range = this.selectedRange();
+
+    if (!training || !exercise || !range) {
+      this.dialog.open(InfoDialogComponent, {
+        width: '600px',
+        data: { information: 'Proszę uzupełnić wszystkie pola!' },
+        enterAnimationDuration: '300ms',
+        exitAnimationDuration: '300ms',
+      });
+    } else {
+      console.log('zaznaczono', {
+        training: training.category,
+        exercise: exercise.name,
+        range: range
+      });
+    }
+  }
 }
