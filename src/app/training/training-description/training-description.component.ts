@@ -22,7 +22,7 @@ export class TrainingDescriptionComponent {
   openModifyDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(ModifyTrainingDialogComponent, {
       width: '1000px',
-      maxHeight: '500px',
+      maxHeight: '550px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
