@@ -1,16 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
 import { ProgressChartsDescriptionComponent } from './progress-charts-description/progress-charts-description.component';
+import { ProgressService } from '../progress.service';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-progress-charts',
   standalone: true,
-  imports: [ NgxChartsModule, ProgressChartsDescriptionComponent ],
+  imports: [ 
+    NgxChartsModule, 
+    ProgressChartsDescriptionComponent,
+    MatCardModule
+  ],
   templateUrl: './progress-charts.component.html',
   styleUrl: './progress-charts.component.scss'
 })
 export class ProgressChartsComponent {
+
   view: [number, number] = [1200, 350];
   colorScheme: Color = {
     name: 'myScheme',
@@ -18,54 +25,51 @@ export class ProgressChartsComponent {
     group: ScaleType.Ordinal,
     domain: ['rgb(192, 0, 0)']
   };
-  chartData!: any[];
-  frequencyData!: any[];
   yAxisLabel = 'CIĘŻAR ( KG )';
   frequencyYAxisLabel = 'ILOŚĆ ĆWICZEŃ';
-  
-  data = { 
-    name: "WYCISKANIE NA ŁAWCE PŁASKIEJ", 
-    dailyData: [
-      { date: "2023-11-19", repetitions: 8, weight: 48 },
-      { date: "2023-12-03", repetitions: 8, weight: 50 },
-      { date: "2023-12-17", repetitions: 8, weight: 52 },
-      { date: "2023-12-31", repetitions: 8, weight: 55 },
-      { date: "2024-01-14", repetitions: 8, weight: 60 },
-      { date: "2024-01-28", repetitions: 6, weight: 65 },
-      { date: "2024-02-11", repetitions: 6, weight: 70 },
-      { date: "2024-02-25", repetitions: 6, weight: 75 },
-      { date: "2024-03-11", repetitions: 6, weight: 80 },
-      { date: "2024-03-25", repetitions: 6, weight: 85 }
-    ]
-  }
 
-  constructor() {
-    this.chartData = [{
-      name: this.data.name,
-      series: this.data.dailyData.map(item => ({
+  progressService = inject(ProgressService);
+  chartData = computed(() => this.getChartData());
+  frequencyData = computed(() => this.getFrequencyData());
+  hasFilteredData = computed(() => this.progressService.hasFilteredData());
+
+  getChartData() {
+    const filteredData = this.progressService.filteredData();
+    const name = this.progressService.selectedExercise()?.name || '';
+
+    if (!filteredData.length) {
+      return [];
+    }
+
+    const sortedSeries = filteredData.slice().sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    return [{
+      name: name,
+      series: sortedSeries.map(item => ({
         name: item.date,
         value: item.weight
       }))
     }];
-    this.processFrequencyData();
   }
 
-  processFrequencyData() {
+  getFrequencyData() {
+    const filteredData = this.progressService.filteredData();
     const counts: { [key: string]: number } = {};
-    this.data.dailyData.forEach(item => {
-      const month = item.date.slice(0, 7); // yyyy-mm
+
+    filteredData.forEach(item => {
+      const month = item.date.slice(0, 7);
       if (counts[month]) {
         counts[month]++;
       } else {
         counts[month] = 1;
       }
     });
-
-    this.frequencyData = Object.keys(counts).map(month => {
-      return {
+    const sortedFrequencyData = Object.keys(counts)
+      .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
+      .map(month => ({
         name: month,
         value: counts[month]
-      };
-    });
+      }));
+
+    return sortedFrequencyData;
   }
 }

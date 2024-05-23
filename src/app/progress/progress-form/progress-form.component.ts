@@ -9,6 +9,7 @@ import { Training, Exercise } from '../../training/training.model';
 import { TrainingsStore } from '../../store/trainings.store';
 import { MatDialog } from '@angular/material/dialog';
 import { InfoDialogComponent } from '../../training/training-dialogs/info-dialog/info-dialog.component';
+import { ProgressService } from '../progress.service';
 
 @Component({
   selector: 'app-progress-form',
@@ -28,12 +29,8 @@ import { InfoDialogComponent } from '../../training/training-dialogs/info-dialog
 export class ProgressFormComponent implements OnInit {
 
   trainingList = computed(() => this.store.trainings());
-  exercisesList = computed(() => this.selectedTraining()?.exercises || []);
+  exercisesList = computed(() => this.progressService.selectedTraining()?.exercises || []);
   
-  selectedTraining = signal<Training | undefined>(undefined);
-  selectedExercise = signal<Exercise | undefined>(undefined);
-  selectedRange = signal<string | undefined>(undefined);
-
   dateRanges = [
     { label: 'OSTATNI MIESIĄC', value: '1m' },
     { label: 'OSTATNIE 3 MIESIĄCE', value: '3m' },
@@ -44,6 +41,7 @@ export class ProgressFormComponent implements OnInit {
 
   store = inject(TrainingsStore);
   dialog = inject(MatDialog);
+  progressService = inject(ProgressService);
 
   constructor() {}
 
@@ -52,21 +50,22 @@ export class ProgressFormComponent implements OnInit {
   }
 
   updateSelectedTraining(training: Training) {
-    this.selectedTraining.set(training);
+    this.progressService.setSelectedTraining(training);
+    this.progressService.setSelectedExercise(undefined);
   }
 
   updateSelectedExercise(exercise: Exercise) {
-    this.selectedExercise.set(exercise);
+    this.progressService.setSelectedExercise(exercise);
   }
 
   updateSelectedRange(range: string) {
-    this.selectedRange.set(range);
+    this.progressService.setSelectedRange(range);
   }
 
   checkProgress() {
-    const training = this.selectedTraining();
-    const exercise = this.selectedExercise();
-    const range = this.selectedRange();
+    const training = this.progressService.selectedTraining();
+    const exercise = this.progressService.selectedExercise();
+    const range = this.progressService.selectedRange();
 
     if (!training || !exercise || !range) {
       this.dialog.open(InfoDialogComponent, {
@@ -76,11 +75,19 @@ export class ProgressFormComponent implements OnInit {
         exitAnimationDuration: '300ms',
       });
     } else {
-      console.log('zaznaczono', {
-        training: training.category,
-        exercise: exercise.name,
-        range: range
-      });
+      this.progressService.updateFilteredData();
+      if (!this.progressService.hasFilteredData()) {
+        this.dialog.open(InfoDialogComponent, {
+          width: '600px',
+          data: { information: 'Nie znaleziono sesji treningowych dla wybranego zakresu. Wybierz inny zakres.' },
+          enterAnimationDuration: '300ms',
+          exitAnimationDuration: '300ms',
+        });
+      }
     }
+  }
+
+  ngOnDestroy() {
+    this.progressService.resetState();
   }
 }

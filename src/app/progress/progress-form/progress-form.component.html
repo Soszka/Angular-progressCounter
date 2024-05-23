@@ -3,8 +3,8 @@
     <mat-label>Wybierz Trening</mat-label>
     <mat-select 
       disableRipple 
-      [(ngModel)]="selectedTraining" 
-      (ngModelChange)="selectedTraining.set($event)">
+      [ngModel]="progressService.selectedTraining()" 
+      (ngModelChange)="updateSelectedTraining($event)">
       @for (training of trainingList(); track $index) {
         <mat-option [value]="training">{{ training.category }}</mat-option>
       }
@@ -14,9 +14,9 @@
   <mat-form-field>
     <mat-label>Wybierz ćwiczenie</mat-label>
     <mat-select 
-      [(ngModel)]="selectedExercise"
-      (ngModelChange)="selectedExercise.set($event)" 
-      [disabled]="!selectedTraining()">
+      [ngModel]="progressService.selectedExercise()" 
+      (ngModelChange)="updateSelectedExercise($event)" 
+      [disabled]="!progressService.selectedTraining()">
       @for (exercise of exercisesList(); track $index) {
         <mat-option [value]="exercise">{{ exercise.name }}</mat-option>
       }
@@ -26,8 +26,8 @@
   <mat-form-field>
     <mat-label>Wybierz zakres</mat-label>
     <mat-select 
-      [(ngModel)]="selectedRange" 
-      (ngModelChange)="selectedRange.set($event)">
+      [ngModel]="progressService.selectedRange()" 
+      (ngModelChange)="updateSelectedRange($event)">
       @for (range of dateRanges; track $index) {
         <mat-option [value]="range.value">{{ range.label }}</mat-option>
       }
