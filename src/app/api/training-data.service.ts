@@ -50,7 +50,11 @@ export class TrainingDataService {
     const newExercise = {
       name: exerciseName,
       dailyData: [
-        { date: new Date().toISOString().split('T')[0], repetitions: 0, weight: 0 }
+        { 
+          date: new Date().toISOString().split('T')[0], 
+          repetitions: 0, 
+          weight: 0 
+        }
       ]
     };
     return this.http.get<Exercise[]>(`${this.baseUrl}/${trainingName}.json`).pipe(
