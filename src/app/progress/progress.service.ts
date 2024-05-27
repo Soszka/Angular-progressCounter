@@ -10,6 +10,10 @@ export class ProgressService {
   selectedRange = signal<string | undefined>(undefined);
   filteredData = signal<ExerciseDailyData[]>([]);
   hasFilteredData = signal<boolean>(false);
+  sessionCount = signal<number>(0);
+  maxWeight = signal<number>(0);
+  progress = signal<boolean>(false);
+  selectedPeriod = signal<string>('');
 
   setSelectedTraining(training: Training | undefined) {
     this.selectedTraining.set(training);
@@ -21,8 +25,20 @@ export class ProgressService {
 
   setSelectedRange(range: string | undefined) {
     this.selectedRange.set(range);
+    this.selectedPeriod.set(this.getPeriodLabel(range)); 
   }
 
+  getPeriodLabel(range: string | undefined): string {
+    const periodMap: { [key: string]: string } = {
+      '1m': 'ostatniego miesiąca',
+      '3m': 'ostatnich trzech miesięcy',
+      '6m': 'ostatnich sześciu miesięcy',
+      '1y': 'ostatniego roku',
+      '5y': 'ostatnich pięciu lat'
+    };
+    return range ? periodMap[range] : '';
+  }
+  
   updateFilteredData() {
     const training = this.selectedTraining();
     const exercise = this.selectedExercise();
@@ -49,7 +65,31 @@ export class ProgressService {
     const filtered = exercise.dailyData.filter(data => new Date(data.date) >= startDate);
     this.filteredData.set(filtered);
     this.hasFilteredData.set(filtered.length > 0);
+    this.calculateStats(filtered);
   }
+
+  calculateStats(filteredData: ExerciseDailyData[]) {
+    if (filteredData.length === 0) {
+      this.sessionCount.set(0);
+      this.maxWeight.set(0);
+      this.progress.set(false);
+      return;
+    }
+
+    const sortedData = filteredData.slice().sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    const sessionCount = sortedData.length;
+    const maxWeight = Math.max(...sortedData.map(data => data.weight));
+    const firstWeight = sortedData[0].weight;
+    const lastWeight = sortedData[sortedData.length - 1].weight;
+    const progress = lastWeight > firstWeight;
+
+    console.log(`First weight: ${firstWeight}, Last weight: ${lastWeight}, Progress: ${progress}`);
+
+    this.sessionCount.set(sessionCount);
+    this.maxWeight.set(maxWeight);
+    this.progress.set(progress);
+  }
+
 
   resetState() {
     this.setSelectedTraining(undefined);
