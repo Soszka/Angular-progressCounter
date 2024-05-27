@@ -5,12 +5,17 @@
 
   mat-card {
     margin: 30px auto;
-    max-width: 700px;
-    padding: 40px 30px;
-    font-size: 36px;
-    font-weight: 400;
+    max-width: 800px;
+    padding: 30px;
+    font-size: 28px;
+    text-transform: uppercase;
+    font-weight: 450;
     line-height: 1.7;
     text-align: center;
+
+    p {
+      margin-bottom: 0;
+    }
   }
 }
 
