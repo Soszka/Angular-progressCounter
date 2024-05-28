@@ -16,4 +16,9 @@ export class AuthService {
   logout() {
     return from(signOut(this.auth));
   }
+
+  isLoggedIn(): boolean {
+    const user = this.auth.currentUser;
+    return user !== null;
+  }
 }

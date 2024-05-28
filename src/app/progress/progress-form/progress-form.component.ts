@@ -28,8 +28,8 @@ import { ProgressService } from '../progress.service';
 })
 export class ProgressFormComponent implements OnInit {
 
-  trainingList = computed(() => this.store.trainings());
-  exercisesList = computed(() => this.progressService.selectedTraining()?.exercises || []);
+  trainingList = computed(() => this.store.trainings() || []);
+  exercisesList = computed(() => this.progressService.selectedTraining()?.exercises);
   
   dateRanges = [
     { label: 'OSTATNI MIESIĄC', value: '1m' },
