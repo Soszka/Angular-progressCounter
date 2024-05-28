@@ -29,11 +29,9 @@ export class TrainingExercisesComponent {
 
   store = inject(TrainingsStore);
   trainingService = inject(TrainingService);
+  router = inject(Router);
+  dialog = inject(MatDialog);
   trainings = computed(() => this.trainingService.processedTrainings());
-
-  constructor(
-    private router: Router,
-    public dialog: MatDialog) {}
 
   ngOnInit() {
     this.store.loadTrainings();

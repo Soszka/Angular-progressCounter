@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, inject} from '@angular/core';
 import { NavigationComponent } from '../../shared/navigation/navigation.component';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { Router } from '@angular/router';
@@ -19,7 +19,7 @@ export class HomeSplashComponent {
    czy jesteś nowicjuszem, czy zaawansowanym sportowcem, nasze narzędzie dostosuje się do Twoich potrzeb.
   `;
 
-  constructor(private router: Router) {}
+  router = inject(Router)
 
   navigateToAuth() {
     this.router.navigate(['/auth']); 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonComponent } from '../../shared/button/button.component';
 
@@ -17,7 +17,7 @@ export class HomeAdventagesComponent {
     które metody są najbardziej efektywne, dostosować plany treningowe do aktualnych potrzeb oraz zapewnić ciągłą adaptację i 
     optymalizację procesu treningowego, co prowadzi do stałej poprawy wyników.`;
 
-  constructor(private router: Router) {}
+  router = inject(Router);
 
   navigateToProgress() {
     this.router.navigate(['/progress']); 

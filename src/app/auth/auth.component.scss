@@ -5,11 +5,52 @@
   min-height: 100vh;
 }
 
-mat-card {
+.login-form {
   width: 600px;
   padding: 40px 60px;
-  margin: 50px auto 60px;
+  margin: 50px auto 30px;
   text-align: center;
+}
+
+.login-info {
+  width: 1000px;
+  padding: 30px 50px;
+  margin: 30px auto 50px;
+
+  p {
+    @include text-style(18px, 400);
+    margin-bottom: 30px;
+  }
+
+  table {
+  
+    th {
+      @include heading-style(22px, 450, $text-color);
+      text-align: center;
+      width: 33%;
+    }
+  
+    .#{$mat-table-row}{
+      font-size: 18px;
+    }
+  
+    .#{$mat-table-cell} {
+      text-align: center;
+      padding: 20px 0;
+    }
+  }
+}
+
+.logout-info {
+  width: 900px;
+  padding: 30px 50px;
+  margin: 30px auto 40px;
+  text-align: center;
+
+  p {
+    @include text-style(18px, 420);
+    margin-bottom: 15px;
+  }
 }
 
 mat-form-field {

@@ -43,8 +43,6 @@ export class ProgressFormComponent implements OnInit {
   dialog = inject(MatDialog);
   progressService = inject(ProgressService);
 
-  constructor() {}
-
   ngOnInit() {
     this.store.loadTrainings();
   }
