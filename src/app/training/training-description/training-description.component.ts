@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ModifyTrainingDialogComponent } from '../training-dialogs/modify-training-dialog/modify-training-dialog.component';
@@ -17,7 +17,7 @@ export class TrainingDescriptionComponent {
     Do każdego z treningów będziesz mógł dodawać ćwiczenia, a następnie zapisywać swoje wyniki.
     Pamiętaj, że gdy zdecydujesz się usunąć któryś z treningów, cała historia związana z osiągnięciami
   `
-  constructor(public dialog: MatDialog) {}
+  dialog = inject(MatDialog)
 
   openModifyDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(ModifyTrainingDialogComponent, {

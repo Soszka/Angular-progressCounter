@@ -7,10 +7,17 @@ import { RouterModule } from '@angular/router';
 import { routes } from '../src/app/app.routes';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpClientModule } from '@angular/common/http';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { environment } from './app/api/firebase-config';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(
+      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+      provideFirestore(() => getFirestore()),
+      provideAuth(() => getAuth()),
       BrowserModule,
       BrowserAnimationsModule,
       NgxChartsModule,

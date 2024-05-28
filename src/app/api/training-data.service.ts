@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Exercise, Training, ExerciseDailyData } from '../training/training.model';
+import { Auth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,7 @@ export class TrainingDataService {
 
   private baseUrl = 'https://progress-counter-8443f-default-rtdb.europe-west1.firebasedatabase.app/database';
   http = inject(HttpClient);
-
-  constructor() {}
+  auth = inject(Auth);
 
   getTrainings(): Observable<Training[]> {
     return this.http.get<{ [key: string]: Exercise[] }>(`${this.baseUrl}.json`).pipe(

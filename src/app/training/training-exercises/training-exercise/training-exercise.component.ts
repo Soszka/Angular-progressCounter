@@ -44,11 +44,12 @@ export class TrainingExerciseComponent {
   titleColor = input("rgb(4, 1, 172)");
   exerciseName!: string;
   exerciseData!: Exercise;
+
   store = inject(TrainingsStore);
+  trainingService = inject(TrainingService);
+  dialog = inject(MatDialog)
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  constructor(private trainingService: TrainingService, public dialog: MatDialog) {} 
 
   ngAfterViewInit() {
     this.loadExerciseData();
