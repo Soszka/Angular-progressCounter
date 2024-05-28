@@ -1,7 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap} from 'rxjs/operators';
+import { of } from 'rxjs';
 import { Exercise, Training, ExerciseDailyData } from '../training/training.model';
 import { Auth } from '@angular/fire/auth';
 
@@ -14,8 +15,17 @@ export class TrainingDataService {
   http = inject(HttpClient);
   auth = inject(Auth);
 
+  private getUserUid(): string {
+    const currentUser = this.auth.currentUser;
+    return currentUser?.uid || '';
+  }
+
   getTrainings(): Observable<Training[]> {
-    return this.http.get<{ [key: string]: Exercise[] }>(`${this.baseUrl}.json`).pipe(
+    const uid = this.getUserUid();
+    if (!uid) {
+      return of([]);
+    }
+    return this.http.get<{ [key: string]: Exercise[] }>(`${this.baseUrl}/users/${uid}.json`).pipe(
       map(response => {
         const trainings: Training[] = [];
         for (const category in response) {
@@ -29,6 +39,7 @@ export class TrainingDataService {
   }
 
   addTraining(trainingName: string): Observable<void> {
+    const uid = this.getUserUid();
     const newTraining = {
       [trainingName]: [
         {
@@ -39,45 +50,45 @@ export class TrainingDataService {
         }
       ]
     };
-    return this.http.patch<void>(`${this.baseUrl}.json`, newTraining);
+    return this.http.patch<void>(`${this.baseUrl}/users/${uid}.json`, newTraining);
   }
 
   deleteTraining(trainingName: string): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${trainingName}.json`);
+    const uid = this.getUserUid();
+    return this.http.delete<void>(`${this.baseUrl}/users/${uid}/${trainingName}.json`);
   }
 
   addExercise(trainingName: string, exerciseName: string): Observable<void> {
+    const uid = this.getUserUid();
     const newExercise = {
       name: exerciseName,
       dailyData: [
-        { 
-          date: new Date().toISOString().split('T')[0], 
-          repetitions: 0, 
-          weight: 0 
-        }
+        { date: new Date().toISOString().split('T')[0], repetitions: 0, weight: 0 }
       ]
     };
-    return this.http.get<Exercise[]>(`${this.baseUrl}/${trainingName}.json`).pipe(
+    return this.http.get<Exercise[]>(`${this.baseUrl}/users/${uid}/${trainingName}.json`).pipe(
       switchMap(existingExercises => {
         const updatedExercises = existingExercises ? [...existingExercises, newExercise] : [newExercise];
         const updatedTraining = { [trainingName]: updatedExercises };
-        return this.http.patch<void>(`${this.baseUrl}.json`, updatedTraining);
+        return this.http.patch<void>(`${this.baseUrl}/users/${uid}.json`, updatedTraining);
       })
     );
   }
 
   deleteExercise(trainingName: string, exerciseName: string): Observable<void> {
-    return this.http.get<Exercise[]>(`${this.baseUrl}/${trainingName}.json`).pipe(
+    const uid = this.getUserUid();
+    return this.http.get<Exercise[]>(`${this.baseUrl}/users/${uid}/${trainingName}.json`).pipe(
       switchMap(existingExercises => {
         const updatedExercises = existingExercises.filter(exercise => exercise.name !== exerciseName);
         const updatedTraining = { [trainingName]: updatedExercises };
-        return this.http.patch<void>(`${this.baseUrl}.json`, updatedTraining);
+        return this.http.patch<void>(`${this.baseUrl}/users/${uid}.json`, updatedTraining);
       })
     );
   }
 
   deleteExercisePosition(trainingName: string, exerciseName: string, date: string): Observable<void> {
-    return this.http.get<Exercise[]>(`${this.baseUrl}/${trainingName}.json`).pipe(
+    const uid = this.getUserUid();
+    return this.http.get<Exercise[]>(`${this.baseUrl}/users/${uid}/${trainingName}.json`).pipe(
       switchMap(existingExercises => {
         const updatedExercises = existingExercises.map(exercise => {
           if (exercise.name === exerciseName) {
@@ -89,13 +100,14 @@ export class TrainingDataService {
           return exercise;
         });
         const updatedTraining = { [trainingName]: updatedExercises };
-        return this.http.patch<void>(`${this.baseUrl}.json`, updatedTraining);
+        return this.http.patch<void>(`${this.baseUrl}/users/${uid}.json`, updatedTraining);
       })
     );
   }
 
   addExercisePosition(trainingName: string, exerciseName: string, newPosition: ExerciseDailyData): Observable<void> {
-    return this.http.get<Exercise[]>(`${this.baseUrl}/${trainingName}.json`).pipe(
+    const uid = this.getUserUid();
+    return this.http.get<Exercise[]>(`${this.baseUrl}/users/${uid}/${trainingName}.json`).pipe(
       switchMap(existingExercises => {
         const updatedExercises = existingExercises.map(exercise => {
           if (exercise.name === exerciseName) {
@@ -107,7 +119,7 @@ export class TrainingDataService {
           return exercise;
         });
         const updatedTraining = { [trainingName]: updatedExercises };
-        return this.http.patch<void>(`${this.baseUrl}.json`, updatedTraining);
+        return this.http.patch<void>(`${this.baseUrl}/users/${uid}.json`, updatedTraining);
       })
     );
   }

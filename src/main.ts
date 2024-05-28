@@ -15,14 +15,14 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(
-      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-      provideFirestore(() => getFirestore()),
-      provideAuth(() => getAuth()),
       BrowserModule,
       BrowserAnimationsModule,
       NgxChartsModule,
       HttpClientModule,
       RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+      provideFirestore(() => getFirestore()),
+      provideAuth(() => getAuth()),
     )
   ]
 }).catch(err => console.error(err));
