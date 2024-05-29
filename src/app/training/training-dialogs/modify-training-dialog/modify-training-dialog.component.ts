@@ -33,15 +33,14 @@ export class ModifyTrainingDialogComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'exercisesCount', 'remove'];
   trainingStore = inject(TrainingsStore);
+  dialog = inject(MatDialog)
 
   dataSource = computed(() => this.trainingStore.trainings().map(training => ({
     name: training.category,
     exercisesCount: training.exercises.length
   })));
 
-  constructor(
-    public dialogRef: MatDialogRef<ModifyTrainingDialogComponent>, 
-    public dialog: MatDialog) {}
+  constructor( public dialogRef: MatDialogRef<ModifyTrainingDialogComponent> ) {}
 
   ngOnInit() {
     this.trainingStore.loadTrainings();

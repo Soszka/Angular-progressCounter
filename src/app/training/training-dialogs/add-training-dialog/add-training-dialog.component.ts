@@ -17,16 +17,14 @@ export class AddTrainingDialogComponent {
 
   trainingName: string = '';
   trainingStore = inject(TrainingsStore);
+  dialog = inject(MatDialog);
 
-  constructor(
-    public dialogRef: MatDialogRef<AddTrainingDialogComponent>, 
-    public dialog: MatDialog) {}
+  constructor( public dialogRef: MatDialogRef<AddTrainingDialogComponent> ) {}
   
   onSave(enterAnimationDuration: string, exitAnimationDuration: string): void {
     if (this.trainingName.trim()) {
       const formattedTrainingName = this.trainingName.toUpperCase();
       this.trainingStore.addTraining(formattedTrainingName);
-
       const information = "Pomyślnie dodano nowy trening do planu treningowego!";
       this.dialogRef.close();
       this.dialog.open(InfoDialogComponent, {
