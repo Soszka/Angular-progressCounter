@@ -16,11 +16,12 @@ export class RemovingConfirmDialogComponent {
 
   trainingStore = inject(TrainingsStore);
   router = inject(Router);
+  dialog = inject(MatDialog)
 
   constructor(
     public dialogRef: MatDialogRef<RemovingConfirmDialogComponent>, 
-    public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any) {}
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 
   onRemove(enterAnimationDuration: string, exitAnimationDuration: string): void {
     const currentTraining = this.trainingStore.trainings().find(training => training.category === this.data.trainingName);

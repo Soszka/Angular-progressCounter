@@ -19,9 +19,6 @@ export const TrainingsStore = signalStore(
       trainingDataService.getTrainings().subscribe({
         next: (trainings: Training[]) => {
           patchState(store, { trainings, loading: false });
-        },
-        error: (err: any) => {
-          patchState(store, { error: err.message, loading: false });
         }
       });
     },
@@ -31,9 +28,6 @@ export const TrainingsStore = signalStore(
         next: () => {
           this.loadTrainings();
           patchState(store, { loading: false });
-        },
-        error: (err: any) => {
-          patchState(store, { error: err.message, loading: false });
         }
       });
     },
@@ -50,9 +44,6 @@ export const TrainingsStore = signalStore(
         next: () => {
           this.loadTrainings();
           patchState(store, { loading: false });
-        },
-        error: (err: any) => {
-          patchState(store, { error: err.message, loading: false });
         }
       });
     },

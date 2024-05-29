@@ -33,6 +33,11 @@ import { ExerciseDailyData } from '../../training.model';
 })
 export class AddExercisePositionDialogComponent {
 
+  trainingService = inject(TrainingService);
+  store = inject(TrainingsStore);
+  _formBuilder = inject(FormBuilder);
+  dialog = inject(MatDialog);
+
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', [Validators.required, this.dateValidator.bind(this)]],
   });
@@ -43,14 +48,7 @@ export class AddExercisePositionDialogComponent {
     thirdCtrl: ['', [Validators.required, Validators.max(100)]],
   });
 
-  trainingService = inject(TrainingService);
-  store = inject(TrainingsStore);
-
-  constructor(
-    public dialogRef: MatDialogRef<AddExercisePositionDialogComponent>, 
-    public dialog: MatDialog,
-    private _formBuilder: FormBuilder
-  ) {}
+  constructor( public dialogRef: MatDialogRef<AddExercisePositionDialogComponent> ) {}
 
   ngOnInit() {
     this.secondFormGroup.get('secondCtrl')?.valueChanges.subscribe(value => {

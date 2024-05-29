@@ -26,15 +26,17 @@
             <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
         </mat-form-field>
-        <app-button
-          [fontSize]="'22px'"
-          [backgroundColor]="'#00b806'"
-          [width]="'160px'"
-          [height]="'50px'"
-          [color]="'white'"
-          [margin]="'10px auto'"
-          (click)="onLogin()">ZALOGUJ
-        </app-button>
+        <div>
+          <app-button
+            [fontSize]="'22px'"
+            [backgroundColor]="'#00b806'"
+            [width]="'160px'"
+            [height]="'50px'"
+            [color]="'white'"
+            [margin]="'10px auto'"
+            (click)="onLogin()">ZALOGUJ
+          </app-button>
+        </div>
       </mat-card>
       
       <mat-card class="login-info">
@@ -64,15 +66,17 @@
     @if (user) {
       <mat-card class="logout-info">
         <p>{{ logoutDescription }}</p>
-        <app-button
-          [fontSize]="'22px'"
-          [backgroundColor]="'#00b806'"
-          [width]="'160px'"
-          [height]="'50px'"
-          [color]="'white'"
-          [margin]="'10px auto'"
-          (click)="onLogout()">WYLOGUJ
-        </app-button>
+        <div>
+          <app-button
+            [fontSize]="'22px'"
+            [backgroundColor]="'#00b806'"
+            [width]="'160px'"
+            [height]="'50px'"
+            [color]="'white'"
+            [margin]="'10px auto'"
+            (click)="onLogout()">WYLOGUJ
+          </app-button>
+        </div>
       </mat-card>
     }
   </div>

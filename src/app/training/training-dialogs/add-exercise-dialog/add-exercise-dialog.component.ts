@@ -21,10 +21,9 @@ export class AddExerciseDialogComponent {
   trainingStore = inject(TrainingsStore);
   trainingService = inject(TrainingService);
   data = inject(MAT_DIALOG_DATA);
+  dialog = inject(MatDialog)
 
-  constructor(
-    public dialogRef: MatDialogRef<AddExerciseDialogComponent>, 
-    public dialog: MatDialog) {}
+  constructor( public dialogRef: MatDialogRef<AddExerciseDialogComponent> ) {}
   
   onSave(enterAnimationDuration: string, exitAnimationDuration: string): void {
     if (this.exerciseName.trim()) {
