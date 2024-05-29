@@ -20,7 +20,7 @@ export class AuthGuard {
       return true;
     } else {
       this.dialog.open(InfoDialogComponent, {
-        width: '400px',
+        width: '550px',
         data: { information: 'Najpierw musisz się zalogować!' }
       });
       this.router.navigate(['/auth']);
