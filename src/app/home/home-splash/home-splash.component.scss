@@ -1,12 +1,12 @@
 @import '../../../styles.scss';
 
 .splash {
-  height: 100vh;
   background: url('../../../assets/splash_foto.jpg') no-repeat center center;
   background-size: cover;
   position: relative;
   background-attachment: fixed;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+  z-index: 1; 
 }
 
 .splash:before {
@@ -17,17 +17,15 @@
   right: 0;
   bottom: 0;
   background-color: $home-background-layer-color; 
+  z-index: -1; 
 }
 
 .splash-content {
+  margin: 60px auto 0;
   @include flex(column, center, center);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   color: $text-secondary-color;
-  z-index: 1;
+  z-index: 0;
   width: 70%;
 
   h1 {

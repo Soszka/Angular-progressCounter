@@ -18,7 +18,10 @@
     </div>
   </nav>
   <app-expanded-nav 
-    [isNavExpanded]="isNavExpanded" 
+    [isNavExpanded]="isNavExpanded"
+    [expandedLinkColor]="expandedLinkColor()" 
+    [expandedActiveLinkBg]="expandedActiveLinkBg()"
+    [expandedActiveLinkColor]="expandedActiveLinkColor()"
     (clickedLinkEvent)="handleClickedLink()">
   </app-expanded-nav>
 </div>

@@ -10,3 +10,9 @@ body {
   line-height: 1.6;
   font-size: $content-font-size;
 }
+
+body.overflowY-hidden {
+  overflow-y: hidden;
+  position: fixed;
+  width: 100%;
+}
