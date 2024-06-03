@@ -8,7 +8,7 @@
   position: relative;
   background-attachment: fixed;
   @include large-screens {
-    padding: 30px 30px 40px;
+    padding: 30px 10px 40px;
     height: auto;
     margin-top: 0px;
   }
@@ -20,6 +20,9 @@
     position: relative;
     color: $text-secondary-color;
     z-index: 1;
+    @include large-screens {
+      @include flex(column, center, center);
+    }
   }
 
   p {
@@ -31,9 +34,7 @@
     @include large-screens {
       margin-top: 20px;
       padding: 0;
-    }
-    @include medium-screens {
-      font-size: 16px;
+      border: none;
     }
   }
 
@@ -50,6 +51,10 @@
     h4 {
       @include heading-style($content-font-size * 1.25, 550, $text-secondary-color);
       margin-bottom: 5px;
+
+      @include large-screens {
+        display: none;
+      }
     }
   }
 }

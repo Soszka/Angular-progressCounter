@@ -7,6 +7,7 @@
   background-attachment: fixed;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
   z-index: 1; 
+  text-align: center;
 }
 
 .splash:before {
@@ -28,6 +29,11 @@
   z-index: 0;
   width: 70%;
 
+  @include large-screens {
+    margin: 30px auto;
+    width: 100%;
+  }
+
   h1 {
     @include text-style($title-font-size * 1.1, 650);
     margin-bottom: 0px;
@@ -37,9 +43,17 @@
   h2 {
     @include text-style($content-font-size * 1.5, 575);
     margin-bottom: 20px;
+
+    @include large-screens {
+      margin: 25px 3px 20px;
+    }
   }
 
   p {
     @include text-style($content-font-size * 0.9, normal);
+
+    @include large-screens {
+      display: none;
+    }
   }
 }
