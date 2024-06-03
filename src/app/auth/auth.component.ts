@@ -51,6 +51,9 @@ export class AuthComponent {
   navBackground = input('linear-gradient(to top, rgb(47, 202, 0), rgb(11, 46, 0))');
   footerBackground = input('linear-gradient(to right, rgb(23, 207, 6), rgb(15, 58, 2))');
   footerAuthorColor = input('rgb(24, 230, 5)');
+  expandedLinkColor = input('rgb(0, 105, 23)');
+  expandedActiveLinkColor = input('white');
+  expandedActiveLinkBg = input('linear-gradient(to bottom, rgb(23, 207, 6), rgb(15, 58, 2))');
   subtitle = input('Zacznij od ...');
   title = input('Zalogowania');
   titleColor = input('rgb(19, 168, 14)');

@@ -1,16 +1,12 @@
 @import '../../../styles.scss';
 
-.navigation {
-  @include large-screens {
-    border-bottom: 2px solid rgb(0, 0, 0);
-  }
-}
-
 nav {
   @include flex(row, space-between, stretch);
   @include large-screens {
     @include flex(column, space-between, center);
   }
+  position: relative; // Ensure nav is positioned correctly
+  z-index: 2; 
   
   .logo {
     margin: 25px 70px 20px 130px;

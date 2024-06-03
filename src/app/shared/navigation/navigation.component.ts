@@ -24,6 +24,9 @@ export class NavigationComponent {
   faDumbbell = faDumbbell;
   isNavExpanded: boolean = false;
   navBackground = input<string>();
+  expandedLinkColor = input<string>();
+  expandedActiveLinkColor = input<string>();
+  expandedActiveLinkBg = input<string>();
 
   links = [
     { name: 'TRENING', path: '/training' },

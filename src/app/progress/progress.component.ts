@@ -22,6 +22,9 @@ export class ProgressComponent {
   navBackground = input('linear-gradient(to top, rgb(224, 0, 0), rgb(46, 0, 0))');
   footerBackground = input('linear-gradient(to right, rgb(201, 8, 8), rgb(78, 0, 0))');
   footerAuthorColor = input('rgb(230, 9, 9)');
+  expandedLinkColor = input('rgb(145, 0, 0)');
+  expandedActiveLinkColor = input('white');
+  expandedActiveLinkBg = input('linear-gradient(to bottom, rgb(224, 0, 0), rgb(46, 0, 0))');
   subtitle = input("Przeanalizuj swój ...");
   title = input("POSTĘP");
   titleColor = input("rgb(218, 17, 17)")

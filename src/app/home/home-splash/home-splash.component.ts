@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 })
 export class HomeSplashComponent {
   navBackground = input('inherit');
+  expandedLinkColor = input('white');
+  expandedActiveLinkColor = input('rgb(17, 0, 78)');
+  expandedActiveLinkBg = input('white');
   title: string = 'Licznik Progresu';
   subtitle: string = 'Regularnie monitoruj i osiągaj swoje cele treningowe';
   description = `Licznik Progresu to Twoje centrum zarządzania treningiem, które pomaga śledzić postępy,

@@ -1,14 +1,15 @@
-import { Component, Input, Output, EventEmitter  } from '@angular/core';
+import { Component, input, Output, EventEmitter, inject  } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { faDumbbell, faSignInAlt, faChartLine, faFire, faHome} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { group } from '@angular/animations';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-expanded-nav',
   standalone: true,
-  imports: [FontAwesomeModule, RouterLink, RouterLinkActive],
+  imports: [FontAwesomeModule, RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './expanded-nav.component.html',
   styleUrl: './expanded-nav.component.scss',
   animations: [
@@ -51,16 +52,33 @@ export class ExpandedNavComponent {
   faDumbbell = faDumbbell;
   faSignInAlt = faSignInAlt;
   faChartLine = faChartLine;
-  faFire = faFire; 
+  faFire = faFire;
+  
+  router = inject(Router)
 
-  @Input() isNavExpanded!: boolean;
+  isNavExpanded = input<boolean>();
+  expandedLinkColor = input<string>();
+  expandedActiveLinkColor = input<string>();
+  expandedActiveLinkBg = input<string>();
   @Output() clickedLinkEvent = new EventEmitter<void>();
 
+  links = [
+    { path: '/', label: 'STRONA GŁÓWNA', icon: this.faHome },
+    { path: '/training', label: 'TRENING', icon: this.faDumbbell },
+    { path: '/progress', label: 'PROGRES', icon: this.faChartLine },
+    { path: '/auth', label: 'LOGOWANIE', icon: this.faSignInAlt },
+    { path: '/calories', label: 'KALORIE', icon: this.faFire }
+  ];
+
   get stateName(): string {
-    return this.isNavExpanded ? 'expanded' : 'collapsed';
+    return this.isNavExpanded() ? 'expanded' : 'collapsed';
   }
 
   clickedLink() {
     this.clickedLinkEvent.emit();
+  }
+
+  isActiveRoute(route: string): boolean {
+    return this.router.url === route;
   }
 }

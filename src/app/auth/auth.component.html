@@ -1,6 +1,11 @@
 <div class="auth">
   <div class="auth-content">
-    <app-navigation [navBackground]="navBackground()"></app-navigation>
+    <app-navigation 
+      [navBackground]="navBackground()"
+      [expandedLinkColor]="expandedLinkColor()"
+      [expandedActiveLinkColor]="expandedActiveLinkColor()"
+      [expandedActiveLinkBg]="expandedActiveLinkBg()">
+    </app-navigation>
     <app-title 
       [title]="title()"
       [subtitle]="subtitle()"

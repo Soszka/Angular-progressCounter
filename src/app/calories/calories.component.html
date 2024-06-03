@@ -1,6 +1,12 @@
 <div class="calories">
   <div class="container">
-    <app-navigation [navBackground]="navBackground()"></app-navigation>
+    <app-navigation 
+      [navBackground]="navBackground()"
+      [expandedLinkColor]="expandedLinkColor()"
+      [expandedActiveLinkColor]="expandedActiveLinkColor()"
+      [expandedActiveLinkBg]="expandedActiveLinkBg()"
+      >
+    </app-navigation>
     <app-title
       [title]="title()"
       [subtitle]="subtitle()"
