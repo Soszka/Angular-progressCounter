@@ -7,6 +7,10 @@
 .#{$mat-expansion-panel-collapsed}  {
   @include text-style($content-font-size * 0.9, 500);
   height: 65px;
+
+  @include medium-screens {
+    height: 100px;
+  }
 }
 
 .#{$mat-expansion-panel-expanded}  p {

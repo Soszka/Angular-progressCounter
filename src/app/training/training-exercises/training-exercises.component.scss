@@ -2,6 +2,9 @@
 
 .training-exercises {
   @include container(40px, 20px);
+  @include large-screens {
+    margin: 30px 10px 15px;
+  }
 }
 
 mat-tab-group {
@@ -14,6 +17,12 @@ mat-tab-group {
   margin: 60px auto;
   @include flex(row, flex-start, center);
   flex-wrap: wrap;
+  @include extra-large-screens {
+    justify-content: space-around;
+  }
+  @include large-screens {
+    margin: 30px auto;
+  }
 }
 
 .exercise {
@@ -23,6 +32,17 @@ mat-tab-group {
   height: 400px;
   perspective: 800px;
   -webkit-perspective: 800px;
+  @include extra-large-screens {
+    width: 43%;
+  }
+  @include medium-screens {
+    width: 70%;
+    margin: 10px auto;
+  }
+  @include small-screens {
+    width: 85%;
+  }
+  
 
 
   .exercise-card {

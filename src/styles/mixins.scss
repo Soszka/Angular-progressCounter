@@ -19,12 +19,20 @@
   font-weight: $weight;
   color: $color;
   line-height: 1.6;
+
+  @include medium-screens {
+    font-size: $size * 0.9
+  }
 }
 
 @mixin text-style($size, $weight) {
   font-size: $size;
   font-weight: $weight;
   line-height: 1.6;
+
+  @include medium-screens {
+    font-size: $size * 0.95
+  }
 }
 
 @mixin tiny-screens () {
