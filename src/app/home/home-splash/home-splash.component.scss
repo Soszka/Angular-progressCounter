@@ -22,7 +22,7 @@
 }
 
 .splash-content {
-  margin: 60px auto 0;
+  margin: 35px auto 0;
   @include flex(column, center, center);
   text-align: center;
   color: $text-secondary-color;
@@ -30,7 +30,7 @@
   width: 70%;
 
   @include large-screens {
-    margin: 30px auto;
+    margin: 20px auto 10px;
     width: 100%;
   }
 
@@ -45,7 +45,7 @@
     margin-bottom: 20px;
 
     @include large-screens {
-      margin: 25px 3px 20px;
+      margin: 15px 3px 10px;
     }
   }
 

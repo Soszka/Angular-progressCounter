@@ -5,11 +5,11 @@
 }
 
 .#{$mat-expansion-panel-collapsed}  {
-  @include text-style($content-font-size * 0.9, 500);
+  @include text-style($content-font-size * 0.9, 550);
   height: 65px;
 
   @include medium-screens {
-    height: 100px;
+    height: 90px;
   }
 }
 
