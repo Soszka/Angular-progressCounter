@@ -34,5 +34,8 @@ app-calories-carousel {
     width: 90%;
     margin-bottom: 40px;
   }
+  @include small-screens {
+    margin-bottom: 0px;
+  }
 }
 
