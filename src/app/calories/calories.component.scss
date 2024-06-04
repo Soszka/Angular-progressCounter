@@ -8,15 +8,31 @@
 .calories-content {
   @include flex(row, space-between, center);
   @include container(20px, 40px);
+
+  @include large-screens {
+    @include flex(column-reverse, center, center);
+  }
 }
 
 app-calories-carousel {
   width: 55%;
+
+  @include large-screens {
+    width: 90%
+  }
+  @include medium-screens {
+    width: 95%;
+  }
 }
 
 .calories-description {
   @include text-style($content-font-size, 500);
   text-align: center;
   width: 43%;
+
+  @include large-screens {
+    width: 90%;
+    margin-bottom: 40px;
+  }
 }
 

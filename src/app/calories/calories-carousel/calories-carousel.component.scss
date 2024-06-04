@@ -1,10 +1,18 @@
 @import '../../../../node_modules/keen-slider/keen-slider.min.css';
+@import '../../../styles.scss';
 
 [class^="number-slide"],
 [class*=" number-slide"] {
   height: 370px;
   max-height: 100vh;
-  border-radius: 20px;
+  border-radius: 10px;
+
+  @include large-screens {
+    height: 325px;
+  }
+  @include medium-screens {
+    height: 200px;
+  }
 }
 
 .number-slide1 {
