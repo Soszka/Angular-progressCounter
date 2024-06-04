@@ -10,6 +10,15 @@
   padding: 40px 60px;
   margin: 50px auto 30px;
   text-align: center;
+  
+  @include medium-screens {
+    width: 95%;
+    padding: 20px 30px;
+  }
+  @include small-screens {
+    width: 100%;
+    padding: 20px 10px;
+  }
 }
 
 .login-info {
@@ -17,9 +26,22 @@
   padding: 30px 50px;
   margin: 30px auto 50px;
 
+  @include large-screens {
+    width: 95%;
+    padding: 20px 30px;
+  }
+  @include small-screens {
+    width: 100%;
+    padding: 20px 0px;
+    text-align: center;
+  }
+
   p {
     @include text-style(18px, 400);
     margin-bottom: 30px;
+    @include small-screens {
+      padding: 0px 10px;
+    }
   }
 
   table {
@@ -28,6 +50,12 @@
       @include heading-style(22px, 450, $text-color);
       text-align: center;
       width: 33%;
+    }
+
+    .name-column {
+      @include large-screens {
+        display: none !important;
+      }
     }
   
     .#{$mat-table-row}{
