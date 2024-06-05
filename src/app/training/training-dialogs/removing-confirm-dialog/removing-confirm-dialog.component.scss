@@ -2,6 +2,11 @@
 
 .remove-dialog {
   padding: 50px 30px;
+  @include large-screens {
+    height: 100%;
+    @include flex(column, center, center);
+    padding: 0 10px;
+  }
 
   .message {
     text-align: center;

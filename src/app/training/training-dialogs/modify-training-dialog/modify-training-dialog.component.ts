@@ -6,6 +6,7 @@ import {
   MatDialogTitle,
   MatDialogContent,
   MatDialog,
+  MatDialogConfig
 } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -49,11 +50,21 @@ export class ModifyTrainingDialogComponent implements OnInit {
   }
 
   onAddTraining(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(AddTrainingDialogComponent, {
-      width: '600px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.enterAnimationDuration = enterAnimationDuration;
+    dialogConfig.exitAnimationDuration = exitAnimationDuration;
+
+    if (window.innerWidth <= 768) {
+      dialogConfig.width = '100vw';
+      dialogConfig.height = '100vh';
+      dialogConfig.maxWidth = '100vw';
+      dialogConfig.maxHeight = '100vh';
+    } else {
+      dialogConfig.width = 'auto';
+      dialogConfig.height = 'auto';
+    }
+    this.dialog.open(AddTrainingDialogComponent, dialogConfig );
   }
 
   onRemoveTraining(trainingName: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -61,12 +72,22 @@ export class ModifyTrainingDialogComponent implements OnInit {
       confirmMessage: "Czy na pewno chcesz usunąć wybrany trening z twojego planu treningowego? Gdy to zrobisz, cała historia związana z tym treningiem w planie treningowym zostanie trwale usunięta.",
       successMessage: "Pomyślnie usunięto wybrany trening z twojego planu treningowego." 
     };
-    this.dialog.open(RemovingConfirmDialogComponent, {
-      width: '700px',
-      data: { type: 'training', messages, trainingName },
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = { type: 'training', messages, trainingName };
+    dialogConfig.enterAnimationDuration = enterAnimationDuration;
+    dialogConfig.exitAnimationDuration = exitAnimationDuration;
+
+    if (window.innerWidth <= 768) {
+      dialogConfig.width = '100vw';
+      dialogConfig.height = '100vh';
+      dialogConfig.maxWidth = '100vw';
+      dialogConfig.maxHeight = '100vh';
+    } else {
+      dialogConfig.width = '700px';
+      dialogConfig.height = 'auto';
+    }
+
+    this.dialog.open(RemovingConfirmDialogComponent, dialogConfig);
   }
 
   onClose(): void {

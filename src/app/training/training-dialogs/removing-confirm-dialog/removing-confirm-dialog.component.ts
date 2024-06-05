@@ -1,5 +1,5 @@
 import { Component, Inject, inject} from '@angular/core';
-import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 import { TrainingsStore } from '../../../store/trainings.store';
@@ -58,12 +58,22 @@ export class RemovingConfirmDialogComponent {
   }
 
   private showInfoDialog(message: string, enterAnimationDuration: string, exitAnimationDuration: string) {
-    this.dialog.open(InfoDialogComponent, {
-      width: '600px',
-      data: { information: message },
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = { information: message };
+    dialogConfig.enterAnimationDuration = enterAnimationDuration;
+    dialogConfig.exitAnimationDuration = exitAnimationDuration;
+
+    if (window.innerWidth <= 768) {
+      dialogConfig.width = '100vw';
+      dialogConfig.height = '100vh';
+      dialogConfig.maxWidth = '100vw';
+      dialogConfig.maxHeight = '100vh';
+    } else {
+      dialogConfig.width = '600px';
+      dialogConfig.height = 'auto';
+    }
+
+    this.dialog.open(InfoDialogComponent, dialogConfig);
   }
   
   onSuccess(message: string, enterAnimationDuration: string, exitAnimationDuration: string) {
