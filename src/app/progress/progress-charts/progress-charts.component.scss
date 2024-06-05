@@ -2,6 +2,7 @@
 
 .container {
   @include container(40px, 20px);
+  overflow: hidden;
 
   mat-card {
     margin: 30px auto;
@@ -13,21 +14,38 @@
     line-height: 1.7;
     text-align: center;
 
+    @include medium-screens {
+      padding: 20px 15px;
+      font-size: 24px;
+    }
+
     p {
       margin-bottom: 0;
     }
   }
 }
 
-:host {
+ngx-charts-line-chart {
   display: block;
   width: 100%;
   height: auto;
   margin-bottom: 50px;
 }
 
+::ng-deep .chart-legend.ng-star-inserted {
+  @include medium-screens {
+    display: none;
+  }
+}
+
 ::ng-deep .ngx-charts-outer {
-  margin-bottom: 50px;
+  margin: 0 10px;
+  @include medium-screens {
+    margin-left: 50px
+  }
+  @include small-screens {
+    margin-left: 32.5px
+  }
 }
 
 ::ng-deep .ng-star-inserted text {
