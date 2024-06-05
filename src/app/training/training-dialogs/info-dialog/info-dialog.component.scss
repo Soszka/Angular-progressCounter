@@ -1,8 +1,15 @@
 @import '../../../../styles.scss';
 
 .info-dialog {
+  height: 100%;
   padding: 50px 30px;
   text-align: center;
+  @include large-screens {
+    height: 100%;
+    @include flex(column, center, center);
+    padding: 0 10px;
+  }
+  
 
   p {
     @include text-style(22px, 550);

@@ -6,12 +6,11 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },
   { 
     path: 'training', 
-    loadComponent: () => import('./training/training.component').then(m => m.TrainingComponent), 
+    loadComponent: () => import('./training/training.component').then(m => m.TrainingComponent),
   },
   { 
     path: 'training/edit', 
     loadComponent: () => import('./training/training-exercises/training-exercise/training-exercise.component').then(m => m.TrainingExerciseComponent), 
-    canActivate: [AuthGuard] 
   },
   { 
     path: 'progress', 
