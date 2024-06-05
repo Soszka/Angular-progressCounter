@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router'; 
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { DialogService } from './shared/services/dialog.service';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 })
 export class AppComponent {
   title = 'Licznik Progressu';
+  dialogService = inject(DialogService);
+
+  constructor() {}
 }
