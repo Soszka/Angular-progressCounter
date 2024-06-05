@@ -5,8 +5,9 @@ import {
   MatDialogClose,
   MatDialogTitle,
   MatDialogContent,
-  MatDialog
+  MatDialog,
 } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { ButtonComponent } from '../../../shared/button/button.component';
@@ -24,7 +25,8 @@ import { TrainingsStore } from '../../../store/trainings.store';
     MatDialogTitle, 
     MatDialogContent,
     MatTableModule,
-    ButtonComponent
+    ButtonComponent,
+    MatIconModule
   ],
   templateUrl: './modify-training-dialog.component.html',
   styleUrl: './modify-training-dialog.component.scss'
@@ -65,5 +67,11 @@ export class ModifyTrainingDialogComponent implements OnInit {
       enterAnimationDuration,
       exitAnimationDuration,
     });
+  }
+
+  onClose(): void {
+    if (this.dialogRef) {
+      this.dialogRef.close();
+    }
   }
 }

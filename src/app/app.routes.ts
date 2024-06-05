@@ -7,7 +7,6 @@ export const routes: Routes = [
   { 
     path: 'training', 
     loadComponent: () => import('./training/training.component').then(m => m.TrainingComponent), 
-    canActivate: [AuthGuard] 
   },
   { 
     path: 'training/edit', 

@@ -2,20 +2,73 @@
 
 .dialog-container {
   padding: 25px 50px;
+  position: relative;
+  @include large-screens {
+    padding: 60px 20px 10px;
+  }
+  @include medium-screens {
+    text-align: center;
+    padding: 60px 10px 10px;
+  }
+
+  .close-button {
+    display: none;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 75px;
+    height: 75px;
+    @include large-screens {
+      display: block;
+    }
+    @include medium-screens {
+      text-align: center;
+      padding: 60px 10px 10px;
+    }
+    
+    mat-icon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 50px;
+      height: 50px;
+      font-size: 50px;
+    }
+  }
 
   h2 {
-    @include heading-style(32px, 700, $text-color);
+    @include heading-style(32px, 550, $text-color);
     text-align: center;
     padding-bottom: 0;
+    @include large-screens {
+      font-size: 30px;
+      padding: 0;
+    }
+    @include medium-screens {
+      font-size: 28px; 
+      margin: 10px 0 5px;
+    }
+    @include small-screens {
+      margin-top: 10px;
+    }
   }
 
   table {
     text-align: center;
     margin: 25px 0 20px;
+    @include medium-screens {
+      margin-top: 40px;
+    }
   
     th {
       @include heading-style(22px, 550, $text-color);
       text-align: center;
+    }
+
+    .hide-column {
+      @include medium-screens {
+        display: none;
+      }
     }
   
     .#{$mat-table-row}{

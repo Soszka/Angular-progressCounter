@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../shared/button/button.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModifyTrainingDialogComponent } from '../training-dialogs/modify-training-dialog/modify-training-dialog.component';
 
 @Component({
@@ -20,11 +20,21 @@ export class TrainingDescriptionComponent {
   dialog = inject(MatDialog)
 
   openModifyDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(ModifyTrainingDialogComponent, {
-      width: '1000px',
-      maxHeight: '550px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.enterAnimationDuration = enterAnimationDuration;
+    dialogConfig.exitAnimationDuration = exitAnimationDuration;
+
+    if (window.innerWidth <= 1024) {
+      dialogConfig.width = '100vw';
+      dialogConfig.height = '100vh';
+      dialogConfig.maxWidth = '100vw';
+      dialogConfig.maxHeight = '100vh';
+    } else {
+      dialogConfig.width = '1000px';
+      dialogConfig.maxHeight = '550px';
+    }
+
+    this.dialog.open(ModifyTrainingDialogComponent, dialogConfig);
   }
 }
