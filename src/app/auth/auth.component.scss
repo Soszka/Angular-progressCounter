@@ -45,7 +45,10 @@
   }
 
   table {
-  
+    @include small-screens {
+      margin-bottom: 10px;
+    }
+
     th {
       @include heading-style(22px, 450, $text-color);
       text-align: center;
@@ -74,6 +77,14 @@
   padding: 30px 50px;
   margin: 30px auto 40px;
   text-align: center;
+
+  @include extra-large-screens {
+    width: 95%;
+    padding: 20px 40px;
+  }
+  @include medium-screens {
+    padding: 20px;
+  }
 
   p {
     @include text-style(18px, 420);

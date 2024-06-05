@@ -3,9 +3,22 @@
 .progress-form {
   @include container(40px, 20px);
   @include flex(row, space-around, center);
+  @include medium-screens {
+    @include flex(column, center, center);
+    margin-bottom: 0;
+  }
 
   mat-form-field {
     width: 325px;
+    @include large-screens {
+      width: 32%;
+    }
+    @include medium-screens {
+      width: 70%;
+    }
+    @include small-screens {
+      width: 90%;
+    }
   }
 }
 
