@@ -109,30 +109,18 @@ table {
   display: none;
 }
 
-@include extra-large-screens {
-  .date-column,
-  .weight-column,
-  .repetitions-column,
-  .remove-column {
-    display: table-cell;
-  }
-}
-
 @include medium-screens {
-  .date-column,
-  .weight-column,
+.weight-column,
   .remove-column {
     display: table-cell;
   }
-  .repetitions-column,
-  .details-column {
+  .repetitions-column {
     display: none;
   }
 }
 
 @include small-screens {
-  .date-column,
-  .details-column {
+ .details-column {
     display: table-cell;
   }
   .weight-column,

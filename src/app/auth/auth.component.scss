@@ -12,11 +12,10 @@
   text-align: center;
   
   @include medium-screens {
-    width: 95%;
+    width: 96%;
     padding: 20px 30px;
   }
   @include small-screens {
-    width: 100%;
     padding: 20px 10px;
   }
 }

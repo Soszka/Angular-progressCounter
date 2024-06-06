@@ -2,11 +2,41 @@
 
 .dialog-container {
   padding: 50px 30px;
+  @include medium-screens {
+    padding: 0px 10px;
+  }
+
+  .close-button {
+    display: none;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 75px;
+    height: 75px;
+    @include large-screens {
+      display: block;
+      text-align: center;
+      padding: 60px 10px 10px;
+    }
+    
+    mat-icon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 50px;
+      height: 50px;
+      font-size: 50px;
+    }
+  }
 
   h2 {
     @include heading-style(36px, $header-font-weight, $text-color);
     margin-bottom: 40px;
     text-align: center;
+    @include medium-screens {
+      margin: 80px auto 20px;
+      font-size: 32px;
+    }
   }
 
   mat-step {
@@ -15,9 +45,22 @@
 
   mat-form-field {
     width: 40%;
+    @include medium-screens {
+      width: 280px;
+    }
+    @include tiny-screens {
+      width: 98%
+    }
   }
 
-  button {
+  .form-container {
+    @include flex(row, center, center);
+    @include medium-screens {
+      @include flex(column, center, center);
+    }
+  }
+
+  .next-button {
     @include text-style(20px, $header-font-weight);
     margin: 0 0 17.5px 50px;
     color: white;
@@ -25,6 +68,10 @@
     width: 120px;
     height: 45px;
     background: rgb(0, 0, 190);
+    @include medium-screens {
+      width: 150px;
+      margin: 25px 0 0;
+    }
 
     &:hover {
       @include pulseAnimation;

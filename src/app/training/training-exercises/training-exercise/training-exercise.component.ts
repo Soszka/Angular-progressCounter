@@ -14,6 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddExercisePositionDialogComponent } from '../../training-dialogs/add-exercise-position-dialog/add-exercise-position-dialog.component';
 import { RemovingConfirmDialogComponent } from '../../training-dialogs/removing-confirm-dialog/removing-confirm-dialog.component';
 import { TrainingsStore } from '../../../store/trainings.store';
+import { MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-training-exercise',
@@ -89,54 +90,80 @@ export class TrainingExerciseComponent {
     this.loadExerciseData();
   }
 
-  onAddExercisePosition(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    const dialogRef = this.dialog.open(AddExercisePositionDialogComponent, {
-      width: '1000px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
+  private showResponsiveDialog(component: any, data: any, width: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const dialogConfig = new MatDialogConfig();
+  
+    dialogConfig.data = data;
+    dialogConfig.enterAnimationDuration = enterAnimationDuration;
+    dialogConfig.exitAnimationDuration = exitAnimationDuration;
+  
+    if (window.innerWidth <= 1024) {
+      dialogConfig.width = '100vw';
+      dialogConfig.height = '100vh';
+      dialogConfig.maxWidth = '100vw';
+      dialogConfig.maxHeight = '100vh';
+    } else {
+      dialogConfig.width = width;
+    }
+  
+    const dialogRef = this.dialog.open(component, dialogConfig);
     dialogRef.afterClosed().subscribe(() => {
       this.loadExerciseData(); 
     });
   }
 
-  onRemoveExercise(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    const messages = { 
-      confirmMessage: "Czy na pewno chcesz usunąć wybrane ćwiczenie z twojego planu treningowego? Gdy to zrobisz, cała historia związana z tym ćwiczeniem zostanie trwale usunięta.",
-      successMessage: "Pomyślnie usunięto wybrane ćwiczenie z twojego planu treningowego." 
-    };
-    this.dialog.open(RemovingConfirmDialogComponent, {
-      width: '600px',
-      data: { 
-        type: 'exercise', 
-        trainingName: this.trainingService.getCurrentTrainingName(), 
-        exerciseName: this.exerciseName, 
-        messages 
-      },
+  onAddExercisePosition(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.showResponsiveDialog( 
+      AddExercisePositionDialogComponent, 
+      {}, 
+      '1000px', 
       enterAnimationDuration,
-      exitAnimationDuration,
-    });
+      exitAnimationDuration
+    );
+  }
+
+  onRemoveExercise(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const messages = {
+      confirmMessage: "Czy na pewno chcesz usunąć wybrane ćwiczenie z twojego planu treningowego? Gdy to zrobisz, cała historia związana z tym ćwiczeniem zostanie trwale usunięta.",
+      successMessage: "Pomyślnie usunięto wybrane ćwiczenie z twojego planu treningowego."
+    };
+  
+    const data = {
+      type: 'exercise',
+      trainingName: this.trainingService.getCurrentTrainingName(),
+      exerciseName: this.exerciseName,
+      messages
+    };
+  
+    this.showResponsiveDialog( 
+      RemovingConfirmDialogComponent, 
+      data, 
+      '600px', 
+      enterAnimationDuration, 
+      exitAnimationDuration
+    );
   }
   
   onRemovePosition(enterAnimationDuration: string, exitAnimationDuration: string, date: string): void {
-    const messages = { 
+    const messages = {
       confirmMessage: "Czy na pewno chcesz usunąć wybraną pozycję?",
-      successMessage: "Pomyślnie usunięto wybraną pozycję z historii twojego ćwiczenia" 
+      successMessage: "Pomyślnie usunięto wybraną pozycję z historii twojego ćwiczenia"
     };
-    const dialogRef = this.dialog.open(RemovingConfirmDialogComponent, {
-      width: '600px',
-      data: { 
-        type: 'position', 
-        trainingName: this.trainingService.getCurrentTrainingName(), 
-        exerciseName: this.exerciseName, 
-        date, 
-        messages 
-      },
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      this.loadExerciseData(); 
-    });
+  
+    const data = {
+      type: 'position',
+      trainingName: this.trainingService.getCurrentTrainingName(),
+      exerciseName: this.exerciseName,
+      date,
+      messages
+    };
+  
+    this.showResponsiveDialog( 
+      RemovingConfirmDialogComponent, 
+      data, 
+      '600px', 
+      enterAnimationDuration, 
+      exitAnimationDuration
+    );
   }
 }
