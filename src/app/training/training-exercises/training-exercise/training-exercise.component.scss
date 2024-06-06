@@ -9,14 +9,30 @@
   @include flex(row, center, center);
   max-width: 1000px;
   margin: 50px auto 30px;
+  @include medium-screens {
+    margin: 30px 5px 0px;
+  }
 
   button {
-    margin: 0 35px;
-
+    margin: 0 10px;
+    @include large-screens {
+      width: 50px;
+      height: 50px;
+      font-size: 40px;
+    }
+    @include small-screens {
+      display: none;
+    }
+   
     mat-icon {
       width: 50px;
       height: 50px;
       font-size: 50px;
+      @include large-screens {
+        width: 40px;
+        height: 40px;
+        font-size: 40px;
+      }
     }
   }
 
@@ -27,15 +43,32 @@
     text-align: center;
     width: 650px;
     overflow: hidden;
+    line-height: 1.5;
+    @include large-screens {
+      width: 400;
+      font-size: 32px;
+    }
+    @include small-screens {
+      margin: 0 5px;
+    }
   }
 }
 
 .exercise {
   max-width: 900px;
   margin: 0 auto;
+  @include extra-large-screens {
+    padding: 0 20px;
+  }
+  @include medium-screens {
+    padding: 5px 5px 20px;
+  }
 
   .exercise-buttons {
     @include flex(row, space-between, stretch);
+    @include medium-screens {
+      @include flex(column, center, center);
+    };
   }
 }
 
@@ -63,4 +96,48 @@ table {
 .paginator-container {
   max-width: 550px;
   margin: 0 auto 50px;
+}
+
+::ng-deep .mat-mdc-paginator-container {
+  justify-content: center !important;
+}
+
+
+// COLUMNS DISPLAY
+
+.details-column {
+  display: none;
+}
+
+@include extra-large-screens {
+  .date-column,
+  .weight-column,
+  .repetitions-column,
+  .remove-column {
+    display: table-cell;
+  }
+}
+
+@include medium-screens {
+  .date-column,
+  .weight-column,
+  .remove-column {
+    display: table-cell;
+  }
+  .repetitions-column,
+  .details-column {
+    display: none;
+  }
+}
+
+@include small-screens {
+  .date-column,
+  .details-column {
+    display: table-cell;
+  }
+  .weight-column,
+  .repetitions-column,
+  .remove-column {
+    display: none;
+  }
 }

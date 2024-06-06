@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DialogService {
   private dialog = inject(MatDialog);
+  private originalHeight: number = window.innerHeight;
 
   constructor() {
     this.initResizeListener();
@@ -13,8 +14,16 @@ export class DialogService {
 
   private initResizeListener(): void {
     window.addEventListener('resize', () => {
-      this.closeAllDialogs();
+      this.onResize();
     });
+  }
+
+  private onResize(): void {
+    const currentHeight = window.innerHeight;
+    const resizeDifference = this.originalHeight - currentHeight;
+    if (resizeDifference < 100) {
+      this.closeAllDialogs();
+    }
   }
 
   private closeAllDialogs(): void {
