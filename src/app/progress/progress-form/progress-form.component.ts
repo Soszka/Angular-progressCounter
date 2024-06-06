@@ -7,7 +7,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { Training, Exercise } from '../../training/training.model';
 import { TrainingsStore } from '../../store/trainings.store';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { InfoDialogComponent } from '../../training/training-dialogs/info-dialog/info-dialog.component';
 import { ProgressService } from '../progress.service';
 
@@ -66,23 +66,32 @@ export class ProgressFormComponent implements OnInit {
     const range = this.progressService.selectedRange();
 
     if (!training || !exercise || !range) {
-      this.dialog.open(InfoDialogComponent, {
-        width: '600px',
-        data: { information: 'Proszę uzupełnić wszystkie pola!' },
-        enterAnimationDuration: '300ms',
-        exitAnimationDuration: '300ms',
-      });
+      this.showInfoDialog('Proszę uzupełnić wszystkie pola!');
     } else {
       this.progressService.updateFilteredData();
       if (!this.progressService.hasFilteredData()) {
-        this.dialog.open(InfoDialogComponent, {
-          width: '600px',
-          data: { information: 'Nie znaleziono sesji treningowych dla wybranego zakresu. Wybierz inny zakres.' },
-          enterAnimationDuration: '300ms',
-          exitAnimationDuration: '300ms',
-        });
+        this.showInfoDialog('Nie znaleziono sesji treningowych dla wybranego zakresu. Wybierz inny zakres.');
       }
     }
+  }
+
+  private showInfoDialog(information: string): void {
+    const dialogConfig: MatDialogConfig = {
+      data: { information },
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '300ms'
+    };
+
+    if (window.innerWidth <= 768) {
+      dialogConfig.width = '100vw';
+      dialogConfig.height = '100vh';
+      dialogConfig.maxWidth = '100vw';
+      dialogConfig.maxHeight = '100vh';
+    } else {
+      dialogConfig.width = '600px';
+    }
+
+    this.dialog.open(InfoDialogComponent, dialogConfig);
   }
 
   ngOnDestroy() {

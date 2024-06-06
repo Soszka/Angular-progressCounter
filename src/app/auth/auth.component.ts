@@ -19,6 +19,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TrainingsStore } from '../store/trainings.store';
 import { InfoDialogComponent } from '../training/training-dialogs/info-dialog/info-dialog.component';
 import { patchState } from '@ngrx/signals';
+import { MatDialogConfig } from '@angular/material/dialog';
 
 export interface ExampleUser {
   name: string;
@@ -115,16 +116,11 @@ export class AuthComponent {
         this.authService.login(emailValue, passwordValue).subscribe({
           next: () => {
             patchState(this.store, { loading: false });
-            this.dialog.open(InfoDialogComponent, {
-              width: '600px',
-              data: { information: 'Pomyślnie zalogowano!' }
-            });
+            this.showResponsiveDialog('Pomyślnie zalogowano!');
           },
           error: () => {
             patchState(this.store, { loading: false });
-            this.dialog.open(InfoDialogComponent, {
-              data: { information: 'Nieprawidłowy email lub hasło! Spróbuj ponownie.' }
-            });
+            this.showResponsiveDialog('Nieprawidłowy email lub hasło! Spróbuj ponownie.');
           }
         });
       }
@@ -143,10 +139,26 @@ export class AuthComponent {
   onLogout() {
     this.authService.logout().subscribe(() => {
       this.user = null;
-      this.dialog.open(InfoDialogComponent, {
-        width: '600px',
-        data: { information: 'Pomyślnie wylogowano!' }
-      }); 
+      this.showResponsiveDialog('Pomyślnie wylogowano!');
     });
+  }
+
+  private showResponsiveDialog(information: string): void {
+    const dialogConfig: MatDialogConfig = {
+      data: { information },
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '300ms'
+    };
+  
+    if (window.innerWidth <= 768) {
+      dialogConfig.width = '100vw';
+      dialogConfig.height = '100vh';
+      dialogConfig.maxWidth = '100vw';
+      dialogConfig.maxHeight = '100vh';
+    } else {
+      dialogConfig.width = '600px';
+    }
+  
+    this.dialog.open(InfoDialogComponent, dialogConfig);
   }
 }

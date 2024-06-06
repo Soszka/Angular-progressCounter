@@ -27,14 +27,14 @@ import { TrainingsStore } from '../../../store/trainings.store';
     FooterComponent,
     CommonModule,
     MatButtonModule,
-    TitleComponent
+    TitleComponent,
   ],
   templateUrl: './training-exercise.component.html',
   styleUrl: './training-exercise.component.scss'
 })
 export class TrainingExerciseComponent {
 
-  displayedColumns: string[] = ['date', 'repetitions', 'weight', 'remove'];
+  displayedColumns: string[] = ['date', 'repetitions', 'weight', 'remove', 'details'];
   dataSource!: MatTableDataSource<ExerciseDailyData>;
   navBackground = input('linear-gradient(to top, rgb(13, 53, 228), rgb(1, 0, 53))');
   footerBackground = input('linear-gradient(to right, rgb(16, 37, 230), rgb(1, 0, 52))');
