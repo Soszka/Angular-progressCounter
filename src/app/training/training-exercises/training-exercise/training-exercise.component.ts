@@ -41,6 +41,7 @@ export class TrainingExerciseComponent {
   navBackground = input('linear-gradient(to top, rgb(13, 53, 228), rgb(1, 0, 53))');
   footerBackground = input('linear-gradient(to right, rgb(16, 37, 230), rgb(1, 0, 52))');
   footerAuthorColor = input('rgb(27, 93, 235)');
+  expandedLinkColor = input('rgb(1, 3, 139)');
   subtitle = input("Sprawdź swój ...");
   title = input("TRENING");
   titleColor = input("rgb(4, 1, 172)");

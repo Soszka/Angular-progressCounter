@@ -3,10 +3,16 @@
 .exercise-dialog {
   padding: 50px 30px;
   @include flex(column, center, center);
+  @include medium-screens {
+    height: 100%;
+  }
 
   h2 {
     @include heading-style(26px, $header-font-weight, $text-color);
     margin-bottom: 30px;
+    @include medium-screens {
+      text-align: center;
+    }
   }
 
   mat-form-field  {
