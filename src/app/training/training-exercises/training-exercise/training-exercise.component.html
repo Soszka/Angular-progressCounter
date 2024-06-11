@@ -1,6 +1,9 @@
 <div class="training-exercise">
   <div class="container">
-    <app-navigation [navBackground]="navBackground()"></app-navigation>
+    <app-navigation 
+      [navBackground]="navBackground()"
+      [expandedLinkColor]="expandedLinkColor()">
+    </app-navigation>
     <app-title
       [title]="title()"
       [subtitle]="subtitle()"
