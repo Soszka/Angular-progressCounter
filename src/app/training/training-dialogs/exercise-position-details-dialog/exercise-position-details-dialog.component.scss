@@ -1,0 +1,86 @@
+@import '../../../../styles.scss';
+
+.exercise-details {
+  padding: 100px 0px 5px;
+  
+  .exercise-name {
+    position: relative;
+    background: url('../../../../assets//home_adventages_photo.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 15px 5px;
+
+    h2 {
+      position: relative;
+      text-align: center;
+      @include heading-style(32px, 550, $text-color);
+      color: white;
+      z-index: 999 !important;
+      margin-bottom: 0;
+    }
+  }
+
+  .close-button {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 75px;
+    height: 75px;
+  }
+
+  .close-icon {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+  }
+
+  .detail {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .detail-name {
+    margin-bottom: 0;
+    font-size: 26px;
+  }
+
+  .detail-container {
+    display: flex;
+    padding: 15px 0;
+    justify-content: center;
+    border-bottom: 3px dashed rgba(0, 0, 219);
+
+    mat-icon {
+      margin: 3px 15px 0 0;
+      font-size: 46px;
+      width: 46px;
+      height: 46px;
+    }
+
+    h2 {
+      font-size: 26px;
+      text-align: center;
+      color: white;
+      background: linear-gradient(to bottom, rgba(0, 0, 46, 0.8), rgba(0, 0, 219, 0.8));
+      padding: 10px 30px;
+      border-radius: 15px;
+    }
+  }
+
+  .button-container {
+    text-align: center;
+  }
+
+  .exercise-name::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 46, 0.8), rgba(0, 0, 219, 0.8));  
+  }
+}

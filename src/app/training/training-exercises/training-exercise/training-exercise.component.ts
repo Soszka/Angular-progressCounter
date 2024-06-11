@@ -15,6 +15,7 @@ import { AddExercisePositionDialogComponent } from '../../training-dialogs/add-e
 import { RemovingConfirmDialogComponent } from '../../training-dialogs/removing-confirm-dialog/removing-confirm-dialog.component';
 import { TrainingsStore } from '../../../store/trainings.store';
 import { MatDialogConfig } from '@angular/material/dialog';
+import { ExercisePositionDetailsDialogComponent } from '../../training-dialogs/exercise-position-details-dialog/exercise-position-details-dialog.component';
 
 @Component({
   selector: 'app-training-exercise',
@@ -97,7 +98,7 @@ export class TrainingExerciseComponent {
     dialogConfig.enterAnimationDuration = enterAnimationDuration;
     dialogConfig.exitAnimationDuration = exitAnimationDuration;
   
-    if (window.innerWidth <= 1024) {
+    if (window.innerWidth <= 768) {
       dialogConfig.width = '100vw';
       dialogConfig.height = '100vh';
       dialogConfig.maxWidth = '100vw';
@@ -165,5 +166,27 @@ export class TrainingExerciseComponent {
       enterAnimationDuration, 
       exitAnimationDuration
     );
+  }
+
+  onShowDetails(date: string, repetitions: number, weight: number, enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const dialogConfig = new MatDialogConfig();
+    
+    dialogConfig.data = {
+      name: this.exerciseName,
+      date,
+      repetitions,
+      weight
+    };
+    dialogConfig.enterAnimationDuration = enterAnimationDuration;
+    dialogConfig.exitAnimationDuration = exitAnimationDuration;
+    dialogConfig.width = '100vw';
+    dialogConfig.height = '100vh';
+    dialogConfig.maxWidth = '100vw';
+    dialogConfig.maxHeight = '100vh';
+  
+    const dialogRef = this.dialog.open(ExercisePositionDetailsDialogComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadExerciseData();
+    });
   }
 }
