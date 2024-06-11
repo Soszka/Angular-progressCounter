@@ -76,7 +76,8 @@
               [width]="'110px'"
               [height]="'35px'"
               [color]="'white'"
-              [margin]="'0'">ZOBACZ
+              [margin]="'0'"
+              (click)="onShowDetails(element.date, element.repetitions, element.weight, '300ms', '300ms')">ZOBACZ
             </app-button>
           </td>
         </ng-container>

@@ -12,6 +12,14 @@
   @include medium-screens {
     margin: 30px 5px 0px;
   }
+  @include small-screens {
+    position: relative;
+    background: url('../../../../assets/home_adventages_photo.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 30px 0px 0px;
+    padding: 10px 5px;
+  }
 
   button {
     margin: 0 10px;
@@ -50,6 +58,8 @@
     }
     @include small-screens {
       margin: 0 5px;
+      color: white;
+      z-index: 1;
     }
   }
 }
@@ -100,6 +110,18 @@ table {
 
 ::ng-deep .mat-mdc-paginator-container {
   justify-content: center !important;
+}
+
+.title-container:before {
+  @include small-screens {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 46, 0.8), rgba(0, 0, 219, 0.8));  
+  }
 }
 
 
