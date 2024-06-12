@@ -17,6 +17,9 @@
 
   mat-form-field  {
     width: 80%;
+    @include medium-screens {
+      width: 100%;
+    }
   }
 
   .actions {

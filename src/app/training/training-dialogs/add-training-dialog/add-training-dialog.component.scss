@@ -41,5 +41,8 @@
 
   mat-form-field  {
     width: 80%;
+    @include large-screens {
+      width: 100%;
+    }
   }
 }

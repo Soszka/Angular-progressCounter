@@ -7,8 +7,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { TrainingService } from '../../training.service';
 import { TrainingsStore } from '../../../store/trainings.store';
 import { RemovingConfirmDialogComponent } from '../removing-confirm-dialog/removing-confirm-dialog.component';
-import { MatDialogConfig } from '@angular/material/dialog';
-import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 
 @Component({
   selector: 'app-exercise-position-details-dialog',
