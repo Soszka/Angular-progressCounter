@@ -23,6 +23,12 @@ export class ExercisePositionDetailsDialogComponent {
   store = inject(TrainingsStore);
   exercise: { name: string; date: string; repetitions: number; weight: number } = inject(MAT_DIALOG_DATA);
 
+  details = [
+    { label: 'DATA', icon: 'calendar_today', value: this.exercise.date },
+    { label: 'POWTÓRZENIA', icon: 'repeat', value: this.exercise.repetitions },
+    { label: 'CIĘŻAR', icon: 'fitness_center', value: this.exercise.weight + ' kg' }
+  ];
+
   onClose() {
     this.dialogRef.close();
   }
@@ -51,8 +57,10 @@ export class ExercisePositionDetailsDialogComponent {
       exitAnimationDuration: '300ms'
     });
 
-    confirmDialogRef.afterClosed().subscribe(() => {
+    confirmDialogRef.afterClosed().subscribe(result => {
+    if (result === 'confirmed') {
       this.dialogRef.close();
-    });
+    }
+  });
   }
 }

@@ -1,36 +1,40 @@
 <div class="training-exercises">
   <mat-tab-group>
-    <mat-tab *ngFor="let training of trainings()" [label]="training.category">
-      <ng-template matTabContent>
-        <div class="exercises">
-          <div *ngFor="let exercise of training.exercises" class="exercise">
-            <div class="exercise-card">
-              <div class="exercise-front-card">
-                <h2>{{ exercise.name }}</h2>
-                <h4>Ostatnio Edytowano</h4>
-                <p>{{ exercise.lastEdited }}</p>
+    @for (training of trainings(); track $index) {
+      <mat-tab [label]="training.category">
+        <ng-template matTabContent>
+          <div class="exercises">
+            @for (exercise of training.exercises; track $index) {
+              <div class="exercise">
+                <div class="exercise-card">
+                  <div class="exercise-front-card">
+                    <h2>{{ exercise.name }}</h2>
+                    <h4>Ostatnio Edytowano</h4>
+                    <p>{{ exercise.lastEdited }}</p>
+                  </div>
+                  <div class="exercise-back-card">
+                    <h4>MAKSYMALNY CIĘŻAR</h4>
+                    <h3>{{ exercise.maxWeight }} kg</h3>
+                    <app-button
+                      [fontSize]="'24px'"
+                      [backgroundColor]="'rgb(226, 226, 226)'"
+                      [width]="'175px'"
+                      [height]="'60px'"
+                      [color]="'black'"
+                      [margin]="'0'"
+                      (click)="onEditClick(exercise.name)">EDYTUJ
+                    </app-button>
+                  </div>
+                </div>
               </div>
-              <div class="exercise-back-card">
-                <h4>MAKSYMALNY CIĘŻAR</h4>
-                <h3>{{ exercise.maxWeight }} kg</h3>
-                <app-button
-                  [fontSize]="'24px'"
-                  [backgroundColor]="'rgb(226, 226, 226)'"
-                  [width]="'175px'"
-                  [height]="'60px'"
-                  [color]="'black'"
-                  [margin]="'0'"
-                  (click)="onEditClick(exercise.name)">EDYTUJ
-                </app-button>
-              </div>
+            }
+            <div class="exercise add-card" (click)="onAddExercise(training.category, '300ms', '300ms')">
+              <h3>DODAJ NOWE ĆWICZENIE</h3>
+              <mat-icon>add_circle</mat-icon>
             </div>
           </div>
-          <div class="exercise add-card" (click)="onAddExercise(training.category, '300ms', '300ms')">
-            <h3>DODAJ NOWE ĆWICZENIE</h3>
-            <mat-icon>add_circle</mat-icon>
-          </div>
-        </div>
-      </ng-template>
-    </mat-tab>
+        </ng-template>
+      </mat-tab>
+    }
   </mat-tab-group>
 </div>
