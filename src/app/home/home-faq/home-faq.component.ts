@@ -24,8 +24,8 @@ export class HomeFaqComponent {
       answer: 'Nie, nasza aplikacja nie pozwala na monitorowanie różnorodnych form aktywności fizycznej. Skupia się wyłącznie na treningu siłowym' 
     },
     { 
-      question: 'Jak mogę ustawić cele treningowe ?', 
-      answer: 'Możesz ustawić swoje cele treningowe w sekcji  TRENING, gdzie określisz swoje cele dotyczące siły jaką planujesz osiągnąć' 
+      question: 'Czy mogę ustawić cele treningowe?', 
+      answer: 'Niestety na stronie nie ma możliwości ustalenia celów treningowych. Skupia się ona na monitorowaniu dotychczasowych wyników' 
     },
     { 
       question: 'Czy aplikacja oferuje spersonalizowane plany treningowe ?', 

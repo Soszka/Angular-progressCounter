@@ -51,6 +51,7 @@ export class RemovingConfirmDialogComponent {
           return;
         }
         this.trainingStore.deleteExercisePosition(this.data.trainingName, this.data.exerciseName, this.data.date).subscribe(() => {
+          this.dialogRef.close(); 
           this.onSuccess(this.data.messages.successMessage, enterAnimationDuration, exitAnimationDuration);
         });
         break;
@@ -77,7 +78,7 @@ export class RemovingConfirmDialogComponent {
   }
   
   onSuccess(message: string, enterAnimationDuration: string, exitAnimationDuration: string) {
-    this.dialogRef.close();
+    this.dialogRef.close('confirmed');
     this.showInfoDialog(message, enterAnimationDuration, exitAnimationDuration);
   }
   

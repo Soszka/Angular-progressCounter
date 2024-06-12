@@ -5,27 +5,15 @@
   <div class="exercise-name" cdkFocusInitial>
     <h2>{{ exercise.name }}</h2>
   </div>
-  <div class="detail">
-    <h2 class="detail-name">DATA</h2>
-    <div class="detail-container">
-      <mat-icon>calendar_today</mat-icon>
-      <h2>{{ exercise.date }}</h2>
+  @for (detail of details; track $index) {
+    <div class="detail">
+      <h2 class="detail-name">{{ detail.label }}</h2>
+      <div class="detail-container">
+        <mat-icon>{{ detail.icon }}</mat-icon>
+        <h2>{{ detail.value }}</h2>
+      </div>
     </div>
-  </div>
-  <div class="detail">
-    <h2 class="detail-name">POWTÓRZENIA</h2>
-    <div class="detail-container">
-      <mat-icon>repeat</mat-icon>
-      <h2>{{ exercise.repetitions }}</h2>
-    </div>
-  </div>
-  <div class="detail">
-    <h2 class="detail-name">CIĘŻAR</h2>
-    <div class="detail-container">
-      <mat-icon>fitness_center</mat-icon>
-      <h2>{{ exercise.weight }} kg</h2>
-    </div>
-  </div>
+  }
   <div class="button-container">
     <app-button
       [fontSize]="'22px'"

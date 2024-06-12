@@ -5,11 +5,11 @@ nav {
   @include large-screens {
     @include flex(column, space-between, center);
   }
-  position: relative; // Ensure nav is positioned correctly
+  position: relative; 
   z-index: 2; 
   
   .logo {
-    margin: 25px 70px 20px 130px;
+    margin: 25px 70px 20px 120px;
     position: relative;
 
     fa-icon {
@@ -23,8 +23,9 @@ nav {
 
     a {
       font-size: $content-font-size * 1.2;
+      font-style: italic;
+      letter-spacing: 1px;
       cursor: pointer;
-      font-family: cursive;
     }
     @include large-screens {
       display: none;
