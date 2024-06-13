@@ -14,6 +14,7 @@ import { TrainingsStore } from '../../../store/trainings.store';
 import { ExerciseDailyData } from '../../training.model';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogConfig } from '@angular/material/dialog';
+import { DialogService } from '../../../shared/services/dialog.service';
 
 @Component({
   selector: 'app-add-exercise-position-dialog',
@@ -39,6 +40,7 @@ export class AddExercisePositionDialogComponent {
   store = inject(TrainingsStore);
   _formBuilder = inject(FormBuilder);
   dialog = inject(MatDialog);
+  dialogService = inject(DialogService); 
 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', [Validators.required, this.dateValidator.bind(this)]],
@@ -73,14 +75,14 @@ export class AddExercisePositionDialogComponent {
     const repetitions = this.thirdFormGroup.value.thirdCtrl;
   
     if (!date || !this.isValidDate(date)) {
-      this.showInfoDialog("Wprowadź prawidłową datę", enterAnimationDuration, exitAnimationDuration);
+      this.dialogService.openInfoDialog("Wprowadź prawidłową datę", enterAnimationDuration, exitAnimationDuration);
       return;
     }
   
     const formattedDate = new Date(date).toLocaleDateString('en-CA'); 
     const currentExercise = this.trainingService.getCurrentExercise();
     if (currentExercise.dailyData.some(data => data.date === formattedDate)) {
-      this.showInfoDialog("Pozycje o takiej dacie już istnieje! Nie można mieć dwóch pozycji z taką samą datą", enterAnimationDuration, exitAnimationDuration);
+      this.dialogService.openInfoDialog("Pozycje o takiej dacie już istnieje! Nie można mieć dwóch pozycji z taką samą datą", enterAnimationDuration, exitAnimationDuration);
       return;
     }
   
@@ -96,29 +98,10 @@ export class AddExercisePositionDialogComponent {
       this.store.addExercisePosition(currentTrainingName, currentExerciseName, newPosition).subscribe({
         next: () => {
           this.dialogRef.close(true);  
-          this.showInfoDialog("Pomyślnie dodano nową pozycję do historii twojego ćwiczenia", enterAnimationDuration, exitAnimationDuration);
+          this.dialogService.openInfoDialog("Pomyślnie dodano nową pozycję do historii twojego ćwiczenia", enterAnimationDuration, exitAnimationDuration);
         },
       });
     }
-  }
-
-  private showInfoDialog(information: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
-    const dialogConfig = new MatDialogConfig();
-  
-    dialogConfig.data = { information };
-    dialogConfig.enterAnimationDuration = enterAnimationDuration;
-    dialogConfig.exitAnimationDuration = exitAnimationDuration;
-  
-    if (window.innerWidth <= 768) {
-      dialogConfig.width = '100vw';
-      dialogConfig.height = '100vh';
-      dialogConfig.maxWidth = '100vw';
-      dialogConfig.maxHeight = '100vh';
-    } else {
-      dialogConfig.width = '600px';
-    }
-  
-    this.dialog.open(InfoDialogComponent, dialogConfig);
   }
 
   isValidDate(dateString: string): boolean {

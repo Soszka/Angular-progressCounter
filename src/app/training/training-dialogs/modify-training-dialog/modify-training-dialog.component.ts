@@ -15,6 +15,7 @@ import { ButtonComponent } from '../../../shared/button/button.component';
 import { AddTrainingDialogComponent } from '../add-training-dialog/add-training-dialog.component';
 import { RemovingConfirmDialogComponent } from '../removing-confirm-dialog/removing-confirm-dialog.component';
 import { TrainingsStore } from '../../../store/trainings.store';
+import { DialogService } from '../../../shared/services/dialog.service';
 
 @Component({
   selector: 'app-modify-training-dialog',
@@ -36,7 +37,8 @@ export class ModifyTrainingDialogComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'exercisesCount', 'remove'];
   trainingStore = inject(TrainingsStore);
-  dialog = inject(MatDialog)
+  dialog = inject(MatDialog);
+  dialogService = inject(DialogService);
 
   dataSource = computed(() => this.trainingStore.trainings().map(training => ({
     name: training.category,
@@ -50,21 +52,14 @@ export class ModifyTrainingDialogComponent implements OnInit {
   }
 
   onAddTraining(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.enterAnimationDuration = enterAnimationDuration;
-    dialogConfig.exitAnimationDuration = exitAnimationDuration;
-
-    if (window.innerWidth <= 768) {
-      dialogConfig.width = '100vw';
-      dialogConfig.height = '100vh';
-      dialogConfig.maxWidth = '100vw';
-      dialogConfig.maxHeight = '100vh';
-    } else {
-      dialogConfig.width = 'auto';
-      dialogConfig.height = 'auto';
-    }
-    this.dialog.open(AddTrainingDialogComponent, dialogConfig );
+    this.dialogService.openDialog(
+      AddTrainingDialogComponent,
+      {},
+      '600px',
+      'auto',
+      enterAnimationDuration,
+      exitAnimationDuration
+    );
   }
 
   onRemoveTraining(trainingName: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -72,22 +67,15 @@ export class ModifyTrainingDialogComponent implements OnInit {
       confirmMessage: "Czy na pewno chcesz usunąć wybrany trening z twojego planu treningowego? Gdy to zrobisz, cała historia związana z tym treningiem w planie treningowym zostanie trwale usunięta.",
       successMessage: "Pomyślnie usunięto wybrany trening z twojego planu treningowego." 
     };
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = { type: 'training', messages, trainingName };
-    dialogConfig.enterAnimationDuration = enterAnimationDuration;
-    dialogConfig.exitAnimationDuration = exitAnimationDuration;
 
-    if (window.innerWidth <= 768) {
-      dialogConfig.width = '100vw';
-      dialogConfig.height = '100vh';
-      dialogConfig.maxWidth = '100vw';
-      dialogConfig.maxHeight = '100vh';
-    } else {
-      dialogConfig.width = '700px';
-      dialogConfig.height = 'auto';
-    }
-
-    this.dialog.open(RemovingConfirmDialogComponent, dialogConfig);
+    this.dialogService.openDialog(
+      RemovingConfirmDialogComponent,
+      { type: 'training', messages, trainingName },
+      '700px',
+      'auto',
+      enterAnimationDuration,
+      exitAnimationDuration
+    );
   }
 
   onClose(): void {

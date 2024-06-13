@@ -7,10 +7,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { TrainingService } from '../training.service';
-import { MatDialog } from '@angular/material/dialog';
 import { AddExerciseDialogComponent } from '../training-dialogs/add-exercise-dialog/add-exercise-dialog.component';
 import { TrainingsStore } from '../../store/trainings.store';
 import { MatDialogConfig } from '@angular/material/dialog';
+import { DialogService } from '../../shared/services/dialog.service';
 
 @Component({
   selector: 'app-training-exercises',
@@ -29,9 +29,9 @@ import { MatDialogConfig } from '@angular/material/dialog';
 export class TrainingExercisesComponent {
 
   store = inject(TrainingsStore);
+  dialogService = inject(DialogService)
   trainingService = inject(TrainingService);
   router = inject(Router);
-  dialog = inject(MatDialog);
   trainings = computed(() => this.trainingService.processedTrainings());
 
   ngOnInit() {
@@ -44,22 +44,15 @@ export class TrainingExercisesComponent {
   }
 
   onAddExercise(trainingName: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
-    const dialogConfig = new MatDialogConfig();
-  
-    dialogConfig.data = { trainingName };
-    dialogConfig.enterAnimationDuration = enterAnimationDuration;
-    dialogConfig.exitAnimationDuration = exitAnimationDuration;
-  
-    if (window.innerWidth <= 768) {
-      dialogConfig.width = '100vw';
-      dialogConfig.height = '100vh';
-      dialogConfig.maxWidth = '100vw';
-      dialogConfig.maxHeight = '100vh';
-    } else {
-      dialogConfig.width = '600px';
-    }
-  
-    const dialogRef = this.dialog.open(AddExerciseDialogComponent, dialogConfig);
+    const dialogRef = this.dialogService.openDialog(
+      AddExerciseDialogComponent,
+      { trainingName },
+      '600px',
+      'auto',
+      enterAnimationDuration,
+      exitAnimationDuration
+    );
+    
     dialogRef.afterClosed().subscribe(() => {
       this.store.loadTrainings();
     });
