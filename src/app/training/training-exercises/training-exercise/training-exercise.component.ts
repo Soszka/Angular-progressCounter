@@ -16,6 +16,7 @@ import { RemovingConfirmDialogComponent } from '../../training-dialogs/removing-
 import { TrainingsStore } from '../../../store/trainings.store';
 import { MatDialogConfig } from '@angular/material/dialog';
 import { ExercisePositionDetailsDialogComponent } from '../../training-dialogs/exercise-position-details-dialog/exercise-position-details-dialog.component';
+import { DialogService } from '../../../shared/services/dialog.service';
 
 @Component({
   selector: 'app-training-exercise',
@@ -50,7 +51,7 @@ export class TrainingExerciseComponent {
 
   store = inject(TrainingsStore);
   trainingService = inject(TrainingService);
-  dialog = inject(MatDialog)
+  dialogService = inject(DialogService);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -92,36 +93,18 @@ export class TrainingExerciseComponent {
     this.loadExerciseData();
   }
 
-  private showResponsiveDialog(component: any, data: any, width: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
-    const dialogConfig = new MatDialogConfig();
-  
-    dialogConfig.data = data;
-    dialogConfig.enterAnimationDuration = enterAnimationDuration;
-    dialogConfig.exitAnimationDuration = exitAnimationDuration;
-  
-    if (window.innerWidth <= 768) {
-      dialogConfig.width = '100vw';
-      dialogConfig.height = '100vh';
-      dialogConfig.maxWidth = '100vw';
-      dialogConfig.maxHeight = '100vh';
-    } else {
-      dialogConfig.width = width;
-    }
-  
-    const dialogRef = this.dialog.open(component, dialogConfig);
-    dialogRef.afterClosed().subscribe(() => {
-      this.loadExerciseData(); 
-    });
-  }
 
   onAddExercisePosition(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.showResponsiveDialog( 
+    this.dialogService.openDialog(
       AddExercisePositionDialogComponent, 
       {}, 
       '1000px', 
+      'auto',
       enterAnimationDuration,
       exitAnimationDuration
-    );
+    ).afterClosed().subscribe(() => {
+      this.loadExerciseData(); 
+    });
   }
 
   onRemoveExercise(enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -137,13 +120,16 @@ export class TrainingExerciseComponent {
       messages
     };
   
-    this.showResponsiveDialog( 
+    this.dialogService.openDialog( 
       RemovingConfirmDialogComponent, 
       data, 
       '600px', 
+      'auto',
       enterAnimationDuration, 
       exitAnimationDuration
-    );
+    ).afterClosed().subscribe(() => {
+      this.loadExerciseData(); 
+    });
   }
   
   onRemovePosition(enterAnimationDuration: string, exitAnimationDuration: string, date: string): void {
@@ -160,33 +146,32 @@ export class TrainingExerciseComponent {
       messages
     };
   
-    this.showResponsiveDialog( 
+    this.dialogService.openDialog( 
       RemovingConfirmDialogComponent, 
       data, 
       '600px', 
+      'auto',
       enterAnimationDuration, 
       exitAnimationDuration
-    );
+    ).afterClosed().subscribe(() => {
+      this.loadExerciseData(); 
+    });
   }
 
   onShowDetails(date: string, repetitions: number, weight: number, enterAnimationDuration: string, exitAnimationDuration: string): void {
-    const dialogConfig = new MatDialogConfig();
-    
-    dialogConfig.data = {
-      name: this.exerciseName,
-      date,
-      repetitions,
-      weight
-    };
-    dialogConfig.enterAnimationDuration = enterAnimationDuration;
-    dialogConfig.exitAnimationDuration = exitAnimationDuration;
-    dialogConfig.width = '100vw';
-    dialogConfig.height = '100vh';
-    dialogConfig.maxWidth = '100vw';
-    dialogConfig.maxHeight = '100vh';
-  
-    const dialogRef = this.dialog.open(ExercisePositionDetailsDialogComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(() => {
+    this.dialogService.openDialog(
+      ExercisePositionDetailsDialogComponent,
+      {
+        name: this.exerciseName,
+        date,
+        repetitions,
+        weight
+      },
+      '100vw',
+      '100vh',
+      enterAnimationDuration,
+      exitAnimationDuration
+    ).afterClosed().subscribe(() => {
       this.loadExerciseData();
     });
   }

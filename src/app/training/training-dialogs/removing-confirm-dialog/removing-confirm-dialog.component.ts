@@ -1,9 +1,9 @@
 import { Component, Inject, inject} from '@angular/core';
 import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
 import { ButtonComponent } from '../../../shared/button/button.component';
-import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 import { TrainingsStore } from '../../../store/trainings.store';
 import { Router } from '@angular/router';
+import { DialogService } from '../../../shared/services/dialog.service';
 
 @Component({
   selector: 'app-removing-confirm-dialog',
@@ -16,7 +16,8 @@ export class RemovingConfirmDialogComponent {
 
   trainingStore = inject(TrainingsStore);
   router = inject(Router);
-  dialog = inject(MatDialog)
+  dialog = inject(MatDialog);
+  dialogService = inject(DialogService); 
 
   constructor(
     public dialogRef: MatDialogRef<RemovingConfirmDialogComponent>, 
@@ -36,7 +37,7 @@ export class RemovingConfirmDialogComponent {
       case 'exercise':
         if (currentTraining && currentTraining.exercises.length <= 1) {
           this.dialogRef.close();
-          this.showInfoDialog("Każdy trening musi mieć chociaż jedno ćwiczenie! Nie możesz usunąć jedynego ćwiczenia", enterAnimationDuration, exitAnimationDuration);
+          this.dialogService.openInfoDialog("Każdy trening musi mieć chociaż jedno ćwiczenie! Nie możesz usunąć jedynego ćwiczenia", enterAnimationDuration, exitAnimationDuration);
           return;
         }
         this.trainingStore.deleteExercise(this.data.trainingName, this.data.exerciseName).subscribe(() => {
@@ -47,7 +48,7 @@ export class RemovingConfirmDialogComponent {
       case 'position':
         if (currentExercise && currentExercise.dailyData.length <= 1) {
           this.dialogRef.close();
-          this.showInfoDialog("Każde ćwiczenie powinno mieć chociaż jedną pozycję! Nie możesz usunąć jedynej pozycji", enterAnimationDuration, exitAnimationDuration);
+          this.dialogService.openInfoDialog("Każde ćwiczenie powinno mieć chociaż jedną pozycję! Nie możesz usunąć jedynej pozycji", enterAnimationDuration, exitAnimationDuration);
           return;
         }
         this.trainingStore.deleteExercisePosition(this.data.trainingName, this.data.exerciseName, this.data.date).subscribe(() => {
@@ -57,29 +58,10 @@ export class RemovingConfirmDialogComponent {
         break;
     }
   }
-
-  private showInfoDialog(message: string, enterAnimationDuration: string, exitAnimationDuration: string) {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = { information: message };
-    dialogConfig.enterAnimationDuration = enterAnimationDuration;
-    dialogConfig.exitAnimationDuration = exitAnimationDuration;
-
-    if (window.innerWidth <= 768) {
-      dialogConfig.width = '100vw';
-      dialogConfig.height = '100vh';
-      dialogConfig.maxWidth = '100vw';
-      dialogConfig.maxHeight = '100vh';
-    } else {
-      dialogConfig.width = '600px';
-      dialogConfig.height = 'auto';
-    }
-
-    this.dialog.open(InfoDialogComponent, dialogConfig);
-  }
   
   onSuccess(message: string, enterAnimationDuration: string, exitAnimationDuration: string) {
     this.dialogRef.close('confirmed');
-    this.showInfoDialog(message, enterAnimationDuration, exitAnimationDuration);
+    this.dialogService.openInfoDialog(message, enterAnimationDuration, exitAnimationDuration);
   }
   
   onCancel(): void {

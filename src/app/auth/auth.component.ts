@@ -20,6 +20,7 @@ import { TrainingsStore } from '../store/trainings.store';
 import { InfoDialogComponent } from '../training/training-dialogs/info-dialog/info-dialog.component';
 import { patchState } from '@ngrx/signals';
 import { MatDialogConfig } from '@angular/material/dialog';
+import { DialogService } from '../shared/services/dialog.service';
 
 export interface ExampleUser {
   name: string;
@@ -82,6 +83,7 @@ export class AuthComponent {
   router = inject(Router);
   auth = inject(Auth)
   store = inject(TrainingsStore);
+  dialogService = inject(DialogService)
 
   constructor() {
     merge(this.email.statusChanges, this.email.valueChanges)
@@ -116,11 +118,11 @@ export class AuthComponent {
         this.authService.login(emailValue, passwordValue).subscribe({
           next: () => {
             patchState(this.store, { loading: false });
-            this.showResponsiveDialog('Pomyślnie zalogowano!');
+            this.dialogService.openInfoDialog('Pomyślnie zalogowano!', '300ms', '300ms');
           },
           error: () => {
             patchState(this.store, { loading: false });
-            this.showResponsiveDialog('Nieprawidłowy email lub hasło! Spróbuj ponownie.');
+            this.dialogService.openInfoDialog('Nieprawidłowy email lub hasło! Spróbuj ponownie.', '300ms', '300ms');
           }
         });
       }
@@ -139,26 +141,7 @@ export class AuthComponent {
   onLogout() {
     this.authService.logout().subscribe(() => {
       this.user = null;
-      this.showResponsiveDialog('Pomyślnie wylogowano!');
+      this.dialogService.openInfoDialog('Pomyślnie wylogowano!', '300ms', '300ms');
     });
-  }
-
-  private showResponsiveDialog(information: string): void {
-    const dialogConfig: MatDialogConfig = {
-      data: { information },
-      enterAnimationDuration: '300ms',
-      exitAnimationDuration: '300ms'
-    };
-  
-    if (window.innerWidth <= 768) {
-      dialogConfig.width = '100vw';
-      dialogConfig.height = '100vh';
-      dialogConfig.maxWidth = '100vw';
-      dialogConfig.maxHeight = '100vh';
-    } else {
-      dialogConfig.width = '600px';
-    }
-  
-    this.dialog.open(InfoDialogComponent, dialogConfig);
   }
 }

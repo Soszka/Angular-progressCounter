@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../shared/button/button.component';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModifyTrainingDialogComponent } from '../training-dialogs/modify-training-dialog/modify-training-dialog.component';
+import { DialogService } from '../../shared/services/dialog.service';
 
 @Component({
   selector: 'app-training-description',
@@ -17,24 +17,16 @@ export class TrainingDescriptionComponent {
     Do każdego z treningów będziesz mógł dodawać ćwiczenia, a następnie zapisywać swoje wyniki.
     Pamiętaj, że gdy zdecydujesz się usunąć któryś z treningów, cała historia związana z osiągnięciami
   `
-  dialog = inject(MatDialog)
+  dialogService = inject(DialogService);
 
   openModifyDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.enterAnimationDuration = enterAnimationDuration;
-    dialogConfig.exitAnimationDuration = exitAnimationDuration;
-
-    if (window.innerWidth <= 1024) {
-      dialogConfig.width = '100vw';
-      dialogConfig.height = '100vh';
-      dialogConfig.maxWidth = '100vw';
-      dialogConfig.maxHeight = '100vh';
-    } else {
-      dialogConfig.width = '1000px';
-      dialogConfig.maxHeight = '550px';
-    }
-
-    this.dialog.open(ModifyTrainingDialogComponent, dialogConfig);
+    this.dialogService.openDialog(
+      ModifyTrainingDialogComponent,
+      {},
+      '1000px',
+      '550px',
+      enterAnimationDuration,
+      exitAnimationDuration
+    );
   }
 }
