@@ -10,11 +10,9 @@ import { TitleComponent } from '../../../shared/title/title.component';
 import { MatButtonModule } from '@angular/material/button';
 import { TrainingService} from '../../training.service';
 import { Exercise, ExerciseDailyData } from '../../training.model';
-import { MatDialog } from '@angular/material/dialog';
 import { AddExercisePositionDialogComponent } from '../../training-dialogs/add-exercise-position-dialog/add-exercise-position-dialog.component';
 import { RemovingConfirmDialogComponent } from '../../training-dialogs/removing-confirm-dialog/removing-confirm-dialog.component';
 import { TrainingsStore } from '../../../store/trainings.store';
-import { MatDialogConfig } from '@angular/material/dialog';
 import { ExercisePositionDetailsDialogComponent } from '../../training-dialogs/exercise-position-details-dialog/exercise-position-details-dialog.component';
 import { DialogService } from '../../../shared/services/dialog.service';
 

@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { TrainingService } from '../training.service';
 import { AddExerciseDialogComponent } from '../training-dialogs/add-exercise-dialog/add-exercise-dialog.component';
 import { TrainingsStore } from '../../store/trainings.store';
-import { MatDialogConfig } from '@angular/material/dialog';
 import { DialogService } from '../../shared/services/dialog.service';
 
 @Component({
