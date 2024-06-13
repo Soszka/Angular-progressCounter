@@ -5,7 +5,6 @@
 [class*=" number-slide"] {
   height: 370px;
   max-height: 100vh;
-  border-radius: 10px;
 
   @include large-screens {
     height: 325px;
@@ -63,9 +62,8 @@
   font-size: 30px;
   margin-top: 10px;
   height: 100px;
-}
-.thumbnail .keen-slider__slide {
   cursor: pointer;
+  overflow: visible;
 }
 .thumbnail .keen-slider__slide.active {
   border: 2px solid black;
