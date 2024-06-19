@@ -24,7 +24,7 @@ export class TrainingDescriptionComponent {
       ModifyTrainingDialogComponent,
       {},
       '1000px',
-      '550px',
+      'auto', 
       enterAnimationDuration,
       exitAnimationDuration
     );

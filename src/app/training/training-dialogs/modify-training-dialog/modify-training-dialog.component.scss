@@ -3,6 +3,7 @@
 .dialog-container {
   padding: 25px 50px;
   position: relative;
+  overflow-y: auto;
   @include large-screens {
     padding: 60px 20px 10px;
   }

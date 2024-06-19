@@ -45,6 +45,7 @@ export class DialogService {
     } else {
       dialogConfig.width = width;
       dialogConfig.height = height;
+      dialogConfig.maxHeight = '500px';
     }
 
     return this.dialog.open(component, dialogConfig);
