@@ -40,16 +40,22 @@ export class TrainingDataService {
 
   addTraining(trainingName: string): Observable<void> {
     const uid = this.getUserUid();
+  
+    const currentDate = new Date();
+    const oneMonthAgo = new Date();
+    oneMonthAgo.setMonth(currentDate.getMonth() - 1);
+  
     const newTraining = {
       [trainingName]: [
         {
           name: 'PRZYKŁADOWE ĆWICZENIE',
           dailyData: [
-            { date: new Date().toISOString().split('T')[0], repetitions: 0, weight: 0 }
+            { date: oneMonthAgo.toISOString().split('T')[0], repetitions: 0, weight: 0 }
           ]
         }
       ]
     };
+  
     return this.http.patch<void>(`${this.baseUrl}/users/${uid}.json`, newTraining);
   }
 
@@ -60,12 +66,18 @@ export class TrainingDataService {
 
   addExercise(trainingName: string, exerciseName: string): Observable<void> {
     const uid = this.getUserUid();
+
+    const currentDate = new Date();
+    const oneMonthAgo = new Date();
+    oneMonthAgo.setMonth(currentDate.getMonth() - 1);
+  
     const newExercise = {
       name: exerciseName,
       dailyData: [
-        { date: new Date().toISOString().split('T')[0], repetitions: 0, weight: 0 }
+        { date: oneMonthAgo.toISOString().split('T')[0], repetitions: 0, weight: 0 }
       ]
     };
+  
     return this.http.get<Exercise[]>(`${this.baseUrl}/users/${uid}/${trainingName}.json`).pipe(
       switchMap(existingExercises => {
         const updatedExercises = existingExercises ? [...existingExercises, newExercise] : [newExercise];
