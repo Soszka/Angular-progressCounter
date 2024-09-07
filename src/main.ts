@@ -6,12 +6,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { routes } from '../src/app/app.routes';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { firebaseConfig } from './app/api/firebase-config';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { A11yModule } from '@angular/cdk/a11y';
+import { HttpClient } from '@angular/common/http';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -19,12 +20,12 @@ bootstrapApplication(AppComponent, {
       BrowserModule,
       BrowserAnimationsModule,
       NgxChartsModule,
-      HttpClientModule,
+      HttpClient,
       RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
       A11yModule
     ),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth())
-  ]
-}).catch(err => console.error(err));
+    provideAuth(() => getAuth()),
+  ],
+}).catch((err) => console.error(err));
