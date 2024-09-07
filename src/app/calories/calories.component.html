@@ -1,38 +1,39 @@
 <div class="calories">
   <div class="container">
-    <app-navigation 
+    <app-navigation
       [navBackground]="navBackground()"
       [expandedLinkColor]="expandedLinkColor()"
       [expandedActiveLinkColor]="expandedActiveLinkColor()"
       [expandedActiveLinkBg]="expandedActiveLinkBg()"
-      >
+    >
     </app-navigation>
     <app-title
       [title]="title()"
       [subtitle]="subtitle()"
-      [titleColor]="titleColor()">
+      [titleColor]="titleColor()"
+    >
     </app-title>
     <div class="calories-content">
       <app-calories-carousel></app-calories-carousel>
       <div class="calories-description">
         <p>{{ description }}</p>
-        <a 
-          href="https://licznikkalorii.vercel.app/" 
-          target="_blank">
+        <a href="https://licznikkalorii.vercel.app/" target="_blank">
           <app-button
             [fontSize]="'23px'"
             [backgroundColor]="'#8f0000 '"
             [width]="'175px'"
             [height]="'60px'"
             [color]="'white'"
-            [margin]="'15px 0 0 0'">SPRAWDŹ
-        </app-button>
+            [margin]="'15px 0 0 0'"
+            >SPRAWDŹ
+          </app-button>
         </a>
       </div>
     </div>
   </div>
   <app-footer
     [footerBackground]="footerBackground()"
-    [authorColor]="footerAuthorColor()">
+    [authorColor]="footerAuthorColor()"
+  >
   </app-footer>
 </div>
