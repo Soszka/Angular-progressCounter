@@ -1,21 +1,20 @@
 <div class="training">
   <div class="container">
-    <app-navigation 
+    <app-navigation
       [navBackground]="navBackground()"
       [expandedLinkColor]="expandedLinkColor()"
       [expandedActiveLinkColor]="expandedActiveLinkColor()"
-      [expandedActiveLinkBg]="expandedActiveLinkBg()">
+      [expandedActiveLinkBg]="expandedActiveLinkBg()"
+    >
     </app-navigation>
     <app-title
       [title]="title()"
       [subtitle]="subtitle()"
-      [titleColor]="titleColor()">
+      [titleColor]="titleColor()"
+    >
     </app-title>
     <app-training-description></app-training-description>
     <app-training-exercises></app-training-exercises>
   </div>
-  <app-footer
-   [footerBackground]="footerBackground()"
-   [authorColor]="footerAuthorColor()">
-  </app-footer>
+  <app-footer [footerBackground]="footerBackground()"> </app-footer>
 </div>

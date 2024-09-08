@@ -7,7 +7,6 @@ button {
 
   &:hover {
     @include pulseAnimation;
-    animation: pulse 1s infinite !important; 
+    animation: pulse 1s infinite !important;
   }
 }
-

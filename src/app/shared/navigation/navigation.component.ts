@@ -8,12 +8,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-navigation',
   standalone: true,
-   imports: [
+  imports: [
     ExpandedNavComponent,
     FontAwesomeModule,
     CommonModule,
-    RouterLink,           
-    RouterLinkActive      
+    RouterLink,
+    RouterLinkActive,
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
@@ -32,7 +32,7 @@ export class NavigationComponent {
     { name: 'TRENING', path: '/training' },
     { name: 'POSTĘP', path: '/progress' },
     { name: 'LOGOWANIE', path: '/auth' },
-    { name: 'KALORIE', path: '/calories' }
+    { name: 'KALORIE', path: '/calories' },
   ];
 
   @HostListener('window:resize', ['$event'])

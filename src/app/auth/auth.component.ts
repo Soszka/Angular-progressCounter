@@ -1,6 +1,11 @@
 import { Component, inject, input } from '@angular/core';
-import { takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import { FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {
+  FormControl,
+  Validators,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,72 +23,53 @@ import { Auth, onAuthStateChanged, User } from '@angular/fire/auth';
 import { MatDialog } from '@angular/material/dialog';
 import { TrainingsStore } from '../store/trainings.store';
 import { InfoDialogComponent } from '../training/training-dialogs/info-dialog/info-dialog.component';
-import { patchState } from '@ngrx/signals';
-import { MatDialogConfig } from '@angular/material/dialog';
 import { DialogService } from '../shared/services/dialog.service';
-
-export interface ExampleUser {
-  name: string;
-  email: string;
-  password: string;
-}
+import { AuthUsersDialogComponent } from './auth-users-dialog/auth-users-dialog.component';
 
 @Component({
   selector: 'app-auth',
   standalone: true,
   imports: [
-    NavigationComponent, 
-    FooterComponent, 
-    TitleComponent, 
-    MatFormFieldModule, 
-    MatInputModule, 
-    FormsModule, 
-    ReactiveFormsModule, 
+    NavigationComponent,
+    FooterComponent,
+    TitleComponent,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatIconModule,
     MatButtonModule,
     ButtonComponent,
     MatTableModule,
-    InfoDialogComponent  
+    InfoDialogComponent,
   ],
   templateUrl: './auth.component.html',
-  styleUrl: './auth.component.scss'
+  styleUrl: './auth.component.scss',
 })
 export class AuthComponent {
-  navBackground = input('linear-gradient(to top, rgb(47, 202, 0), rgb(11, 46, 0))');
-  footerBackground = input('linear-gradient(to right, rgb(23, 207, 6), rgb(15, 58, 2))');
-  footerAuthorColor = input('rgb(24, 230, 5)');
-  expandedLinkColor = input('rgb(0, 105, 23)');
-  expandedActiveLinkColor = input('white');
-  expandedActiveLinkBg = input('linear-gradient(to bottom, rgb(23, 207, 6), rgb(15, 58, 2))');
+  footerBackground = input('inherit');
+  footerAuthorColor = input('white');
+  navBackground = input('inherit');
+  expandedLinkColor = input('white');
+  expandedActiveLinkColor = input('rgb(17, 0, 78)');
+  expandedActiveLinkBg = input('white');
   subtitle = input('Zacznij od ...');
   title = input('Zalogowania');
-  titleColor = input('rgb(19, 168, 14)');
-
-  displayedColumns: string[] = ['name', 'email', 'password'];
-  dataSource!: ExampleUser[]
+  titleColor = input('rgba(0, 0, 150)');
 
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
   errorMessage = '';
   hide = true;
-  user: User | null = null
-
-  exampleUsers: ExampleUser[] = [
-    { name: 'Użytkownik 1', email: 'tester1@tester.com', password: 'Tester1' },
-    { name: 'Użytkownik 2', email: 'tester2@tester.com', password: 'Tester2' },
-    { name: 'Użytkownik 3', email: 'tester3@tester.com', password: 'Tester3' },
-  ];
-  loginDescription = `Aplikacja nie posiada możliwości założenia konta. Istnieje jednak możliwość przetestowania aplikacji wybierając
-    jedno z trzech kont testowych z poniższej tabeli. Dane które wprowadzisz po wyborze użytkownika będą 
-    zapisywane na serwerze, ale po pewnym czasie zostaną usunięte.` 
+  user: User | null = null;
 
   dialog = inject(MatDialog);
   authService = inject(AuthService);
   router = inject(Router);
-  auth = inject(Auth)
+  auth = inject(Auth);
   store = inject(TrainingsStore);
-  dialogService = inject(DialogService)
+  dialogService = inject(DialogService);
 
   constructor() {
     merge(this.email.statusChanges, this.email.valueChanges)
@@ -92,10 +78,6 @@ export class AuthComponent {
     onAuthStateChanged(this.auth, (user) => {
       this.user = user;
     });
-  }
-
-  ngOnInit() {
-    this.dataSource = this.exampleUsers;
   }
 
   updateErrorMessage() {
@@ -112,18 +94,27 @@ export class AuthComponent {
     if (this.email.valid && this.password.valid) {
       const emailValue = this.email.value;
       const passwordValue = this.password.value;
-  
+
       if (emailValue !== null && passwordValue !== null) {
-        patchState(this.store, { loading: true });
+        this.store.setLoadingTrue();
         this.authService.login(emailValue, passwordValue).subscribe({
           next: () => {
-            patchState(this.store, { loading: false });
-            this.dialogService.openInfoDialog('Pomyślnie zalogowano!', '300ms', '300ms');
+            this.store.setLoadingFalse();
+            this.router.navigate(['/training']);
+            this.dialogService.openInfoDialog(
+              'Pomyślnie zalogowano!',
+              '300ms',
+              '300ms'
+            );
           },
           error: () => {
-            patchState(this.store, { loading: false });
-            this.dialogService.openInfoDialog('Nieprawidłowy email lub hasło! Spróbuj ponownie.', '300ms', '300ms');
-          }
+            this.store.setLoadingFalse();
+            this.dialogService.openInfoDialog(
+              'Nieprawidłowy email lub hasło! Spróbuj ponownie.',
+              '300ms',
+              '300ms'
+            );
+          },
         });
       }
     }
@@ -141,7 +132,25 @@ export class AuthComponent {
   onLogout() {
     this.authService.logout().subscribe(() => {
       this.user = null;
-      this.dialogService.openInfoDialog('Pomyślnie wylogowano!', '300ms', '300ms');
+      this.dialogService.openInfoDialog(
+        'Pomyślnie wylogowano!',
+        '300ms',
+        '300ms'
+      );
     });
+  }
+
+  showUsersDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    this.dialogService.openDialog(
+      AuthUsersDialogComponent,
+      {},
+      'auto',
+      'auto',
+      enterAnimationDuration,
+      exitAnimationDuration
+    );
   }
 }

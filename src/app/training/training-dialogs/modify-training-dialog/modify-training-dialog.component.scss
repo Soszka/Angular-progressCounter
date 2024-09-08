@@ -26,7 +26,7 @@
       text-align: center;
       padding: 60px 10px 10px;
     }
-    
+
     mat-icon {
       position: absolute;
       top: 12px;
@@ -38,7 +38,7 @@
   }
 
   h2 {
-    @include heading-style(32px, 550, $text-color);
+    @include heading-style(32px, $header-font-weight, $text-color);
     text-align: center;
     padding-bottom: 0;
     @include large-screens {
@@ -46,7 +46,7 @@
       padding: 0;
     }
     @include medium-screens {
-      font-size: 28px; 
+      font-size: 28px;
       margin: 10px 0 5px;
     }
     @include small-screens {
@@ -60,7 +60,7 @@
     @include medium-screens {
       margin-top: 40px;
     }
-  
+
     th {
       @include heading-style(22px, 550, $text-color);
       text-align: center;
@@ -71,15 +71,14 @@
         display: none;
       }
     }
-  
-    .#{$mat-table-row}{
+
+    .#{$mat-table-row} {
       font-size: 22px;
     }
-  
+
     .#{$mat-table-cell} {
       text-align: center;
       padding: 15px 0;
     }
   }
-  
 }

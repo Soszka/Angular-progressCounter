@@ -45,7 +45,7 @@
     @include heading-style($content-font-size * 1.2, 600, $home-icon-color);
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin: 10px 0;
+    margin: 5px 0 10px;
     @include small-screens {
       margin: 0 0 10px;
     }
@@ -64,4 +64,3 @@
 ::ng-deep app-title.features-title .container {
   margin: 0 auto !important;
 }
-

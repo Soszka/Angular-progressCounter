@@ -2,7 +2,7 @@
   <h2>WPROWADŹ NAZWĘ ĆWICZENIA !</h2>
   <mat-form-field>
     <mat-label>Nazwa Ćwiczenia</mat-label>
-    <input matInput [(ngModel)]="exerciseName" maxlength="35">
+    <input matInput [(ngModel)]="exerciseName" maxlength="35" />
   </mat-form-field>
   <div class="actions">
     <app-button
@@ -12,16 +12,18 @@
       [height]="'45px'"
       [color]="'white'"
       [margin]="'7.5px 7.5px'"
-      (click)="onCancel()">ANULUJ
+      (click)="onCancel()"
+      >ANULUJ
     </app-button>
     <app-button
       [fontSize]="'20px'"
-      [backgroundColor]="'rgb(0, 0, 190)'"
+      [backgroundColor]="'rgb(0, 0, 130)'"
       [width]="'130px'"
       [height]="'45px'"
       [color]="'white'"
       [margin]="'7.5px 7.5px'"
-      (click)="onSave('300ms', '300ms')">ZAPISZ
+      (click)="onSave('300ms', '300ms')"
+      >ZAPISZ
     </app-button>
   </div>
 </div>

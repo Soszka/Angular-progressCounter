@@ -1,6 +1,10 @@
 import { signalStore, withState, withMethods, patchState } from '@ngrx/signals';
 import { TrainingDataService } from '../api/training-data.service';
-import { Training, TrainingsState, ExerciseDailyData } from '../training/training.model';
+import {
+  Training,
+  TrainingsState,
+  ExerciseDailyData,
+} from '../training/training.model';
 import { inject } from '@angular/core';
 import { Observable, tap, finalize } from 'rxjs';
 
@@ -14,59 +18,82 @@ export const TrainingsStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
   withMethods((store, trainingDataService = inject(TrainingDataService)) => ({
-    loadTrainings() {
+    setLoadingTrue() {
       patchState(store, { loading: true });
+    },
+    setLoadingFalse() {
+      patchState(store, { loading: false });
+    },
+    loadTrainings() {
+      this.setLoadingTrue();
       trainingDataService.getTrainings().subscribe({
         next: (trainings: Training[]) => {
           patchState(store, { trainings, loading: false });
-        }
+        },
       });
     },
     addTraining(trainingName: string) {
-      patchState(store, { loading: true });
+      this.setLoadingTrue();
       trainingDataService.addTraining(trainingName).subscribe({
         next: () => {
           this.loadTrainings();
-          patchState(store, { loading: false });
-        }
+          this.setLoadingFalse();
+        },
       });
     },
     deleteTraining(trainingName: string): Observable<void> {
-      patchState(store, { loading: true });
+      this.setLoadingTrue();
       return trainingDataService.deleteTraining(trainingName).pipe(
         tap(() => this.loadTrainings()),
-        finalize(() => patchState(store, { loading: false }))
+        finalize(() => this.setLoadingFalse())
       );
     },
     addExercise(trainingName: string, exerciseName: string) {
-      patchState(store, { loading: true });
+      this.setLoadingTrue();
       trainingDataService.addExercise(trainingName, exerciseName).subscribe({
         next: () => {
           this.loadTrainings();
-          patchState(store, { loading: false });
-        }
+          this.setLoadingFalse();
+        },
       });
     },
-    deleteExercise(trainingName: string, exerciseName: string): Observable<void> {
-      patchState(store, { loading: true });
-      return trainingDataService.deleteExercise(trainingName, exerciseName).pipe(
-        tap(() => this.loadTrainings()),
-        finalize(() => patchState(store, { loading: false }))
-      );
+    deleteExercise(
+      trainingName: string,
+      exerciseName: string
+    ): Observable<void> {
+      this.setLoadingTrue();
+      return trainingDataService
+        .deleteExercise(trainingName, exerciseName)
+        .pipe(
+          tap(() => this.loadTrainings()),
+          finalize(() => this.setLoadingFalse())
+        );
     },
-    deleteExercisePosition(trainingName: string, exerciseName: string, date: string): Observable<void> {
-      patchState(store, { loading: true });
-      return trainingDataService.deleteExercisePosition(trainingName, exerciseName, date).pipe(
-        tap(() => this.loadTrainings()),
-        finalize(() => patchState(store, { loading: false }))
-      );
+    deleteExercisePosition(
+      trainingName: string,
+      exerciseName: string,
+      date: string
+    ): Observable<void> {
+      this.setLoadingTrue();
+      return trainingDataService
+        .deleteExercisePosition(trainingName, exerciseName, date)
+        .pipe(
+          tap(() => this.loadTrainings()),
+          finalize(() => this.setLoadingFalse())
+        );
     },
-    addExercisePosition(trainingName: string, exerciseName: string, newPosition: ExerciseDailyData): Observable<void> {
-      patchState(store, { loading: true });
-      return trainingDataService.addExercisePosition(trainingName, exerciseName, newPosition).pipe(
-        tap(() => this.loadTrainings()),
-        finalize(() => patchState(store, { loading: false }))
-      );
-    }
+    addExercisePosition(
+      trainingName: string,
+      exerciseName: string,
+      newPosition: ExerciseDailyData
+    ): Observable<void> {
+      this.setLoadingTrue();
+      return trainingDataService
+        .addExercisePosition(trainingName, exerciseName, newPosition)
+        .pipe(
+          tap(() => this.loadTrainings()),
+          finalize(() => this.setLoadingFalse())
+        );
+    },
   }))
 );

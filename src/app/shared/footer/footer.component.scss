@@ -7,13 +7,13 @@
   margin: 0 auto;
   text-align: center;
   font-size: $content-font-size;
-  padding: 15px 0;
+  padding: 7.5px 0;
   @include small-screens {
     font-size: 18px;
   }
 
   span {
-    font-size: $content-font-size;
-    font-family: cursive;
+    font-weight: 600;
+    letter-spacing: 1px;
   }
 }

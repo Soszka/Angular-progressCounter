@@ -19,18 +19,11 @@ import { ButtonComponent } from '../shared/button/button.component';
   styleUrl: './calories.component.scss',
 })
 export class CaloriesComponent {
-  navBackground = input(
-    'linear-gradient(to top, rgb(19, 0, 0), rgb(128, 0, 0))'
-  );
-  footerBackground = input(
-    'linear-gradient(to right, rgb(130, 0, 0), rgb(40, 0, 0))'
-  );
-  footerAuthorColor = input('rgb(210, 9, 9)');
+  navBackground = input('rgb(80, 0, 0)');
+  footerBackground = input('rgb(80, 0, 0)');
   expandedLinkColor = input('rgb(94, 0, 0)');
   expandedActiveLinkColor = input('white');
-  expandedActiveLinkBg = input(
-    'linear-gradient(to bottom, rgb(19, 0, 0), rgb(128, 0, 0))'
-  );
+  expandedActiveLinkBg = input('rgb(80, 0, 0)');
   subtitle = input('Pomyśl o ...');
   title = input('KALORIACH');
   titleColor = input('rgb(100, 0, 0)');

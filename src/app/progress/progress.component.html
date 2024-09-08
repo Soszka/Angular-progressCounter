@@ -1,21 +1,20 @@
 <div class="progress">
   <div class="container">
-    <app-navigation 
+    <app-navigation
       [navBackground]="navBackground()"
       [expandedLinkColor]="expandedLinkColor()"
       [expandedActiveLinkColor]="expandedActiveLinkColor()"
-      [expandedActiveLinkBg]="expandedActiveLinkBg()">
+      [expandedActiveLinkBg]="expandedActiveLinkBg()"
+    >
     </app-navigation>
     <app-title
       [title]="title()"
       [subtitle]="subtitle()"
-      [titleColor]="titleColor()">
+      [titleColor]="titleColor()"
+    >
     </app-title>
     <app-progress-form></app-progress-form>
     <app-progress-charts></app-progress-charts>
   </div>
-  <app-footer
-   [footerBackground]="footerBackground()"
-   [authorColor]="footerAuthorColor()">
-  </app-footer>
+  <app-footer [footerBackground]="footerBackground()"> </app-footer>
 </div>

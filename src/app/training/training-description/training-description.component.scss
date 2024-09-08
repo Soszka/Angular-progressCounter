@@ -2,7 +2,8 @@
 
 .training-description {
   margin: 40px auto 70px;
-  background: url('../../../assets/home_adventages_photo.jpg') no-repeat center center;
+  background: url('../../../assets/home_adventages_photo.jpg') no-repeat center
+    center;
   background-size: cover;
   padding: 60px 30px;
   position: relative;
@@ -29,7 +30,7 @@
     @include text-style($content-font-size, 400);
     flex: 1.75;
     padding-right: 50px;
-    margin-bottom: 15px;
+    margin: 0;
     border-right: 3px solid white;
     @include large-screens {
       margin-top: 20px;
@@ -42,15 +43,18 @@
     flex: 1;
     padding-left: 50px;
     text-align: center;
-    margin-bottom: 15px;
     @include large-screens {
       padding: 0;
       border-left: none;
     }
 
     h4 {
-      @include heading-style($content-font-size * 1.25, 550, $text-secondary-color);
-      margin-bottom: 5px;
+      @include heading-style(
+        $content-font-size * 1.25,
+        550,
+        $text-secondary-color
+      );
+      margin: 0;
 
       @include large-screens {
         display: none;
@@ -60,11 +64,15 @@
 }
 
 .training-description:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to top, rgba(0, 0, 46, 0.8), rgba(0, 0, 219, 0.8));  
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 63, 0.8),
+    rgba(0, 0, 130, 0.8)
+  );
 }

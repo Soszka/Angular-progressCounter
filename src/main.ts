@@ -12,7 +12,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { firebaseConfig } from './app/api/firebase-config';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { A11yModule } from '@angular/cdk/a11y';
-import { HttpClient } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -20,10 +20,10 @@ bootstrapApplication(AppComponent, {
       BrowserModule,
       BrowserAnimationsModule,
       NgxChartsModule,
-      HttpClient,
       RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
       A11yModule
     ),
+    provideHttpClient(),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),

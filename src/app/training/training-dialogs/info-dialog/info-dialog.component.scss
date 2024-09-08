@@ -2,17 +2,16 @@
 
 .info-dialog {
   height: 100%;
-  padding: 50px 30px;
+  padding: 40px 20px;
   text-align: center;
   @include large-screens {
     height: 100%;
     @include flex(column, center, center);
     padding: 0 10px;
   }
-  
 
   p {
     @include text-style(22px, 550);
-    margin-bottom: 0;
+    margin: 0;
   }
 }

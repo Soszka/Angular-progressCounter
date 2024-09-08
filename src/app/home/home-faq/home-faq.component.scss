@@ -4,7 +4,7 @@
   @include container(20px, 50px);
 }
 
-.#{$mat-expansion-panel-collapsed}  {
+.#{$mat-expansion-panel-collapsed} {
   @include text-style($content-font-size * 0.9, 550);
   height: 65px;
 
@@ -13,6 +13,7 @@
   }
 }
 
-.#{$mat-expansion-panel-expanded}  p {
+.#{$mat-expansion-panel-expanded} p {
   @include text-style($content-font-size * 0.85, normal);
+  margin: 0;
 }

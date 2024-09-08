@@ -1,7 +1,8 @@
 @import '../../../styles.scss';
 
 .adventages {
-  background: url('../../../assets/home_adventages_photo.jpg') no-repeat center center;
+  background: url('../../../assets/home_adventages_photo.jpg') no-repeat center
+    center;
   background-size: cover;
   padding: 60px 30px;
   position: relative;
@@ -31,7 +32,7 @@
     @include text-style($title-font-size * 0.9, 500);
     flex: 1;
     padding-right: 50px;
-    margin-bottom: 15px;
+    margin: 0;
     @include large-screens {
       display: none;
     }
@@ -49,21 +50,17 @@
     }
 
     p {
-      margin-top: 5px;
-
-      @include large-screens {
-        margin-bottom: 0;
-      }
+      margin: 0;
     }
   }
 }
 
 .adventages:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 87, 0.8); 
+  background-color: rgba(0, 0, 87, 0.8);
 }

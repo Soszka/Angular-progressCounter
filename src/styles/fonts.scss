@@ -1,24 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Open+Sans:wght@400;700&family=Montserrat:wght@400;700&family=Pacifico&display=swap');
 
-// FONTS 
+// FONTS
 
-$header-font: 'Oswald', sans-serif;
-$content-font: 'Open Sans', sans-serif;
-$button-font: 'Montserrat', sans-serif;
-$cursive-font: 'Pacifico', cursive;
-
+$header-font: 'Roboto', sans-serif;
+$content-font: 'Lato', sans-serif;
 
 // FONTS SIZES
 
 $title-font-size: 40px;
 $title-font-size-sm: $title-font-size * 0.9;
 $content-font-size: 20px;
-$content-font-size-sm: $content-font-size* 0.9;
+$content-font-size-sm: $content-font-size * 0.9;
 $button-font-size: 24px;
 $button-font-size-sm: $button-font-size * 0.85;
-
 
 // FONT WEIGHTS
 
 $header-font-weight: 600;
-

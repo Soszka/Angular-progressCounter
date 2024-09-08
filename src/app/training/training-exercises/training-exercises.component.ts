@@ -14,24 +14,30 @@ import { DialogService } from '../../shared/services/dialog.service';
 @Component({
   selector: 'app-training-exercises',
   standalone: true,
-  imports: [ 
-    MatTabsModule, 
-    ButtonComponent, 
+  imports: [
+    MatTabsModule,
+    ButtonComponent,
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,
   ],
   templateUrl: './training-exercises.component.html',
-  styleUrl: './training-exercises.component.scss'
+  styleUrl: './training-exercises.component.scss',
 })
 export class TrainingExercisesComponent {
-
   store = inject(TrainingsStore);
-  dialogService = inject(DialogService)
+  dialogService = inject(DialogService);
   trainingService = inject(TrainingService);
   router = inject(Router);
   trainings = computed(() => this.trainingService.processedTrainings());
+
+  images: string[] = [
+    'assets/trainingPhoto1.jpg',
+    'assets/splash_foto.jpg',
+    'assets/home_adventages_photo.jpg',
+    'assets/trainingPhoto4.jpg',
+  ];
 
   ngOnInit() {
     this.store.loadTrainings();
@@ -42,7 +48,16 @@ export class TrainingExercisesComponent {
     this.router.navigate(['/training/edit']);
   }
 
-  onAddExercise(trainingName: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
+  getCyclicImage(index: number): string {
+    const imageIndex = index % this.images.length;
+    return this.images[imageIndex];
+  }
+
+  onAddExercise(
+    trainingName: string,
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
     const dialogRef = this.dialogService.openDialog(
       AddExerciseDialogComponent,
       { trainingName },
@@ -51,7 +66,7 @@ export class TrainingExercisesComponent {
       enterAnimationDuration,
       exitAnimationDuration
     );
-    
+
     dialogRef.afterClosed().subscribe(() => {
       this.store.loadTrainings();
     });

@@ -10,15 +10,15 @@ import { HomeFaqComponent } from './home-faq/home-faq.component';
   standalone: true,
   imports: [
     HomeAdventagesComponent,
-    HomeSplashComponent, 
+    HomeSplashComponent,
     HomeFeaturesComponent,
-    HomeFaqComponent, 
-    FooterComponent
+    HomeFaqComponent,
+    FooterComponent,
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  footerBackground = input('linear-gradient(to right, rgb(5, 7, 146), rgb(3, 3, 41))');
+  footerBackground = input('rgb(0, 30, 94)');
   footerAuthorColor = input('rgb(27, 93, 235)');
 }

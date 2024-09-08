@@ -1,0 +1,77 @@
+@import '../../../styles.scss';
+
+.login-info {
+  text-align: center;
+  padding: 30px 50px;
+  position: relative;
+  width: 800px;
+
+  @include extra-large-screens {
+    width: 100%;
+  }
+  @include medium-screens {
+    padding: 80px 20px 20px;
+  }
+  @include small-screens {
+    display: flex;
+  }
+
+  .close-button {
+    display: none;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 75px;
+    height: 75px;
+    @include medium-screens {
+      display: block;
+      text-align: center;
+      padding: 60px 10px 10px;
+    }
+
+    mat-icon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 50px;
+      height: 50px;
+      font-size: 50px;
+    }
+  }
+
+  p {
+    @include text-style(18px, 400);
+    text-align: left;
+    margin-top: 0;
+    @include small-screens {
+      padding: 0px 10px;
+    }
+  }
+
+  table {
+    @include small-screens {
+      margin-bottom: 10px;
+    }
+
+    th {
+      @include heading-style(22px, 450, $text-color);
+      text-align: center;
+      width: 33%;
+    }
+
+    .name-column {
+      @include large-screens {
+        display: none !important;
+      }
+    }
+
+    .#{$mat-table-row} {
+      font-size: 18px;
+    }
+
+    .#{$mat-table-cell} {
+      text-align: center;
+      padding: 20px 0;
+    }
+  }
+}

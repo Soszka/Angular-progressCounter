@@ -8,24 +8,23 @@ import { ProgressChartsComponent } from './progress-charts/progress-charts.compo
 @Component({
   selector: 'app-progress',
   standalone: true,
-  imports: [ 
-    NavigationComponent, 
-    FooterComponent, 
-    TitleComponent, 
+  imports: [
+    NavigationComponent,
+    FooterComponent,
+    TitleComponent,
     ProgressFormComponent,
-    ProgressChartsComponent
+    ProgressChartsComponent,
   ],
   templateUrl: './progress.component.html',
-  styleUrl: './progress.component.scss'
+  styleUrl: './progress.component.scss',
 })
 export class ProgressComponent {
-  navBackground = input('linear-gradient(to top, rgb(224, 0, 0), rgb(46, 0, 0))');
-  footerBackground = input('linear-gradient(to right, rgb(201, 8, 8), rgb(78, 0, 0))');
-  footerAuthorColor = input('rgb(230, 9, 9)');
+  navBackground = input('rgb(138, 0, 0)');
+  footerBackground = input('rgb(138, 0, 0)');
   expandedLinkColor = input('rgb(145, 0, 0)');
   expandedActiveLinkColor = input('white');
-  expandedActiveLinkBg = input('linear-gradient(to bottom, rgb(224, 0, 0), rgb(46, 0, 0))');
-  subtitle = input("Przeanalizuj swój ...");
-  title = input("POSTĘP");
-  titleColor = input("rgb(218, 17, 17)")
+  expandedActiveLinkBg = input('rgb(138, 0, 0)');
+  subtitle = input('Przeanalizuj swój ...');
+  title = input('POSTĘP');
+  titleColor = input('rgb(182, 0, 0)');
 }

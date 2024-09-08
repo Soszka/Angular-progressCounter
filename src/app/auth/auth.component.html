@@ -1,93 +1,94 @@
 <div class="auth">
+  <app-navigation
+    [navBackground]="navBackground()"
+    [expandedLinkColor]="expandedLinkColor()"
+    [expandedActiveLinkColor]="expandedActiveLinkColor()"
+    [expandedActiveLinkBg]="expandedActiveLinkBg()"
+  >
+  </app-navigation>
   <div class="auth-content">
-    <app-navigation 
-      [navBackground]="navBackground()"
-      [expandedLinkColor]="expandedLinkColor()"
-      [expandedActiveLinkColor]="expandedActiveLinkColor()"
-      [expandedActiveLinkBg]="expandedActiveLinkBg()">
-    </app-navigation>
-    <app-title 
-      [title]="title()"
-      [subtitle]="subtitle()"
-      [titleColor]="titleColor()">
-    </app-title>
     @if (!user) {
-      <mat-card class="login-form">
+    <mat-card class="login-form">
+      <app-title
+        [title]="title()"
+        [subtitle]="subtitle()"
+        [titleColor]="titleColor()"
+      >
+      </app-title>
+      <div class="form-container">
         <mat-form-field>
           <mat-label>Wprowadź email</mat-label>
-          <input matInput
+          <input
+            matInput
             placeholder="przykładowy@email.com"
             [formControl]="email"
             (blur)="updateErrorMessage()"
-            required>
+            required
+          />
           @if (email.invalid) {
-            <mat-error>{{errorMessage}}</mat-error>
+          <mat-error>{{ errorMessage }}</mat-error>
           }
         </mat-form-field>
         <mat-form-field>
           <mat-label>Wprowadź hasło</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            [formControl]="password"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
             <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
         </mat-form-field>
         <div>
           <app-button
-            [fontSize]="'22px'"
-            [backgroundColor]="'#00b806'"
-            [width]="'160px'"
-            [height]="'50px'"
+            class="login-button"
+            [fontSize]="'20px'"
+            [backgroundColor]="'rgb(0, 0, 139)'"
+            [width]="'140px'"
+            [height]="'40px'"
             [color]="'white'"
-            [margin]="'10px auto'"
-            (click)="onLogin()">ZALOGUJ
+            [margin]="'0px auto 30px'"
+            (click)="onLogin()"
+            >ZALOGUJ
           </app-button>
         </div>
-      </mat-card>
-      
-      <mat-card class="login-info">
-        <p>{{ loginDescription }}</p>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef class="name-column"> UŻYTKOWNIK </th>
-            <td mat-cell *matCellDef="let element" class="name-column"> {{element.name}} </td>
-          </ng-container>
-        
-          <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef> EMAIL </th>
-            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-          </ng-container>
-      
-          <ng-container matColumnDef="password">
-            <th mat-header-cell *matHeaderCellDef> HASŁO </th>
-            <td mat-cell *matCellDef="let element"> {{element.password}} </td>
-          </ng-container>
-        
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-      </mat-card>
-    }
-
-    @if (user) {
-      <mat-card class="logout-info">
-        <p>{{ logoutDescription }}</p>
-        <div>
-          <app-button
-            [fontSize]="'22px'"
-            [backgroundColor]="'#00b806'"
-            [width]="'160px'"
-            [height]="'50px'"
-            [color]="'white'"
-            [margin]="'10px auto'"
-            (click)="onLogout()">WYLOGUJ
-          </app-button>
-        </div>
-      </mat-card>
+      </div>
+      <button
+        mat-raised-button
+        class="register-button"
+        (click)="showUsersDialog('300ms', '300ms')"
+      >
+        Kliknij tutaj aby utworzyć nowe konto
+      </button>
+    </mat-card>
+    } @if (user) {
+    <mat-card class="logout-info">
+      <p>{{ logoutDescription }}</p>
+      <div>
+        <app-button
+          [fontSize]="'20px'"
+          [backgroundColor]="'rgba(0, 0, 150)'"
+          [width]="'140px'"
+          [height]="'40px'"
+          [color]="'white'"
+          [margin]="'0px auto 15px'"
+          (click)="onLogout()"
+          >WYLOGUJ
+        </app-button>
+      </div>
+    </mat-card>
     }
   </div>
   <app-footer
-   [footerBackground]="footerBackground()"
-   [authorColor]="footerAuthorColor()">
+    [footerBackground]="footerBackground()"
+    [authorColor]="footerAuthorColor()"
+  >
   </app-footer>
 </div>

@@ -5,12 +5,13 @@
   <div class="actions">
     <app-button
       [fontSize]="'20px'"
-      [backgroundColor]="'rgb(0, 0, 190)'"
+      [backgroundColor]="'rgb(0, 0, 130)'"
       [width]="'130px'"
       [height]="'45px'"
       [color]="'white'"
-      [margin]="'10px 10px'"
-      (click)="onCancel()">ANULUJ
+      [margin]="'10px 10px 0'"
+      (click)="onCancel()"
+      >ANULUJ
     </app-button>
     <app-button
       [fontSize]="'20px'"
@@ -18,8 +19,9 @@
       [width]="'130px'"
       [height]="'45px'"
       [color]="'white'"
-      [margin]="'10px 10px'"
-      (click)="onRemove('300ms', '300ms')">USUŃ
+      [margin]="'10px 10px 0'"
+      (click)="onRemove('300ms', '300ms')"
+      >USUŃ
     </app-button>
   </div>
 </div>

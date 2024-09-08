@@ -6,7 +6,6 @@ import {
   MatDialogTitle,
   MatDialogContent,
   MatDialog,
-  MatDialogConfig
 } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,38 +19,42 @@ import { DialogService } from '../../../shared/services/dialog.service';
 @Component({
   selector: 'app-modify-training-dialog',
   standalone: true,
-  imports: [ 
-    MatButtonModule, 
-    MatDialogActions, 
-    MatDialogClose, 
-    MatDialogTitle, 
+  imports: [
+    MatButtonModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogTitle,
     MatDialogContent,
     MatTableModule,
     ButtonComponent,
-    MatIconModule
+    MatIconModule,
   ],
   templateUrl: './modify-training-dialog.component.html',
-  styleUrl: './modify-training-dialog.component.scss'
+  styleUrl: './modify-training-dialog.component.scss',
 })
 export class ModifyTrainingDialogComponent implements OnInit {
-
   displayedColumns: string[] = ['name', 'exercisesCount', 'remove'];
   trainingStore = inject(TrainingsStore);
   dialog = inject(MatDialog);
   dialogService = inject(DialogService);
 
-  dataSource = computed(() => this.trainingStore.trainings().map(training => ({
-    name: training.category,
-    exercisesCount: training.exercises.length
-  })));
+  dataSource = computed(() =>
+    this.trainingStore.trainings().map((training) => ({
+      name: training.category,
+      exercisesCount: training.exercises.length,
+    }))
+  );
 
-  constructor( public dialogRef: MatDialogRef<ModifyTrainingDialogComponent> ) {}
+  constructor(public dialogRef: MatDialogRef<ModifyTrainingDialogComponent>) {}
 
   ngOnInit() {
     this.trainingStore.loadTrainings();
   }
 
-  onAddTraining(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  onAddTraining(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
     this.dialogService.openDialog(
       AddTrainingDialogComponent,
       {},
@@ -62,10 +65,16 @@ export class ModifyTrainingDialogComponent implements OnInit {
     );
   }
 
-  onRemoveTraining(trainingName: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
-    const messages = { 
-      confirmMessage: "Czy na pewno chcesz usunąć wybrany trening z twojego planu treningowego? Gdy to zrobisz, cała historia związana z tym treningiem w planie treningowym zostanie trwale usunięta.",
-      successMessage: "Pomyślnie usunięto wybrany trening z twojego planu treningowego." 
+  onRemoveTraining(
+    trainingName: string,
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    const messages = {
+      confirmMessage:
+        'Czy na pewno chcesz usunąć wybrany trening z twojego planu treningowego? Gdy to zrobisz, cała historia związana z tym treningiem w planie treningowym zostanie trwale usunięta.',
+      successMessage:
+        'Pomyślnie usunięto wybrany trening z twojego planu treningowego.',
     };
 
     this.dialogService.openDialog(

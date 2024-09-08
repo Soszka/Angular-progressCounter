@@ -1,33 +1,46 @@
 <div class="training-exercise">
   <div class="container">
-    <app-navigation 
+    <app-navigation
       [navBackground]="navBackground()"
-      [expandedLinkColor]="expandedLinkColor()">
+      [expandedLinkColor]="expandedLinkColor()"
+    >
     </app-navigation>
     <app-title
       [title]="title()"
       [subtitle]="subtitle()"
-      [titleColor]="titleColor()">
+      [titleColor]="titleColor()"
+    >
     </app-title>
     <div class="title-container">
-      <button mat-fab color="white" class="previous-button" (click)="previousExercise()">
-        <mat-icon>chevron_left</mat-icon> 
+      <button
+        mat-fab
+        color="white"
+        class="previous-button"
+        (click)="previousExercise()"
+      >
+        <mat-icon>chevron_left</mat-icon>
       </button>
       <h2>{{ exerciseName | uppercase }}</h2>
-      <button mat-fab color="white" class="next-button" (click)="nextExercise()">
-        <mat-icon>chevron_right</mat-icon> 
+      <button
+        mat-fab
+        color="white"
+        class="next-button"
+        (click)="nextExercise()"
+      >
+        <mat-icon>chevron_right</mat-icon>
       </button>
     </div>
     <div class="exercise">
       <div class="exercise-buttons">
         <app-button
           [fontSize]="'21px'"
-          [backgroundColor]="'rgb(0, 0, 190)'"
+          [backgroundColor]="'rgb(0, 0, 130)'"
           [width]="'250px'"
           [height]="'50px'"
           [color]="'white'"
           [margin]="'15px 0 0 0'"
-          (click)="onAddExercisePosition('300ms', '300ms')">DODAJ POZYCJĘ
+          (click)="onAddExercisePosition('300ms', '300ms')"
+          >DODAJ POZYCJĘ
         </app-button>
         <app-button
           [fontSize]="'21px'"
@@ -36,27 +49,40 @@
           [height]="'50px'"
           [color]="'white'"
           [margin]="'15px 0 0 0'"
-          (click)="onRemoveExercise('300ms', '300ms')">USUŃ ĆWICZENIE
+          (click)="onRemoveExercise('300ms', '300ms')"
+          >USUŃ ĆWICZENIE
         </app-button>
       </div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef class="date-column"> DATA </th>
-          <td mat-cell *matCellDef="let element" class="date-column"> {{element.date}} </td>
+          <th mat-header-cell *matHeaderCellDef class="date-column">DATA</th>
+          <td mat-cell *matCellDef="let element" class="date-column">
+            {{ element.date }}
+          </td>
         </ng-container>
-      
+
         <ng-container matColumnDef="repetitions">
-          <th mat-header-cell *matHeaderCellDef class="repetitions-column"> POWTÓRZENIA </th>
-          <td mat-cell *matCellDef="let element" class="repetitions-column"> {{element.repetitions}} </td>
+          <th mat-header-cell *matHeaderCellDef class="repetitions-column">
+            POWTÓRZENIA
+          </th>
+          <td mat-cell *matCellDef="let element" class="repetitions-column">
+            {{ element.repetitions }}
+          </td>
         </ng-container>
-      
+
         <ng-container matColumnDef="weight">
-          <th mat-header-cell *matHeaderCellDef class="weight-column"> CIĘŻAR ( KG )</th>
-          <td mat-cell *matCellDef="let element" class="weight-column"> {{element.weight}} </td>
+          <th mat-header-cell *matHeaderCellDef class="weight-column">
+            CIĘŻAR ( KG )
+          </th>
+          <td mat-cell *matCellDef="let element" class="weight-column">
+            {{ element.weight }}
+          </td>
         </ng-container>
-    
+
         <ng-container matColumnDef="remove">
-          <th mat-header-cell *matHeaderCellDef class="remove-column">USUWANIE</th>
+          <th mat-header-cell *matHeaderCellDef class="remove-column">
+            USUWANIE
+          </th>
           <td mat-cell *matCellDef="let element" class="remove-column">
             <app-button
               [fontSize]="'16px'"
@@ -65,40 +91,50 @@
               [height]="'35px'"
               [color]="'white'"
               [margin]="'0'"
-              (click)="onRemovePosition('300ms', '300ms', element.date)">USUŃ
+              (click)="onRemovePosition('300ms', '300ms', element.date)"
+              >USUŃ
             </app-button>
           </td>
         </ng-container>
 
         <ng-container matColumnDef="details">
-          <th mat-header-cell *matHeaderCellDef class="details-column">SZCZEGÓŁY</th>
+          <th mat-header-cell *matHeaderCellDef class="details-column">
+            SZCZEGÓŁY
+          </th>
           <td mat-cell *matCellDef="let element" class="details-column">
             <app-button
               [fontSize]="'16px'"
-              [backgroundColor]="'rgb(0, 0, 190)'"
+              [backgroundColor]="'rgb(0, 0, 130)'"
               [width]="'110px'"
               [height]="'35px'"
               [color]="'white'"
               [margin]="'0'"
-              (click)="onShowDetails(element.date, element.repetitions, element.weight, '300ms', '300ms')">ZOBACZ
+              (click)="
+                onShowDetails(
+                  element.date,
+                  element.repetitions,
+                  element.weight,
+                  '300ms',
+                  '300ms'
+                )
+              "
+              >ZOBACZ
             </app-button>
           </td>
         </ng-container>
-      
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
       <div class="paginator-container">
-        <mat-paginator 
+        <mat-paginator
           [pageSizeOptions]="[5, 8, 10]"
           showFirstLastButtons
-          aria-label="Select page of periodic elements">
+          aria-label="Select page of periodic elements"
+        >
         </mat-paginator>
       </div>
     </div>
   </div>
-  <app-footer
-    [footerBackground]="footerBackground()"
-    [authorColor]="footerAuthorColor()">
-  </app-footer>
+  <app-footer [footerBackground]="footerBackground()"></app-footer>
 </div>

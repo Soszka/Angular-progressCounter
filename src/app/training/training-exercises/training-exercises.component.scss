@@ -40,26 +40,24 @@ mat-tab-group {
     margin: 10px auto;
   }
   @include small-screens {
-    width: 95%;
+    width: 97%;
   }
-  
-
 
   .exercise-card {
     position: relative;
     width: 100%;
     height: 100%;
     transition: all 1s;
-    -webkit-transition:1s;
+    -webkit-transition: 1s;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    border: 2px solid rgb(1, 1, 78);
+    border-radius: 30px;
     box-shadow: 0px 3px 7px rgba(0, 0, 168, 0.4);
   }
 
   &:hover > .exercise-card {
-    transform:rotateY(180deg);
-    -webkit-transform:rotateY(180deg);
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
   }
 
   .exercise-front-card {
@@ -71,24 +69,31 @@ mat-tab-group {
     background: url('../../../assets/trainingPhoto1.jpg');
     background-size: cover;
     position: relative;
+    border-radius: 30px;
     z-index: 0;
     overflow: hidden;
 
     h2 {
-      @include heading-style($title-font-size * 0.9,  $header-font-weight * 1.1, white);
-      padding: 10px;
-      margin-bottom: 30px;
+      @include heading-style(
+        $title-font-size * 0.9,
+        $header-font-weight * 1.1,
+        white
+      );
+      padding: 0;
+      margin: 0;
       z-index: 1;
     }
-  
+
     h4 {
-      @include heading-style(25px,  $header-font-weight * 0.9, white);
+      @include heading-style(25px, $header-font-weight * 0.9, white);
       z-index: 1;
+      margin: 20px 0;
     }
-  
+
     p {
-      @include heading-style($content-font-size * 1.1,  500, white);
+      @include heading-style($content-font-size * 1.1, 500, white);
       z-index: 1;
+      margin: 0;
     }
   }
 
@@ -99,44 +104,62 @@ mat-tab-group {
     height: 100%;
     top: 0;
     left: 0;
-    transform:rotateY(180deg);
-    -webkit-transform:rotateY(180deg);
-    backface-visibility:hidden;
+    border-radius: 30px;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    background: linear-gradient(to top, rgba(0, 0, 143) 0%, rgba(0, 0, 58) 30%, rgba(0, 0, 58) 60%, rgba(0, 0, 143) 100%);
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 143) 0%,
+      rgba(0, 0, 58) 30%,
+      rgba(0, 0, 58) 60%,
+      rgba(0, 0, 143) 100%
+    );
 
     h4 {
-      @include heading-style(30px,  $header-font-weight * 0.9, white);
-      margin-bottom: 0;
+      @include heading-style(30px, $header-font-weight * 0.9, white);
+      margin: 0;
     }
 
     h3 {
-      @include heading-style(46px,  $header-font-weight * 1.1, white);
-      margin-bottom: 20px;
+      @include heading-style(46px, $header-font-weight * 1.1, white);
+      margin: 0;
     }
   }
 }
 
 .exercise-front-card:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to top, rgba(0, 0, 46, 0.8), rgba(0, 0, 187, 0.8));
-  z-index: 1;  
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 63, 0.8),
+    rgba(0, 0, 130, 0.8)
+  );
+  z-index: 1;
 }
 
 .add-card {
   @include flex(column, center, center);
   perspective: none;
   cursor: pointer;
-  background: linear-gradient(to top, rgba(0, 0, 143) 0%, rgba(0, 0, 58) 30%, rgba(0, 0, 58) 60%, rgba(0, 0, 143) 100%);
+  border-radius: 30px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 130) 0%,
+    rgba(0, 0, 63) 30%,
+    rgba(0, 0, 63) 60%,
+    rgba(0, 0, 130) 100%
+  );
 
   h3 {
-    @include heading-style(42px,  $header-font-weight, white);
-    margin-bottom: 15px;
+    @include heading-style(42px, $header-font-weight, white);
+    margin: 0 0 10px;
     z-index: 2;
   }
 
