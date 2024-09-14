@@ -1,75 +1,120 @@
-import { Component, ElementRef, ViewChild } from "@angular/core"
-import KeenSlider, { KeenSliderInstance, KeenSliderPlugin } from "keen-slider";
-
-function ThumbnailPlugin(main: KeenSliderInstance): KeenSliderPlugin {
-  return (slider) => {
-    function removeActive() {
-      slider.slides.forEach((slide) => {
-        slide.classList.remove("active")
-      })
-    }
-    function addActive(idx: number) {
-      slider.slides[idx].classList.add("active")
-    }
-
-    function addClickEvents() {
-      slider.slides.forEach((slide, idx) => {
-        slide.addEventListener("click", () => {
-          main.moveToIdx(idx)
-        })
-      })
-    }
-
-    slider.on("created", () => {
-      addActive(slider.track.details.rel)
-      addClickEvents()
-      main.on("animationStarted", (main) => {
-        removeActive()
-        const next = main.animator.targetIdx || 0
-        addActive(main.track.absToRel(next))
-        slider.moveToIdx(Math.min(slider.track.details.maxIdx, next))
-      })
-    })
-  }
-}
+import { Component, OnInit, HostListener } from '@angular/core';
+import { NgFor, AsyncPipe } from '@angular/common';
+import { Gallery, GalleryItem, ImageItem } from 'ng-gallery';
+import { LightboxModule, Lightbox } from 'ng-gallery/lightbox';
 
 @Component({
- selector: 'app-calories-carousel',
-  standalone: true, 
-  imports: [], 
+  selector: 'app-calories-carousel',
+  standalone: true,
+  imports: [LightboxModule, NgFor, AsyncPipe],
   templateUrl: './calories-carousel.component.html',
   styleUrls: ['./calories-carousel.component.scss'],
 })
-export class CaloriesCarouselComponent{
+export class CaloriesCarouselComponent implements OnInit {
+  galleryId = 'myLightbox';
+  items: GalleryItem[] = [];
+  largeScreenItems: GalleryItem[] = [];
+  smallScreenItems: GalleryItem[] = [];
 
-  @ViewChild("sliderRef") sliderRef!: ElementRef<HTMLElement>
-  @ViewChild("thumbnailRef") thumbnailRef!: ElementRef<HTMLElement>
+  constructor(public gallery: Gallery, private lightbox: Lightbox) {}
 
-  slider!: KeenSliderInstance
-  thumbnailSlider!: KeenSliderInstance
-  slideNumbers = [1, 2, 3, 4, 5, 6, 7, 8];
+  ngOnInit() {
+    // Zdefiniuj elementy galerii
+    this.largeScreenItems = [
+      new ImageItem({
+        src: 'assets/caloriesPhotos/caloriesPhoto1.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto1.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/caloriesPhoto2.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto2.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/caloriesPhoto3.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto3.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/caloriesPhoto4.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto4.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/caloriesPhoto5.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto5.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/caloriesPhoto6.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto6.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/caloriesPhoto7.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto7.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/caloriesPhoto8.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto8.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/caloriesPhoto9.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto9.png',
+      }),
+    ];
 
-  ngAfterViewInit() {
-    this.slider = new KeenSlider(this.sliderRef.nativeElement)
-    this.thumbnailSlider = new KeenSlider(
-      this.thumbnailRef.nativeElement,
-      {
-        initial: 0,
-        slides: {
-          perView: 3,
-          spacing: 10,
-        },
-      },
-      [ThumbnailPlugin(this.slider)]
-    )
+    this.smallScreenItems = [
+      new ImageItem({
+        src: 'assets/caloriesPhotos/smCaloriesPhoto1.png',
+        thumb: 'assets/caloriesPhotos/smCaloriesPhoto1.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/smCaloriesPhoto2.png',
+        thumb: 'assets/caloriesPhotos/smCaloriesPhoto2.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/smCaloriesPhoto3.png',
+        thumb: 'assets/caloriesPhotos/smCaloriesPhoto3.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/smCaloriesPhoto4.png',
+        thumb: 'assets/caloriesPhotos/smCaloriesPhoto4.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/smCaloriesPhoto5.png',
+        thumb: 'assets/caloriesPhotos/smCaloriesPhoto5.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/smCaloriesPhoto6.png',
+        thumb: 'assets/caloriesPhotos/smCaloriesPhoto6.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/smCaloriesPhoto7.png',
+        thumb: 'assets/caloriesPhotos/smCaloriesPhoto7.png',
+      }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/smCaloriesPhoto8.png',
+        thumb: 'assets/caloriesPhotos/smCaloriesPhoto8.png',
+      }),
+    ];
+    this.detectScreenSize();
   }
 
-  ngOnDestroy() {
-    if (this.slider) this.slider.destroy()
-    if (this.thumbnailSlider) this.thumbnailSlider.destroy()
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.detectScreenSize();
+  }
+
+  detectScreenSize() {
+    if (window.innerWidth <= 768) {
+      this.items = this.smallScreenItems;
+    } else {
+      this.items = this.largeScreenItems;
+    }
+
+    const galleryRef = this.gallery.ref(this.galleryId);
+    galleryRef.load(this.items);
+  }
+
+  openLightbox(index: number) {
+    this.lightbox.open(index, this.galleryId, {
+      panelClass: 'fullscreen',
+    });
   }
 }
-
-
-
-

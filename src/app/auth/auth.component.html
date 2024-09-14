@@ -6,7 +6,7 @@
     [expandedActiveLinkBg]="expandedActiveLinkBg()"
   >
   </app-navigation>
-  <div class="auth-content">
+  <div class="auth-content" data-aos="zoom-in">
     @if (!user) {
     <mat-card class="login-form">
       <app-title
@@ -74,10 +74,10 @@
       <div>
         <app-button
           [fontSize]="'20px'"
-          [backgroundColor]="'rgba(0, 0, 150)'"
+          [backgroundColor]="'white'"
           [width]="'140px'"
           [height]="'40px'"
-          [color]="'white'"
+          [color]="'black'"
           [margin]="'0px auto 15px'"
           (click)="onLogout()"
           >WYLOGUJ

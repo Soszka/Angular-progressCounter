@@ -1,10 +1,10 @@
-<div class="keen-slider" #sliderRef>
-  @for (i of slideNumbers; track i) {
-    <div class="keen-slider__slide {{ 'number-slide' + i }}"></div>
-  }
-</div>
-<div class="keen-slider thumbnail" #thumbnailRef>
-  @for (i of slideNumbers; track i) {
-    <div class="keen-slider__slide {{ 'number-slide' + i }}"></div>
-  }
+<div class="grid" data-aos="slide-right">
+  <div
+    class="grid-item"
+    *ngFor="let item of items; let i = index"
+    [lightbox]="i"
+    [gallery]="galleryId"
+  >
+    <img [src]="item.data?.thumb" />
+  </div>
 </div>

@@ -56,7 +56,7 @@ export class AuthComponent {
   expandedActiveLinkBg = input('white');
   subtitle = input('Zacznij od ...');
   title = input('Zalogowania');
-  titleColor = input('rgba(0, 0, 150)');
+  titleColor = input('rgba(0, 0, 130)');
 
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
@@ -100,7 +100,6 @@ export class AuthComponent {
         this.authService.login(emailValue, passwordValue).subscribe({
           next: () => {
             this.store.setLoadingFalse();
-            this.router.navigate(['/training']);
             this.dialogService.openInfoDialog(
               'Pomyślnie zalogowano!',
               '300ms',

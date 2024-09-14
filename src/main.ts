@@ -13,6 +13,7 @@ import { firebaseConfig } from './app/api/firebase-config';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { A11yModule } from '@angular/cdk/a11y';
 import { provideHttpClient } from '@angular/common/http';
+import { GALLERY_CONFIG, GalleryConfig } from 'ng-gallery';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -27,5 +28,12 @@ bootstrapApplication(AppComponent, {
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
+    {
+      provide: GALLERY_CONFIG,
+      useValue: {
+        autoHeight: true,
+        imageSize: 'cover',
+      } as GalleryConfig,
+    },
   ],
 }).catch((err) => console.error(err));

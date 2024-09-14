@@ -1,71 +1,47 @@
-@import '../../../../node_modules/keen-slider/keen-slider.min.css';
 @import '../../../styles.scss';
 
-[class^="number-slide"],
-[class*=" number-slide"] {
-  height: 370px;
-  max-height: 100vh;
-
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   @include large-screens {
-    height: 325px;
+    justify-content: space-around;
+    margin-top: 20px;
   }
-  @include medium-screens {
-    height: 300px;
+}
+
+.grid-item {
+  width: 30%;
+  height: 100px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  border-radius: 20px;
+  margin: 10px 0;
+  transition: transform 0.3s ease;
+  @include large-screens {
+    width: 45%;
+  }
+  &:hover {
+    transform: scale(1.1);
   }
   @include small-screens {
-    display: none;
+    &:hover {
+      transform: none;
+    }
+  }
+
+  &:nth-child(9) {
+    @include large-screens {
+      display: none;
+    }
   }
 }
 
-.number-slide1 {
-  background: url('../../../assets/caloriesPhoto1.PNG');
-  background-size: cover;
-  background-position: center;
-}
-
-.number-slide2 {
-  background: url('../../../assets/caloriesPhoto2.PNG');
-  background-size: cover;
-}
-
-.number-slide3 {
-  background: url('../../../assets/caloriesPhoto3.PNG');
-  background-size: cover;
-}
-
-.number-slide4 {
-  background: url('../../../assets/caloriesPhoto4.PNG');
-  background-size: cover;
-}
-
-.number-slide5 {
-  background: url('../../../assets/caloriesPhoto5.PNG');
-  background-size: cover;
-}
-
-.number-slide6 {
-  background: url('../../../assets/caloriesPhoto6.PNG');
-  background-size: cover;
-}
-
-.number-slide7 {
-  background: url('../../../assets/caloriesPhoto7.PNG');
-  background-size: cover;
-  background-position: center;
-}
-
-.number-slide8 {
-  background: url('../../../assets/caloriesPhoto8.PNG');
-  background-size: cover;
-}
-
-.thumbnail .keen-slider__slide {
-  font-size: 30px;
-  margin-top: 10px;
-  height: 100px;
-  cursor: pointer;
-  overflow: visible;
-}
-.thumbnail .keen-slider__slide.active {
-  border: 2px solid black;
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: top;
 }

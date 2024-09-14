@@ -1,33 +1,37 @@
 <div #containerRef class="container">
   @if (!hasFilteredData()) {
-    <mat-card>
-      <p>Nie znaleziono danych. Użyj formularza żeby przefiltorwać ćwiczenia</p>
-    </mat-card>
-  }
-  @if (hasFilteredData()) {
-    <ngx-charts-line-chart
-      [view]="[containerRef.offsetWidth, 400]"
-      [scheme]="colorScheme"
-      [results]="chartData()"
-      [xAxis]="true"
-      [yAxis]="true"
-      [legend]="true"
-      [showXAxisLabel]="true"
-      [showYAxisLabel]="true"
-      [yAxisLabel]="yAxisLabel">
-    </ngx-charts-line-chart>
+  <div class="card" data-aos="slide-up">
+    <p>
+      Nie znaleziono danych <br />Użyj formularza żeby przefiltorwać ćwiczenia
+    </p>
+  </div>
 
-    <ngx-charts-bar-vertical
-      [view]="[containerRef.offsetWidth, 400]"
-      [scheme]="colorScheme"
-      [results]="frequencyData()"
-      [xAxis]="true"
-      [yAxis]="true"
-      [legend]="true"
-      [showXAxisLabel]="true"
-      [showYAxisLabel]="true"
-      [yAxisLabel]="frequencyYAxisLabel">
-    </ngx-charts-bar-vertical>
-    <app-progress-charts-description></app-progress-charts-description>
+  } @if (hasFilteredData()) {
+  <ngx-charts-line-chart
+    [view]="[containerRef.offsetWidth, 400]"
+    [scheme]="colorScheme"
+    [results]="chartData()"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [yAxisLabel]="yAxisLabel"
+  >
+  </ngx-charts-line-chart>
+
+  <ngx-charts-bar-vertical
+    [view]="[containerRef.offsetWidth, 400]"
+    [scheme]="colorScheme"
+    [results]="frequencyData()"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [yAxisLabel]="frequencyYAxisLabel"
+  >
+  </ngx-charts-bar-vertical>
+  <app-progress-charts-description></app-progress-charts-description>
   }
 </div>

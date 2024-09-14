@@ -1,11 +1,13 @@
 @import '../../../styles.scss';
 
 .progress-form {
-  @include container(40px, 20px);
+  @include container(40px, 0px);
   @include flex(row, space-around, center);
+  padding: 0 10px;
   @include medium-screens {
     @include flex(column, center, center);
-    margin-bottom: 0;
+    margin-bottom: 10px;
+    padding: 0;
   }
 
   mat-form-field {

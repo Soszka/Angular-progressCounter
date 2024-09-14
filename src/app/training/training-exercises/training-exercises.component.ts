@@ -34,8 +34,8 @@ export class TrainingExercisesComponent {
 
   images: string[] = [
     'assets/trainingPhoto1.jpg',
-    'assets/splash_foto.jpg',
     'assets/home_adventages_photo.jpg',
+    'assets/splash_foto.jpg',
     'assets/trainingPhoto4.jpg',
   ];
 

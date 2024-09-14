@@ -2,14 +2,15 @@
   class="features-title"
   [title]="title()"
   [subtitle]="subtitle()"
-  [titleColor]="titleColor()">
+  [titleColor]="titleColor()"
+>
 </app-title>
 <div class="features">
   @for (feature of features; track feature.title) {
-    <div class="feature">
-      <mat-icon [fontIcon]="feature.icon"></mat-icon>
-      <h3>{{ feature.title }}</h3>
-      <p>{{ feature.description }}</p>
-    </div>
+  <div class="feature" data-aos="zoom-in">
+    <mat-icon [fontIcon]="feature.icon"></mat-icon>
+    <h3>{{ feature.title }}</h3>
+    <p>{{ feature.description }}</p>
+  </div>
   }
 </div>

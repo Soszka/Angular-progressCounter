@@ -7,18 +7,19 @@
 
 .calories-content {
   @include flex(row, space-between, center);
-  @include container(20px, 40px);
+  @include container(20px, 20px);
 
   @include large-screens {
     @include flex(column-reverse, center, center);
   }
+  padding: 20px 20px 0;
 }
 
 app-calories-carousel {
   width: 55%;
 
   @include large-screens {
-    width: 90%
+    width: 90%;
   }
   @include medium-screens {
     width: 95%;
@@ -30,12 +31,12 @@ app-calories-carousel {
   text-align: center;
   width: 43%;
 
+  P {
+    margin: 0 auto;
+  }
+
   @include large-screens {
     width: 95%;
-    margin-bottom: 40px;
-  }
-  @include small-screens {
     margin-bottom: 0px;
   }
 }
-

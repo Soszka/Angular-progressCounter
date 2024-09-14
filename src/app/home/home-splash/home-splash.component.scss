@@ -8,6 +8,10 @@
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
   z-index: 1;
   text-align: center;
+
+  @include large-screens {
+    background-attachment: scroll;
+  }
 }
 
 .splash:before {
@@ -36,7 +40,7 @@
 
   h1 {
     @include text-style($title-font-size * 1.1, 650);
-    margin-bottom: 0px;
+    margin: 20px 5px 0;
     letter-spacing: 1px;
   }
 

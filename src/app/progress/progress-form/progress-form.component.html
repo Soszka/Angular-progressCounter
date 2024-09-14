@@ -1,47 +1,51 @@
-<div class="progress-form">
+<div class="progress-form" data-aos="zoom-out">
   <mat-form-field>
     <mat-label>Wybierz Trening</mat-label>
-    <mat-select 
-      disableRipple 
-      [ngModel]="progressService.selectedTraining()" 
-      (ngModelChange)="updateSelectedTraining($event)">
+    <mat-select
+      disableRipple
+      [ngModel]="progressService.selectedTraining()"
+      (ngModelChange)="updateSelectedTraining($event)"
+    >
       @for (training of trainingList(); track $index) {
-        <mat-option [value]="training">{{ training.category }}</mat-option>
+      <mat-option [value]="training">{{ training.category }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
-  
+
   <mat-form-field>
     <mat-label>Wybierz ćwiczenie</mat-label>
-    <mat-select 
-      [ngModel]="progressService.selectedExercise()" 
-      (ngModelChange)="updateSelectedExercise($event)" 
-      [disabled]="!progressService.selectedTraining()">
+    <mat-select
+      [ngModel]="progressService.selectedExercise()"
+      (ngModelChange)="updateSelectedExercise($event)"
+      [disabled]="!progressService.selectedTraining()"
+    >
       @for (exercise of exercisesList(); track $index) {
-        <mat-option [value]="exercise">{{ exercise.name }}</mat-option>
+      <mat-option [value]="exercise">{{ exercise.name }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
-  
+
   <mat-form-field>
     <mat-label>Wybierz zakres</mat-label>
-    <mat-select 
-      [ngModel]="progressService.selectedRange()" 
-      (ngModelChange)="updateSelectedRange($event)">
+    <mat-select
+      [ngModel]="progressService.selectedRange()"
+      (ngModelChange)="updateSelectedRange($event)"
+    >
       @for (range of dateRanges; track $index) {
-        <mat-option [value]="range.value">{{ range.label }}</mat-option>
+      <mat-option [value]="range.value">{{ range.label }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
 </div>
 <div class="button-container">
   <app-button
-    [fontSize]="'24px'"
+    [fontSize]="'20px'"
     [backgroundColor]="'rgb(187, 0, 0)'"
-    [width]="'180px'"
-    [height]="'60px'"
+    [width]="'140px'"
+    [height]="'45px'"
     [color]="'white'"
-    [margin]="'15px auto'"
-    (click)="checkProgress()">SPRAWDŹ
+    [margin]="'10px auto 0'"
+    (click)="checkProgress()"
+    >SPRAWDŹ
   </app-button>
 </div>

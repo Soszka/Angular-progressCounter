@@ -14,7 +14,7 @@ mat-tab-group {
 }
 
 .exercises {
-  margin: 60px auto;
+  margin: 40px auto;
   @include flex(row, flex-start, center);
   flex-wrap: wrap;
   @include extra-large-screens {

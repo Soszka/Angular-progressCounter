@@ -1,7 +1,7 @@
 @import '../../../styles.scss';
 
 .accordion-container {
-  @include container(20px, 50px);
+  @include container(30px, 50px);
 }
 
 .#{$mat-expansion-panel-collapsed} {

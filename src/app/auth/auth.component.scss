@@ -2,7 +2,7 @@
 
 .auth {
   @include flex(column, space-between, stretch);
-  background: url('../../assets/authPhoto1.jpg') no-repeat center center;
+  background: url('../../assets/trainingPhoto1.jpg') no-repeat center center;
   background-size: cover;
   position: relative;
   z-index: 1;
@@ -46,6 +46,9 @@
   padding: 15px;
   margin: 0 auto;
   text-align: center;
+  background: inherit;
+  color: white;
+  box-shadow: none;
 
   @include extra-large-screens {
     width: 95%;
@@ -63,7 +66,7 @@
 
 .register-button {
   color: white;
-  background-color: rgb(0, 0, 139);
+  background-color: rgb(0, 0, 119);
 
   &:hover {
     background-color: rgb(0, 0, 167);
