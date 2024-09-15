@@ -49,7 +49,7 @@ import { AuthUsersDialogComponent } from './auth-users-dialog/auth-users-dialog.
 })
 export class AuthComponent {
   footerBackground = input('inherit');
-  footerAuthorColor = input('white');
+
   navBackground = input('inherit');
   expandedLinkColor = input('white');
   expandedActiveLinkColor = input('rgb(17, 0, 78)');
@@ -100,6 +100,7 @@ export class AuthComponent {
         this.authService.login(emailValue, passwordValue).subscribe({
           next: () => {
             this.store.setLoadingFalse();
+            this.router.navigate(['/training']);
             this.dialogService.openInfoDialog(
               'Pomyślnie zalogowano!',
               '300ms',
@@ -116,6 +117,12 @@ export class AuthComponent {
           },
         });
       }
+    } else {
+      this.dialogService.openInfoDialog(
+        'Uzupełnij poprawnie wszystkie pola!',
+        '300ms',
+        '300ms'
+      );
     }
   }
 
