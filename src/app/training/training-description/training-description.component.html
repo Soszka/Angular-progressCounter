@@ -3,16 +3,18 @@
     <p data-aos="slide-right">{{ treiningDescription }}</p>
     <div data-aos="slide-left" class="description">
       <h4>Kliknij przycisk poniżej aby zmodyfikować trening !</h4>
-      <app-button
-        [fontSize]="'20px'"
-        [backgroundColor]="'#e7e7e7'"
-        [width]="'180px'"
-        [height]="'45px'"
-        [color]="'black'"
-        [margin]="'15px 0 0 0'"
-        (click)="openModifyDialog('300ms', '300ms')"
-        >MODYFIKUJ
-      </app-button>
+      <div class="btn-container">
+        <app-button
+          [fontSize]="'20px'"
+          [backgroundColor]="'#e7e7e7'"
+          [width]="'180px'"
+          [height]="'45px'"
+          [color]="'black'"
+          [margin]="'20px 0 0 0'"
+          (click)="openModifyDialog('300ms', '300ms')"
+          >MODYFIKUJ
+        </app-button>
+      </div>
     </div>
   </div>
 </div>

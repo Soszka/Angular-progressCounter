@@ -3,16 +3,18 @@
     <h1 data-aos="slide-right">{{ headerTitle }}</h1>
     <div class="description" data-aos="slide-left">
       <p>{{ descriptionText }}</p>
-      <app-button
-        [fontSize]="'20px'"
-        [backgroundColor]="'#e7e6e6'"
-        [width]="'150px'"
-        [height]="'50px'"
-        [color]="'black'"
-        [margin]="'25px 0 0 0'"
-        (click)="navigateToProgress()"
-        >PROGRESS
-      </app-button>
+      <div class="btn-container">
+        <app-button
+          [fontSize]="'20px'"
+          [backgroundColor]="'#e7e6e6'"
+          [width]="'150px'"
+          [height]="'50px'"
+          [color]="'black'"
+          [margin]="'25px 0 0 0'"
+          (click)="navigateToProgress()"
+          >PROGRESS
+        </app-button>
+      </div>
     </div>
   </div>
 </div>

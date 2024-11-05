@@ -38,5 +38,11 @@ app-calories-carousel {
   @include large-screens {
     width: 95%;
     margin-bottom: 0px;
+    text-align: left;
   }
+}
+
+.calories-btn {
+  display: block;
+  text-align: center;
 }

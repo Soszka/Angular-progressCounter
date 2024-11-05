@@ -24,7 +24,13 @@
     z-index: 1;
     @include large-screens {
       @include flex(column, center, center);
+      padding: 0 10px;
+      text-align: left;
     }
+  }
+
+  .btn-container {
+    text-align: center;
   }
 
   p {

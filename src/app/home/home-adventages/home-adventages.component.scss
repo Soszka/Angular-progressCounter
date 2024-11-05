@@ -46,14 +46,19 @@
     text-align: center;
     border-left: 3px solid white;
     @include large-screens {
-      padding: 0;
+      padding: 0 20px;
       border-left: none;
+      text-align: left;
     }
 
     p {
       margin: 0;
     }
   }
+}
+
+.btn-container {
+  text-align: center;
 }
 
 .adventages:before {
