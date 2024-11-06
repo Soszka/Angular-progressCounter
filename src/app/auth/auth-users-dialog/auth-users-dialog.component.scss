@@ -1,10 +1,12 @@
 @import '../../../styles.scss';
 
+@import '../../../styles.scss';
+
 .login-info {
   text-align: center;
   padding: 30px 50px;
   position: relative;
-  width: 800px;
+  width: 900px;
 
   @include extra-large-screens {
     width: 100%;
@@ -16,7 +18,7 @@
     display: flex;
   }
 
-  .close-button {
+  &__close-button {
     display: none;
     position: absolute;
     top: 2px;
@@ -28,18 +30,18 @@
       text-align: center;
       padding: 60px 10px 10px;
     }
-
-    mat-icon {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 50px;
-      height: 50px;
-      font-size: 50px;
-    }
   }
 
-  p {
+  &__close-icon {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+  }
+
+  &__description {
     @include text-style(18px, 400);
     text-align: left;
     margin-top: 0;
@@ -48,15 +50,14 @@
     }
   }
 
-  table {
+  &__table {
     @include small-screens {
       margin-bottom: 10px;
     }
 
     th {
       @include heading-style(22px, 450, $text-color);
-      text-align: center;
-      width: 33%;
+      width: 30%;
     }
 
     .name-column {
@@ -70,8 +71,33 @@
     }
 
     .#{$mat-table-cell} {
-      text-align: center;
-      padding: 20px 0;
+      padding: 24px 16px;
+      position: relative;
+
+      .login-info__copy-button {
+        color: lightgray;
+        position: absolute;
+        left: 83%;
+        bottom: 13%;
+        transform: translateX(-50%);
+
+        &:hover {
+          color: rgb(65, 65, 65);
+        }
+        @include large-screens {
+          left: 75%;
+        }
+        @include small-screens {
+          display: none;
+        }
+      }
+
+      .password-icon {
+        left: 45%;
+        @include large-screens {
+          left: 50%;
+        }
+      }
     }
   }
 }

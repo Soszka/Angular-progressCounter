@@ -1,10 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
-import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { Clipboard } from '@angular/cdk/clipboard';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 export interface ExampleUser {
   name: string;
@@ -21,14 +24,17 @@ export interface ExampleUser {
     ButtonComponent,
     MatIconModule,
     MatButtonModule,
+    MatSnackBarModule,
+    MatTooltipModule,
   ],
   templateUrl: './auth-users-dialog.component.html',
-  styleUrl: './auth-users-dialog.component.scss',
+  styleUrls: ['./auth-users-dialog.component.scss'],
 })
 export class AuthUsersDialogComponent {
   displayedColumns: string[] = ['name', 'email', 'password'];
   dataSource!: ExampleUser[];
-  dialog = inject(MatDialog);
+  clipboard = inject(Clipboard);
+  snackBar = inject(MatSnackBar);
 
   exampleUsers: ExampleUser[] = [
     { name: 'Użytkownik 1', email: 'tester1@tester.com', password: 'Tester1' },
@@ -36,8 +42,7 @@ export class AuthUsersDialogComponent {
     { name: 'Użytkownik 3', email: 'tester3@tester.com', password: 'Tester3' },
   ];
   loginDescription = `Aplikacja nie posiada możliwości założenia konta. Istnieje jednak możliwość przetestowania aplikacji wybierając
-    jedno z trzech kont testowych z poniższej tabeli. Dane które wprowadzisz po wyborze użytkownika będą 
-    zapisywane na serwerze, ale po pewnym czasie zostaną usunięte.`;
+    jedno z trzech kont testowych z poniższej tabeli. Wprowadzone dane będą zapisywane na serwerze`;
 
   constructor(public dialogRef: MatDialogRef<AuthUsersDialogComponent>) {}
 
@@ -49,5 +54,12 @@ export class AuthUsersDialogComponent {
     if (this.dialogRef) {
       this.dialogRef.close();
     }
+  }
+
+  copyToClipboard(value: string): void {
+    this.clipboard.copy(value);
+    this.snackBar.open('Skopiowano do schowka', '', {
+      duration: 2000,
+    });
   }
 }
