@@ -77,25 +77,11 @@
       .login-info__copy-button {
         color: lightgray;
         position: absolute;
-        left: 83%;
         bottom: 13%;
-        transform: translateX(-50%);
+        transform: translateX(10%);
 
         &:hover {
           color: rgb(65, 65, 65);
-        }
-        @include large-screens {
-          left: 75%;
-        }
-        @include small-screens {
-          display: none;
-        }
-      }
-
-      .password-icon {
-        left: 45%;
-        @include large-screens {
-          left: 50%;
         }
       }
     }

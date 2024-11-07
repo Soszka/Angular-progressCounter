@@ -42,7 +42,7 @@ export class AuthUsersDialogComponent {
     { name: 'Użytkownik 3', email: 'tester3@tester.com', password: 'Tester3' },
   ];
   loginDescription = `Aplikacja nie posiada możliwości założenia konta. Istnieje jednak możliwość przetestowania aplikacji wybierając
-    jedno z trzech kont testowych z poniższej tabeli. Wprowadzone dane będą zapisywane na serwerze`;
+    jedno z trzech kont testowych.`;
 
   constructor(public dialogRef: MatDialogRef<AuthUsersDialogComponent>) {}
 
@@ -60,6 +60,9 @@ export class AuthUsersDialogComponent {
     this.clipboard.copy(value);
     this.snackBar.open('Skopiowano do schowka', '', {
       duration: 2000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom',
     });
+    this.dialogRef.close();
   }
 }

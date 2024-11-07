@@ -6,7 +6,7 @@
   background-size: cover;
   position: relative;
   z-index: 1;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .auth:before {
@@ -23,7 +23,7 @@
 .login-form {
   width: 600px;
   padding: 0;
-  margin: 0 auto;
+  margin: 20px auto;
 
   @include medium-screens {
     width: 100%;
@@ -70,6 +70,7 @@
 
   &:hover {
     background-color: rgb(0, 0, 167);
+    color: white;
   }
 }
 
@@ -79,4 +80,9 @@ mat-form-field {
 
 app-footer {
   flex-shrink: 0 !important;
+}
+
+::ng-deep .mat-mdc-snack-bar-label.mdc-snackbar__label {
+  background-color: white !important;
+  color: black !important;
 }

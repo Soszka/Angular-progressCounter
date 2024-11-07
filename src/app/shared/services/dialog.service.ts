@@ -5,7 +5,7 @@ import { MatDialogConfig } from '@angular/material/dialog';
 import { InfoDialogComponent } from '../../training/training-dialogs/info-dialog/info-dialog.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DialogService {
   private dialog = inject(MatDialog);
@@ -23,7 +23,7 @@ export class DialogService {
     const currentWidth = window.innerWidth;
     if (this.originalWidth !== currentWidth) {
       this.closeAllDialogs();
-      this.originalWidth = currentWidth; 
+      this.originalWidth = currentWidth;
     }
   }
 
@@ -31,8 +31,16 @@ export class DialogService {
     this.dialog.closeAll();
   }
 
-  openDialog(component: any, data: any, width: string, height: string, enterAnimationDuration: string, exitAnimationDuration: string) {
+  openDialog(
+    component: any,
+    data: any,
+    width: string,
+    height: string,
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ) {
     const dialogConfig = new MatDialogConfig();
+
     dialogConfig.data = data;
     dialogConfig.enterAnimationDuration = enterAnimationDuration;
     dialogConfig.exitAnimationDuration = exitAnimationDuration;
@@ -51,7 +59,11 @@ export class DialogService {
     return this.dialog.open(component, dialogConfig);
   }
 
-  openInfoDialog(message: string, enterAnimationDuration: string, exitAnimationDuration: string) {
+  openInfoDialog(
+    message: string,
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = { information: message };
     dialogConfig.enterAnimationDuration = enterAnimationDuration;
