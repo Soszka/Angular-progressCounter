@@ -4,18 +4,16 @@
     [expandedLinkColor]="expandedLinkColor()"
     [expandedActiveLinkColor]="expandedActiveLinkColor()"
     [expandedActiveLinkBg]="expandedActiveLinkBg()"
-  >
-  </app-navigation>
-  <div class="auth-content" data-aos="zoom-in">
+  ></app-navigation>
+  <div class="auth__content" data-aos="zoom-in">
     @if (!user) {
-    <mat-card class="login-form">
+    <mat-card class="auth__login-form">
       <app-title
         [title]="title()"
         [subtitle]="subtitle()"
         [titleColor]="titleColor()"
-      >
-      </app-title>
-      <div class="form-container">
+      ></app-title>
+      <div class="auth__form-container">
         <mat-form-field>
           <mat-label>Wprowadź email</mat-label>
           <input
@@ -62,14 +60,14 @@
       </div>
       <button
         mat-raised-button
-        class="register-button"
-        (click)="showUsersDialog('300ms', '300ms')"
+        class="auth__register-button"
+        (click)="onTestButtonClick()"
       >
-        Kliknij tutaj aby przetestować aplikację
+        {{ testButtonLabel }}
       </button>
     </mat-card>
     } @if (user) {
-    <mat-card class="logout-info">
+    <mat-card class="auth__logout-info">
       <p>{{ logoutDescription }}</p>
       <div>
         <app-button
@@ -86,5 +84,5 @@
     </mat-card>
     }
   </div>
-  <app-footer [footerBackground]="footerBackground()"> </app-footer>
+  <app-footer [footerBackground]="footerBackground()"></app-footer>
 </div>

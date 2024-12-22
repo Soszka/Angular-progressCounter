@@ -7,79 +7,81 @@
   position: relative;
   z-index: 1;
   min-height: 100vh;
-}
 
-.auth:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: $home-background-layer-color;
-  z-index: -1;
-}
-
-.login-form {
-  width: 600px;
-  padding: 0;
-  margin: 20px auto;
-
-  @include medium-screens {
-    width: 100%;
-    margin-bottom: 30px;
-  }
-}
-
-.form-container {
-  padding: 0 60px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  @include small-screens {
-    padding: 0 15px;
-  }
-}
-
-.logout-info {
-  width: 900px;
-  padding: 15px;
-  margin: 0 auto;
-  text-align: center;
-  background: inherit;
-  color: white;
-  box-shadow: none;
-
-  @include extra-large-screens {
-    width: 95%;
-    padding: 20px 40px;
-  }
-  @include medium-screens {
-    padding: 20px 10px;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $home-background-layer-color;
+    z-index: -1;
   }
 
-  p {
-    @include text-style(18px, 420);
-    margin-bottom: 15px;
+  &__login-form {
+    width: 600px;
+    padding: 0;
+    margin: 20px auto;
+
+    @include medium-screens {
+      width: 100%;
+      margin-bottom: 30px;
+    }
   }
-}
 
-.register-button {
-  color: white;
-  background-color: rgb(0, 0, 119);
+  &__form-container {
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 
-  &:hover {
-    background-color: rgb(0, 0, 167);
+    @include small-screens {
+      padding: 0 15px;
+    }
+  }
+
+  &__logout-info {
+    width: 900px;
+    padding: 15px;
+    margin: 0 auto;
+    text-align: center;
+    background: inherit;
     color: white;
+    box-shadow: none;
+
+    @include extra-large-screens {
+      width: 95%;
+      padding: 20px 40px;
+    }
+
+    @include medium-screens {
+      padding: 20px 10px;
+    }
+
+    p {
+      @include text-style(18px, 420);
+      margin-bottom: 15px;
+    }
   }
-}
 
-mat-form-field {
-  margin: 10px 0;
-}
+  &__register-button {
+    color: white;
+    background-color: rgb(0, 0, 119);
 
-app-footer {
-  flex-shrink: 0 !important;
+    &:hover {
+      background-color: rgb(0, 0, 167);
+      color: white;
+    }
+  }
+
+  mat-form-field {
+    margin: 10px 0;
+  }
+
+  app-footer {
+    flex-shrink: 0 !important;
+  }
 }
 
 ::ng-deep .mat-mdc-snack-bar-label.mdc-snackbar__label {

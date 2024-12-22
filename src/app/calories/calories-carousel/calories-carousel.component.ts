@@ -1,12 +1,12 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { NgFor, AsyncPipe } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { Gallery, GalleryItem, ImageItem } from 'ng-gallery';
 import { LightboxModule, Lightbox } from 'ng-gallery/lightbox';
 
 @Component({
   selector: 'app-calories-carousel',
   standalone: true,
-  imports: [LightboxModule, NgFor, AsyncPipe],
+  imports: [LightboxModule, NgFor],
   templateUrl: './calories-carousel.component.html',
   styleUrls: ['./calories-carousel.component.scss'],
 })
@@ -23,39 +23,39 @@ export class CaloriesCarouselComponent implements OnInit {
     this.largeScreenItems = [
       new ImageItem({
         src: 'assets/caloriesPhotos/caloriesPhoto1.png',
-        thumb: 'assets/caloriesPhotos/caloriesPhoto1.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto1_thumb.png',
       }),
       new ImageItem({
         src: 'assets/caloriesPhotos/caloriesPhoto2.png',
-        thumb: 'assets/caloriesPhotos/caloriesPhoto2.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto2_thumb.png',
       }),
       new ImageItem({
         src: 'assets/caloriesPhotos/caloriesPhoto3.png',
-        thumb: 'assets/caloriesPhotos/caloriesPhoto3.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto3_thumb.png',
       }),
       new ImageItem({
         src: 'assets/caloriesPhotos/caloriesPhoto4.png',
-        thumb: 'assets/caloriesPhotos/caloriesPhoto4.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto4_thumb.png',
       }),
       new ImageItem({
         src: 'assets/caloriesPhotos/caloriesPhoto5.png',
-        thumb: 'assets/caloriesPhotos/caloriesPhoto5.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto5_thumb.png',
       }),
       new ImageItem({
         src: 'assets/caloriesPhotos/caloriesPhoto6.png',
-        thumb: 'assets/caloriesPhotos/caloriesPhoto6.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto6_thumb.png',
       }),
       new ImageItem({
         src: 'assets/caloriesPhotos/caloriesPhoto7.png',
-        thumb: 'assets/caloriesPhotos/caloriesPhoto7.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto7_thumb.png',
       }),
       new ImageItem({
         src: 'assets/caloriesPhotos/caloriesPhoto8.png',
-        thumb: 'assets/caloriesPhotos/caloriesPhoto8.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto8_thumb.png',
       }),
       new ImageItem({
         src: 'assets/caloriesPhotos/caloriesPhoto9.png',
-        thumb: 'assets/caloriesPhotos/caloriesPhoto9.png',
+        thumb: 'assets/caloriesPhotos/caloriesPhoto9_thumb.png',
       }),
     ];
 

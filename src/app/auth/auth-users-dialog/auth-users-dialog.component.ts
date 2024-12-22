@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ButtonComponent } from '../../shared/button/button.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Clipboard } from '@angular/cdk/clipboard';
@@ -21,7 +20,6 @@ export interface ExampleUser {
   imports: [
     MatCardModule,
     MatTableModule,
-    ButtonComponent,
     MatIconModule,
     MatButtonModule,
     MatSnackBarModule,
@@ -41,8 +39,7 @@ export class AuthUsersDialogComponent {
     { name: 'Użytkownik 2', email: 'tester2@tester.com', password: 'Tester2' },
     { name: 'Użytkownik 3', email: 'tester3@tester.com', password: 'Tester3' },
   ];
-  loginDescription = `Aplikacja nie posiada możliwości założenia konta. Istnieje jednak możliwość przetestowania aplikacji wybierając
-    jedno z trzech kont testowych.`;
+  loginDescription = `Wybierz konto testowe żeby przetestować aplikację`;
 
   constructor(public dialogRef: MatDialogRef<AuthUsersDialogComponent>) {}
 

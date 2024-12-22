@@ -22,9 +22,9 @@ import { MatTableModule } from '@angular/material/table';
 import { Auth, onAuthStateChanged, User } from '@angular/fire/auth';
 import { MatDialog } from '@angular/material/dialog';
 import { TrainingsStore } from '../store/trainings.store';
-import { InfoDialogComponent } from '../training/training-dialogs/info-dialog/info-dialog.component';
 import { DialogService } from '../shared/services/dialog.service';
 import { AuthUsersDialogComponent } from './auth-users-dialog/auth-users-dialog.component';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-auth',
@@ -42,10 +42,10 @@ import { AuthUsersDialogComponent } from './auth-users-dialog/auth-users-dialog.
     MatButtonModule,
     ButtonComponent,
     MatTableModule,
-    InfoDialogComponent,
+    MatSnackBarModule,
   ],
   templateUrl: './auth.component.html',
-  styleUrl: './auth.component.scss',
+  styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent {
   footerBackground = input('inherit');
@@ -70,6 +70,10 @@ export class AuthComponent {
   auth = inject(Auth);
   store = inject(TrainingsStore);
   dialogService = inject(DialogService);
+  snackBar = inject(MatSnackBar);
+
+  // Domyślny tekst buttona
+  testButtonLabel = 'Kliknij tutaj aby przetestować aplikację';
 
   constructor() {
     merge(this.email.statusChanges, this.email.valueChanges)
@@ -144,6 +148,25 @@ export class AuthComponent {
         '300ms'
       );
     });
+  }
+
+  onTestButtonClick(): void {
+    if (this.testButtonLabel === 'Kliknij tutaj aby przetestować aplikację') {
+      this.email.setValue('tester1@tester.com');
+      this.password.setValue('Tester1');
+      this.snackBar.open(
+        'Wprowadzono dane testowego użytkownika. Teraz kliknij " Zaloguj "',
+        '',
+        {
+          duration: 7000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
+        }
+      );
+      this.testButtonLabel = 'Kliknij tutaj żeby wybrać innych użytkowników';
+    } else {
+      this.showUsersDialog('300ms', '300ms');
+    }
   }
 
   showUsersDialog(
