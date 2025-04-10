@@ -15,8 +15,12 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: $home-background-layer-color;
+    background-color: rgba(0, 0, 87, 0.75);
     z-index: -1;
+  }
+
+  &__content {
+    @include flex(column, center, center);
   }
 
   &__login-form {
@@ -43,12 +47,12 @@
 
   &__logout-info {
     width: 900px;
-    padding: 15px;
     margin: 0 auto;
-    text-align: center;
-    background: inherit;
+    background: rgba(10, 10, 62, 0.9);
     color: white;
-    box-shadow: none;
+    box-shadow: 0 0 12px 0 #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
 
     @include extra-large-screens {
       width: 95%;
@@ -58,17 +62,43 @@
     @include medium-screens {
       padding: 20px 10px;
     }
+  }
 
-    p {
-      @include text-style(18px, 420);
-      margin-bottom: 15px;
+  .logout-content {
+    display: block;
+    text-align: left;
+    padding: 15px;
+  }
+
+  .logout-heading {
+    @include text-style(20px, 500);
+    margin: 0 0 15px 0;
+  }
+
+  .logout-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    mat-icon {
+      color: #bbb; /* slightly darker gray */
+      margin-right: 5px;
+      width: 40px;
     }
+
+    span {
+      @include text-style(18px, 400);
+    }
+  }
+
+  .logout-button {
+    text-align: right;
+    margin-top: 20px;
   }
 
   &__register-button {
     color: white;
     background-color: rgb(0, 0, 119);
-
     &:hover {
       background-color: rgb(0, 0, 167);
       color: white;

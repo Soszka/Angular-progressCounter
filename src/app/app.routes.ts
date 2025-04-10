@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/auth.guard';
-import { CaloriesComponent } from './calories/calories.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,9 +27,5 @@ export const routes: Routes = [
     path: 'auth',
     loadComponent: () =>
       import('./auth/auth.component').then((m) => m.AuthComponent),
-  },
-  {
-    path: 'calories',
-    component: CaloriesComponent,
   },
 ];

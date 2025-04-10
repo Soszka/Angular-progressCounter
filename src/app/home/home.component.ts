@@ -4,6 +4,7 @@ import { HomeSplashComponent } from './home-splash/home-splash.component';
 import { HomeFeaturesComponent } from './home-features/home-features.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { HomeFaqComponent } from './home-faq/home-faq.component';
+import { CaloriesComponent } from './calories/calories.component';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ import { HomeFaqComponent } from './home-faq/home-faq.component';
     HomeFeaturesComponent,
     HomeFaqComponent,
     FooterComponent,
+    CaloriesComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

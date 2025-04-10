@@ -1,0 +1,60 @@
+<div class="calories">
+  <div class="container">
+    <app-title
+      [title]="title()"
+      [subtitle]="subtitle()"
+      [titleColor]="titleColor()"
+    ></app-title>
+    <div class="calories-content">
+      <app-calories-carousel></app-calories-carousel>
+      <div class="calories-description" data-aos="slide-left">
+        <mat-card>
+          <div class="heading">Co znajdziesz na stronie</div>
+          <div class="description-line">
+            <mat-icon>calculate</mat-icon>
+            <span
+              >Dzięki kalkulatorowi kalorii obliczysz dzienne zapotrzebowanie
+              energetyczne.</span
+            >
+          </div>
+          <div class="description-line">
+            <mat-icon>insights</mat-icon>
+            <span
+              >Monitoruj statystyki spożywanych makroskładników, aby lepiej
+              kontrolować dietę.</span
+            >
+          </div>
+          <div class="description-line">
+            <mat-icon>track_changes</mat-icon>
+            <span
+              >Notuj swoje postępy i osiągnięcia, by efektywnie śledzić
+              realizację celów.</span
+            >
+          </div>
+
+          <div class="description-line">
+            <mat-icon>support_agent</mat-icon>
+            <span
+              >Skontaktuj się z profesjonalistami, aby uzyskać indywidualne
+              porady i wsparcie.</span
+            >
+          </div>
+          <div class="button-container">
+            <a href="https://licznikkalorii.vercel.app/" target="_blank">
+              <app-button
+                [fontSize]="'18px'"
+                [backgroundColor]="'rgba(0, 0, 150)'"
+                [width]="'120px'"
+                [height]="'40px'"
+                [color]="'white'"
+                [margin]="'0'"
+              >
+                SPRAWDŹ
+              </app-button>
+            </a>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

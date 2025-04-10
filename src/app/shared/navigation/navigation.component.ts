@@ -32,7 +32,6 @@ export class NavigationComponent {
     { name: 'TRENING', path: '/training' },
     { name: 'POSTĘP', path: '/progress' },
     { name: 'LOGOWANIE', path: '/auth' },
-    { name: 'KALORIE', path: '/calories' },
   ];
 
   @HostListener('window:resize', ['$event'])

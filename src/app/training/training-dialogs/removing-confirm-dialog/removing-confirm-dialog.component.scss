@@ -1,24 +1,24 @@
 @import '../../../../styles.scss';
 
 .remove-dialog {
-  padding: 40px 20px;
+  padding: 30px 20px;
   @include large-screens {
     height: 100%;
     @include flex(column, center, center);
-    padding: 30 15px;
+    padding: 20px 15px;
   }
 
   .message {
-    text-align: center;
+    text-align: left;
 
     p {
       @include text-style($content-font-size, $header-font-weight * 0.9);
-      margin: 0 0 10px;
+      margin: 0 0 40px;
     }
   }
 
   .actions {
-    text-align: center;
+    text-align: right;
     @include tiny-screens {
       @include flex(column, center, center);
     }
