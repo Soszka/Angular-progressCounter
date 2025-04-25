@@ -7,19 +7,14 @@ import { ButtonComponent } from '../../shared/button/button.component';
   standalone: true,
   imports: [ButtonComponent],
   templateUrl: './home-adventages.component.html',
-  styleUrl: './home-adventages.component.scss'
+  styleUrl: './home-adventages.component.scss',
 })
 export class HomeAdventagesComponent {
-
-  headerTitle: string = "Dlaczego warto monitorować progres siłowy ?";
-  descriptionText: string = `Monitorowanie postępów siłowych umożliwia precyzyjne śledzenie rozwoju i 
-    efektywności treningów. Dzięki regularnej analizie wyników, można szybko zidentyfikować, 
-    które metody są najbardziej efektywne, dostosować plany treningowe do aktualnych potrzeb oraz zapewnić ciągłą adaptację i 
-    optymalizację procesu treningowego, co prowadzi do stałej poprawy wyników.`;
-
+  headerTitle: string = 'Dlaczego warto monitorować progres siłowy ?';
+  descriptionText: string = `Monitorowanie postępów siłowych pozwala skutecznie śledzić rozwój i dostosować trening do aktualnych potrzeb, co wspiera stałą poprawę wyników.`;
   router = inject(Router);
 
   navigateToProgress() {
-    this.router.navigate(['/progress']); 
+    this.router.navigate(['/progress']);
   }
 }

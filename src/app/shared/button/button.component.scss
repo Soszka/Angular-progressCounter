@@ -3,7 +3,7 @@
 button {
   transition: all 0.3s ease;
   border-radius: 50px;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
 
   &:hover {
     @include pulseAnimation;

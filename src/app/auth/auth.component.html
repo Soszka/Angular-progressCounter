@@ -18,7 +18,6 @@
           <mat-label>Wprowadź email</mat-label>
           <input
             matInput
-            placeholder="przykładowy@email.com"
             [formControl]="email"
             (blur)="updateErrorMessage()"
             required
@@ -68,18 +67,29 @@
     </mat-card>
     } @if (user) {
     <mat-card class="auth__logout-info">
-      <p>{{ logoutDescription }}</p>
-      <div>
-        <app-button
-          [fontSize]="'20px'"
-          [backgroundColor]="'white'"
-          [width]="'140px'"
-          [height]="'40px'"
-          [color]="'black'"
-          [margin]="'0px auto 15px'"
-          (click)="onLogout()"
-          >WYLOGUJ
-        </app-button>
+      <div class="logout-content">
+        <h2 class="logout-heading">
+          Jesteś obecnie zalogowany jako użytkownik o adresie mailowym:
+          {{ user.email }}. Możesz teraz:
+        </h2>
+        @for (item of logoutItems; track $index) {
+        <div class="logout-line">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.text }}</span>
+        </div>
+        }
+        <div class="logout-button">
+          <app-button
+            [fontSize]="'18px'"
+            [backgroundColor]="'white'"
+            [width]="'125px'"
+            [height]="'45px'"
+            [color]="'black'"
+            [margin]="'0'"
+            (click)="onLogout()"
+            >WYLOGUJ
+          </app-button>
+        </div>
       </div>
     </mat-card>
     }

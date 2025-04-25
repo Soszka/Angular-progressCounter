@@ -49,7 +49,6 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 })
 export class AuthComponent {
   footerBackground = input('inherit');
-
   navBackground = input('inherit');
   expandedLinkColor = input('white');
   expandedActiveLinkColor = input('rgb(17, 0, 78)');
@@ -72,13 +71,33 @@ export class AuthComponent {
   dialogService = inject(DialogService);
   snackBar = inject(MatSnackBar);
 
-  // Domyślny tekst buttona
   testButtonLabel = 'Kliknij tutaj aby przetestować aplikację';
+
+  // Dynamic logout items to be rendered using *ngFor
+  logoutItems = [
+    {
+      icon: 'fitness_center',
+      text: 'modyfikować swój trening w sekcji z treningami',
+    },
+    {
+      icon: 'add_circle_outline',
+      text: 'dodawać nowe ćwiczenia oraz pozycje',
+    },
+    {
+      icon: 'show_chart',
+      text: 'analizować wykresy w sekcji z postępem',
+    },
+    {
+      icon: 'recommend',
+      text: 'otrzymywać odpowiednie rekomendacje',
+    },
+  ];
 
   constructor() {
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
+
     onAuthStateChanged(this.auth, (user) => {
       this.user = user;
     });
@@ -99,7 +118,7 @@ export class AuthComponent {
       const emailValue = this.email.value;
       const passwordValue = this.password.value;
 
-      if (emailValue !== null && passwordValue !== null) {
+      if (emailValue && passwordValue) {
         this.store.setLoadingTrue();
         this.authService.login(emailValue, passwordValue).subscribe({
           next: () => {
@@ -128,15 +147,6 @@ export class AuthComponent {
         '300ms'
       );
     }
-  }
-
-  get logoutDescription(): string {
-    if (this.user) {
-      return `Jesteś obecnie zalogowany jako użytkownik o adresie mailowym: ${this.user.email}. 
-      Możesz teraz modyfikować swój trening w sekcji z treningami i weryfikować swoje rezultaty w sekcji progresu. 
-      Kliknij przycisk poniżej aby się wylogować.`;
-    }
-    return '';
   }
 
   onLogout() {

@@ -1,0 +1,63 @@
+@import '../../../styles.scss';
+
+.calories-content {
+  @include flex(row, space-between, center);
+  @include container(20px, 20px);
+  @include large-screens {
+    @include flex(column-reverse, center, center);
+  }
+  padding: 20px 20px 0;
+  @include large-screens {
+    padding: 0;
+  }
+}
+
+app-calories-carousel {
+  width: 48%;
+  @include large-screens {
+    width: 90%;
+  }
+  @include medium-screens {
+    width: 95%;
+  }
+}
+
+.calories-description {
+  @include text-style($content-font-size, 400);
+  text-align: left;
+  width: 48%;
+  mat-card {
+    width: 100%;
+    padding: 20px;
+  }
+  .heading {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 500;
+  }
+  .description-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    mat-icon {
+      color: rgba(0, 0, 150);
+      margin-right: 5px;
+      width: 40px;
+      @include large-screens {
+        margin-right: 15px;
+      }
+    }
+    span {
+      font-size: 16px;
+    }
+  }
+  @include large-screens {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+.button-container {
+  text-align: right;
+  margin-top: 10px;
+}

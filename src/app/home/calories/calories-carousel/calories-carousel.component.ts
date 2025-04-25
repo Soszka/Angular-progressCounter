@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { Gallery, GalleryItem, ImageItem } from 'ng-gallery';
 import { LightboxModule, Lightbox } from 'ng-gallery/lightbox';
@@ -10,16 +10,21 @@ import { LightboxModule, Lightbox } from 'ng-gallery/lightbox';
   templateUrl: './calories-carousel.component.html',
   styleUrls: ['./calories-carousel.component.scss'],
 })
-export class CaloriesCarouselComponent implements OnInit {
+export class CaloriesCarouselComponent implements OnInit, OnDestroy {
   galleryId = 'myLightbox';
-  items: GalleryItem[] = [];
+
   largeScreenItems: GalleryItem[] = [];
   smallScreenItems: GalleryItem[] = [];
+  items: GalleryItem[] = [];
+
+  activeIndex = 0;
+  hoveredIndex = -1;
+  isPaused = false;
+  cycleInterval: any;
 
   constructor(public gallery: Gallery, private lightbox: Lightbox) {}
 
   ngOnInit() {
-    // Zdefiniuj elementy galerii
     this.largeScreenItems = [
       new ImageItem({
         src: 'assets/caloriesPhotos/caloriesPhoto1.png',
@@ -92,12 +97,57 @@ export class CaloriesCarouselComponent implements OnInit {
         src: 'assets/caloriesPhotos/smCaloriesPhoto8.png',
         thumb: 'assets/caloriesPhotos/smCaloriesPhoto8.png',
       }),
+      new ImageItem({
+        src: 'assets/caloriesPhotos/smCaloriesPhoto9.png',
+        thumb: 'assets/caloriesPhotos/smCaloriesPhoto9.png',
+      }),
     ];
+
     this.detectScreenSize();
+
+    this.startAnimationCycle();
+  }
+
+  ngOnDestroy(): void {
+    this.clearAnimationCycle();
+  }
+
+  startAnimationCycle() {
+    this.clearAnimationCycle();
+
+    this.cycleInterval = setInterval(() => {
+      if (!this.isPaused && this.items.length > 0) {
+        this.activeIndex = (this.activeIndex + 1) % this.items.length;
+      }
+    }, 500);
+  }
+
+  clearAnimationCycle() {
+    if (this.cycleInterval) {
+      clearInterval(this.cycleInterval);
+      this.cycleInterval = null;
+    }
+  }
+
+  onMouseEnter(index: number) {
+    this.isPaused = true;
+    this.hoveredIndex = index;
+  }
+
+  onMouseLeave() {
+    this.isPaused = false;
+    this.hoveredIndex = -1;
+    this.activeIndex = 0;
+  }
+
+  openLightbox(index: number) {
+    this.lightbox.open(index, this.galleryId, {
+      panelClass: 'fullscreen',
+    });
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
+  onResize() {
     this.detectScreenSize();
   }
 
@@ -107,14 +157,8 @@ export class CaloriesCarouselComponent implements OnInit {
     } else {
       this.items = this.largeScreenItems;
     }
-
+    // Ładujemy do galerii
     const galleryRef = this.gallery.ref(this.galleryId);
     galleryRef.load(this.items);
-  }
-
-  openLightbox(index: number) {
-    this.lightbox.open(index, this.galleryId, {
-      panelClass: 'fullscreen',
-    });
   }
 }

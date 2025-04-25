@@ -44,3 +44,6 @@ Thumbs.db
 
 # Ignore the specific users-exercises-data.json file in assets folder
 /assets/users-exercises-data.json
+
+#e2e
+e2e
