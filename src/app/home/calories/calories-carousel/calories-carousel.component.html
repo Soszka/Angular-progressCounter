@@ -2,13 +2,13 @@
   <div
     class="grid-item"
     *ngFor="let item of items; let i = index"
-    [class.active]="!isPaused && activeIndex === i"
+    [class.active]="!isPaused && isIndexActive(i)"
     [class.hovered]="hoveredIndex === i"
     (mouseenter)="onMouseEnter(i)"
     (mouseleave)="onMouseLeave()"
     [lightbox]="i"
     [gallery]="galleryId"
   >
-    <img [src]="item.data?.thumb" alt="Zdjęcie nr {{ i }}" />
+    <img [src]="item.data?.thumb" alt="" />
   </div>
 </div>

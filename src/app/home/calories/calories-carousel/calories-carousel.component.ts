@@ -15,12 +15,19 @@ export class CaloriesCarouselComponent implements OnInit, OnDestroy {
 
   largeScreenItems: GalleryItem[] = [];
   smallScreenItems: GalleryItem[] = [];
+
   items: GalleryItem[] = [];
 
-  activeIndex = 0;
+  activeIndices: number[] = [];
+
+  private currentGroup = 0;
+
+  private groupSize = 3;
+
   hoveredIndex = -1;
   isPaused = false;
-  cycleInterval: any;
+
+  private cycleInterval: any;
 
   constructor(public gallery: Gallery, private lightbox: Lightbox) {}
 
@@ -104,7 +111,7 @@ export class CaloriesCarouselComponent implements OnInit, OnDestroy {
     ];
 
     this.detectScreenSize();
-
+    this.updateActiveIndices();
     this.startAnimationCycle();
   }
 
@@ -112,20 +119,31 @@ export class CaloriesCarouselComponent implements OnInit, OnDestroy {
     this.clearAnimationCycle();
   }
 
-  startAnimationCycle() {
+  private startAnimationCycle() {
     this.clearAnimationCycle();
 
     this.cycleInterval = setInterval(() => {
-      if (!this.isPaused && this.items.length > 0) {
-        this.activeIndex = (this.activeIndex + 1) % this.items.length;
-      }
-    }, 500);
+      if (this.isPaused || this.items.length === 0) return;
+
+      const totalGroups = Math.ceil(this.items.length / this.groupSize);
+      this.currentGroup = (this.currentGroup + 1) % totalGroups;
+      this.updateActiveIndices();
+    }, 800);
   }
 
-  clearAnimationCycle() {
+  private clearAnimationCycle() {
     if (this.cycleInterval) {
       clearInterval(this.cycleInterval);
       this.cycleInterval = null;
+    }
+  }
+
+  private updateActiveIndices() {
+    this.activeIndices = [];
+    const start = this.currentGroup * this.groupSize;
+    for (let i = 0; i < this.groupSize; i++) {
+      const idx = start + i;
+      if (idx < this.items.length) this.activeIndices.push(idx);
     }
   }
 
@@ -137,28 +155,29 @@ export class CaloriesCarouselComponent implements OnInit, OnDestroy {
   onMouseLeave() {
     this.isPaused = false;
     this.hoveredIndex = -1;
-    this.activeIndex = 0;
   }
 
   openLightbox(index: number) {
-    this.lightbox.open(index, this.galleryId, {
-      panelClass: 'fullscreen',
-    });
+    this.lightbox.open(index, this.galleryId, { panelClass: 'fullscreen' });
   }
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   onResize() {
     this.detectScreenSize();
   }
 
-  detectScreenSize() {
-    if (window.innerWidth <= 768) {
-      this.items = this.smallScreenItems;
-    } else {
-      this.items = this.largeScreenItems;
-    }
-    // Ładujemy do galerii
-    const galleryRef = this.gallery.ref(this.galleryId);
-    galleryRef.load(this.items);
+  private detectScreenSize() {
+    const small = window.innerWidth <= 768;
+
+    this.items = small ? this.smallScreenItems : this.largeScreenItems;
+    this.groupSize = small ? 2 : 3;
+    this.currentGroup = 0;
+    this.updateActiveIndices();
+
+    this.gallery.ref(this.galleryId).load(this.items);
+  }
+
+  isIndexActive(i: number): boolean {
+    return this.activeIndices.includes(i);
   }
 }
