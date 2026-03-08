@@ -3,155 +3,370 @@
 .training-exercise {
   @include flex(column, space-between, stretch);
   min-height: 100vh;
+  background:
+    radial-gradient(circle at 8% 12%, rgba(70, 122, 255, 0.18), transparent 28%),
+    radial-gradient(circle at 92% 7%, rgba(19, 181, 158, 0.2), transparent 24%),
+    linear-gradient(180deg, rgb(240, 245, 255) 0%, rgb(245, 249, 255) 42%, rgb(251, 253, 255) 100%);
+
+  .container {
+    padding-bottom: 40px;
+  }
 }
 
-.title-container {
-  @include flex(row, center, center);
-  margin: 50px auto 10px;
-  @include medium-screens {
-    margin: 30px 5px 0px;
-  }
-  @include small-screens {
-    position: relative;
-    background: url('../../../../assets/home_adventages_photo.jpg') no-repeat
-      center center;
-    background-size: cover;
-    background-attachment: fixed;
-    margin: 30px 0px 0px;
-    padding: 10px 5px;
-  }
+.exercise-shell,
+.quick-entry,
+.history-panel {
+  max-width: 1220px;
+  margin: 20px auto;
+  border-radius: 28px;
+  border: 1px solid rgba(18, 40, 110, 0.12);
+  background: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0.86),
+    rgba(245, 250, 255, 0.92)
+  );
+  box-shadow:
+    0 24px 38px rgba(14, 34, 95, 0.12),
+    0 6px 14px rgba(14, 34, 95, 0.08);
+  backdrop-filter: blur(12px);
+}
 
-  button {
-    margin: 0 10px;
-    @include large-screens {
-      width: 50px;
-      height: 50px;
-      font-size: 40px;
-    }
-    @include small-screens {
-      display: none;
-    }
+.exercise-shell {
+  padding: 24px 24px 22px;
+}
 
-    mat-icon {
-      width: 50px;
-      height: 50px;
-      font-size: 50px;
-      @include large-screens {
-        width: 40px;
-        height: 40px;
-        font-size: 40px;
-      }
-    }
+.exercise-switcher {
+  @include flex(row, space-between, center);
+  gap: 14px;
+}
+
+.exercise-heading {
+  flex: 1;
+  text-align: center;
+
+  p {
+    margin: 0;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgb(40, 82, 179);
+    font-family: 'Montserrat', sans-serif;
   }
 
   h2 {
-    margin: 0;
-    font-size: 36px;
-    font-weight: 500;
-    text-align: center;
-    width: 975px;
-    overflow: hidden;
-    line-height: 1.5;
-    @include large-screens {
-      width: 400;
-      font-size: 32px;
-    }
-    @include small-screens {
-      margin: 0 5px;
-      color: white;
-      z-index: 1;
-    }
+    margin: 6px 0 0;
+    font-size: clamp(30px, 4vw, 52px);
+    line-height: 1.15;
+    color: rgb(12, 28, 80);
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.03em;
   }
 }
 
-.exercise {
-  max-width: 1100px;
-  margin: 0 auto;
-  @include extra-large-screens {
-    padding: 0 20px;
-  }
-  @include medium-screens {
-    padding: 5px 5px 20px;
+.switch-button {
+  background: rgb(18, 40, 110) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.summary-grid {
+  margin-top: 20px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.summary-card {
+  min-height: 114px;
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(18, 40, 110, 0.15);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(244, 250, 255, 0.95));
+  @include flex(column, space-between, flex-start);
+
+  span {
+    @include text-style(13px, 600);
+    color: rgb(61, 83, 145);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: 'Montserrat', sans-serif;
   }
 
-  .exercise-buttons {
-    @include flex(row, flex-end, stretch);
-    gap: 20px;
-    @include medium-screens {
-      @include flex(column, center, center);
-      gap: 0px;
-    }
+  strong {
+    @include heading-style(31px, 700, rgb(12, 28, 80));
+    line-height: 1.15;
+    font-family: 'Oswald', sans-serif;
   }
+}
+
+.summary-card--accent {
+  background: linear-gradient(145deg, rgb(18, 40, 110), rgb(27, 73, 168));
+
+  span,
+  strong {
+    color: rgb(255, 255, 255);
+  }
+}
+
+.quick-entry,
+.history-panel {
+  padding: 24px;
+}
+
+.section-header {
+  @include flex(row, space-between, flex-start);
+  gap: 14px;
+
+  h3 {
+    margin: 6px 0 0;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.2;
+    color: rgb(12, 28, 80);
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.02em;
+  }
+}
+
+.section-overline {
+  margin: 0;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(40, 82, 179);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.quick-form {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+
+.quick-form-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.primary-action,
+.secondary-action,
+.danger-action {
+  height: 54px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.primary-action {
+  background: linear-gradient(120deg, rgb(18, 40, 110), rgb(29, 79, 180)) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.danger-action {
+  border-color: rgba(160, 36, 36, 0.55) !important;
+  color: rgb(148, 25, 25) !important;
+}
+
+.feedback {
+  margin: 12px 0 0;
+  color: rgb(16, 112, 47);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.feedback--error {
+  color: rgb(175, 36, 36);
+}
+
+.history-header {
+  margin-bottom: 14px;
+}
+
+.history-actions {
+  @include flex(row, flex-end, stretch);
+  gap: 12px;
+}
+
+.filter-field {
+  min-width: 340px;
+}
+
+.table-wrapper {
+  overflow: auto;
+  max-height: 560px;
+  border-radius: 18px;
+  border: 1px solid rgba(18, 40, 110, 0.11);
 }
 
 table {
-  text-align: center;
-  margin: 25px 0 20px;
+  min-width: 980px;
+  background: transparent;
 
   th {
-    font-size: 22px;
+    position: sticky;
+    top: 0;
+    z-index: 5;
     text-align: center;
-    font-weight: 550;
+    letter-spacing: 0.08em;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(120deg, rgb(18, 40, 110), rgb(24, 66, 156));
+    font-size: 13px;
+    font-weight: 700;
   }
 
-  .mat-mdc-row.mdc-data-table__row.cdk-row {
-    font-size: 20px;
+  td {
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(18, 35, 84);
   }
 
-  .mat-mdc-cell.mdc-data-table__cell.cdk-cell {
-    text-align: center;
-    padding: 15px 0;
+  tr:nth-child(even) td {
+    background: rgba(18, 40, 110, 0.035);
   }
 }
 
-.paginator-container {
-  max-width: 550px;
-  margin: 0 auto 50px;
+.record-badge {
+  min-width: 45px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgb(90, 106, 154);
+  background: rgba(90, 106, 154, 0.12);
+}
+
+.record-badge--active {
+  color: rgb(255, 255, 255);
+  background: linear-gradient(120deg, rgb(17, 137, 63), rgb(35, 175, 92));
+}
+
+.row-actions {
+  @include flex(row, center, center);
+  gap: 6px;
+}
+
+.action-button {
+  width: 36px;
+  height: 36px;
+
+  mat-icon {
+    font-size: 21px;
+    width: 21px;
+    height: 21px;
+  }
+}
+
+.action-button--info {
+  color: rgb(20, 62, 152);
+}
+
+.action-button--danger {
+  color: rgb(166, 35, 35);
+}
+
+.empty-row {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(79, 91, 128);
+  padding: 26px 10px !important;
+}
+
+mat-paginator {
+  background: transparent;
+  margin-top: 12px;
 }
 
 ::ng-deep .mat-mdc-paginator-container {
   justify-content: center !important;
 }
 
-.title-container:before {
-  @include small-screens {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 63, 0.8),
-      rgba(0, 0, 130, 0.8)
-    );
+@include extra-large-screens {
+  .summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-}
 
-// COLUMNS DISPLAY
+  .quick-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 
-.details-column {
-  display: none;
+  .quick-form-actions {
+    grid-column: 1 / -1;
+  }
 }
 
 @include medium-screens {
-  .weight-column,
-  .remove-column {
-    display: table-cell;
+  .exercise-shell,
+  .quick-entry,
+  .history-panel {
+    margin: 16px 8px;
+    border-radius: 22px;
+    padding: 16px;
   }
-  .repetitions-column {
-    display: none;
+
+  .summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-header,
+  .history-actions {
+    @include flex(column, center, stretch);
+  }
+
+  .filter-field {
+    min-width: 0;
+    width: 100%;
+  }
+
+  table {
+    min-width: 720px;
   }
 }
 
 @include small-screens {
-  .details-column {
-    display: table-cell;
+  .exercise-switcher {
+    gap: 8px;
   }
-  .weight-column,
-  .repetitions-column,
-  .remove-column {
-    display: none;
+
+  .switch-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .summary-grid,
+  .quick-form,
+  .quick-form-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-card {
+    min-height: 96px;
+
+    strong {
+      font-size: 26px;
+    }
+  }
+
+  .primary-action,
+  .secondary-action,
+  .danger-action {
+    height: 48px;
+    font-size: 14px;
+  }
+
+  table {
+    min-width: 600px;
+
+    th,
+    td {
+      font-size: 14px;
+      padding: 8px 6px;
+    }
   }
 }
